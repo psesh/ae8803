@@ -7,7 +7,7 @@ format:
     page-layout: full
     toc: true
     code-fold: true
-    theme: morph
+    theme: flatly
     code-tools: true
       
 
@@ -15,7 +15,7 @@ website:
   title: "AE8803: Machine Learning with Gaussian Processes"
   page-navigation: true
   navbar:
-    background: light
+    background: secondary
     right:
       - icon: github
         href: https://github.com/psesh/ae8803
