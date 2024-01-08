@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>AE8803: Machine Learning with Gaussian Processes - Overview</title>
+<title>AE8803: Machine Learning with Gaussian Processes – markdown</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,25 +20,59 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -70,7 +104,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">AE8803: Machine Learning with Gaussian Processes</span>
     </a>
   </div>
@@ -96,7 +130,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Overview</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -118,7 +152,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Overview</span></a>
   </div>
 </li>
@@ -132,8 +166,11 @@ ul.task-list li input[type="checkbox"] {
       </div>
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
- <span class="menu-text">sample_problems/lecture_1.ipynb</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="../../sample_problems/lecture_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">L1</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -146,394 +183,64 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#course-description" id="toc-course-description" class="nav-link active" data-scroll-target="#course-description">Course Description:</a></li>
-  <li><a href="#grading" id="toc-grading" class="nav-link" data-scroll-target="#grading">Grading</a>
+  <li><a href="#markdown-demo" id="toc-markdown-demo" class="nav-link active" data-scroll-target="#markdown-demo">Markdown Demo</a>
   <ul class="collapse">
-  <li><a href="#pre-requisites" id="toc-pre-requisites" class="nav-link" data-scroll-target="#pre-requisites">Pre-requisites:</a></li>
+  <li><a href="#external-1.1" id="toc-external-1.1" class="nav-link" data-scroll-target="#external-1.1">External 1.1</a></li>
+  <li><a href="#external-1.2" id="toc-external-1.2" class="nav-link" data-scroll-target="#external-1.2">External 1.2</a></li>
+  <li><a href="#external-2" id="toc-external-2" class="nav-link" data-scroll-target="#external-2">External 2</a></li>
+  <li><a href="#external-3.1" id="toc-external-3.1" class="nav-link" data-scroll-target="#external-3.1">External 3.1</a></li>
+  <li><a href="#external-3.2" id="toc-external-3.2" class="nav-link" data-scroll-target="#external-3.2">External 3.2</a></li>
+  <li><a href="#external-3.3-image" id="toc-external-3.3-image" class="nav-link" data-scroll-target="#external-3.3-image">External 3.3 (Image)</a></li>
+  <li><a href="#external-3.4-math" id="toc-external-3.4-math" class="nav-link" data-scroll-target="#external-3.4-math">External 3.4 (Math)</a></li>
   </ul></li>
-  <li><a href="#lectures" id="toc-lectures" class="nav-link" data-scroll-target="#lectures">Lectures</a></li>
-  <li><a href="#office-hours" id="toc-office-hours" class="nav-link" data-scroll-target="#office-hours">Office hours</a></li>
-  <li><a href="#textbooks" id="toc-textbooks" class="nav-link" data-scroll-target="#textbooks">Textbooks</a></li>
-  <li><a href="#important-papers" id="toc-important-papers" class="nav-link" data-scroll-target="#important-papers">Important papers</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content column-body" id="quarto-document-content">
+<main class="content column-body" id="quarto-document-content"><div class="quarto-title-block"><div class="quarto-title-tools-only"><h1></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Overview</h1>
+
+
+<section id="markdown-demo" class="level1">
+<h1>Markdown Demo</h1>
+<section id="external-1.1" class="level2">
+<h2 class="anchored" data-anchor-id="external-1.1">External 1.1</h2>
+<p>Content 1.1</p>
+<p>Note: This will only appear in the speaker notes window.</p>
+</section>
+<section id="external-1.2" class="level2">
+<h2 class="anchored" data-anchor-id="external-1.2">External 1.2</h2>
+<p>Content 1.2</p>
+</section>
+<section id="external-2" class="level2">
+<h2 class="anchored" data-anchor-id="external-2">External 2</h2>
+<p>Content 2.1</p>
+</section>
+<section id="external-3.1" class="level2">
+<h2 class="anchored" data-anchor-id="external-3.1">External 3.1</h2>
+<p>Content 3.1</p>
+</section>
+<section id="external-3.2" class="level2">
+<h2 class="anchored" data-anchor-id="external-3.2">External 3.2</h2>
+<p>Content 3.2</p>
+</section>
+<section id="external-3.3-image" class="level2">
+<h2 class="anchored" data-anchor-id="external-3.3-image">External 3.3 (Image)</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://s3.amazonaws.com/static.slid.es/logo/v2/slides-symbol-512x512.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">External Image</figcaption>
+</figure>
 </div>
-
-
-
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
-
-</header>
-
-<section id="course-description" class="level3">
-<h3 class="anchored" data-anchor-id="course-description">Course Description:</h3>
-<p>This graduate-level course offers a practical approach to probabilistic learning with Gaussian processes (GPs). GPs represent a powerful set of methods for modeling and predicting a wide variety of spatio-temporal phenomena. Today, they are used for problems that span both regression and classification, with theoretical foundations in Bayesian inference, reproducing kernel Hilbert spaces, eigenvalue problems, and numerical integration. Rather than focus <em>solely</em> on these theoretical foundations, this course balances theory with practical probabilistic programming, using a variety of <code>python</code>-based packages. Moreover, practical engineering problems will also be discussed that see GP models that cut across other areas of machine learning including transfer learning, convolutional networks, and normalizing flows.</p>
 </section>
-<section id="grading" class="level2">
-<h2 class="anchored" data-anchor-id="grading">Grading</h2>
-<p>This course has four assignments; the grades are given below:</p>
-<table class="table">
-<colgroup>
-<col style="width: 53%">
-<col style="width: 46%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Assignment</th>
-<th>Grade percentage (%)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Assignment 1: Mid-term (covering fundamentals)</td>
-<td>20</td>
-</tr>
-<tr class="even">
-<td>Assignment 2: Build your own GP from scratch for a given dataset</td>
-<td>20</td>
-</tr>
-<tr class="odd">
-<td>Assignment 3: Proposal (data and literature review)</td>
-<td>20</td>
-</tr>
-<tr class="even">
-<td>Assignment 4: Final project (presentation and notebook)</td>
-<td>40</td>
-</tr>
-</tbody>
-</table>
-<section id="pre-requisites" class="level3">
-<h3 class="anchored" data-anchor-id="pre-requisites">Pre-requisites:</h3>
-<ul>
-<li>CS1371, MATH2551, MATH2552 (or equivalent)</li>
-<li>Working knowledge of <code>python</code> including familiarity with <code>numpy</code> and <code>matplotlib</code> libraries.</li>
-<li>Working local version of <code>python</code> and <code>Jupyter</code>.</li>
-</ul>
-</section>
-</section>
-<section id="lectures" class="level2">
-<h2 class="anchored" data-anchor-id="lectures">Lectures</h2>
-<p>Below you will find a list of the lectures that form the backbone of this course. Sub-topics for each lecture will be updated in due course.</p>
-01.08: <strong>L1. Introduction &amp; probability fundamentals</strong> | <a href="https://gtvault-my.sharepoint.com/:b:/g/personal/pseshadri34_gatech_edu/Edq6QWhxcXJDu1KONfch_30B3ELimiqkhzWTuYNZbLOuLg?e=Nfc5ZN" target="_blank" style="text-decoration: none">Slides</a> | <a href="sample_problems/lecture_1.html" style="text-decoration: none">Examples</a><br>
-
-<details>
-<summary>
-Contents
-</summary>
-<ol type="1">
-<li>Course overview.</li>
-<li>Probability fundamentals (and Bayes’ theorem).</li>
-<li>Random variables.</li>
-<li>Expectation.</li>
-</ol>
-</details>
-01.10: <strong>L2. Discrete probability distributions</strong>
-<details>
-<summary>
-Contents
-</summary>
-<ol type="1">
-<li>Variance.</li>
-<li>Independence.</li>
-<li>Bernoulli, Binomial, Geometric, and Poisson distributions.</li>
-</ol>
-</details>
-<p>01.15: <em>No Class (Institute Holiday)</em></p>
-01.17: <strong>L3. Continuous distributions</strong>
-<details>
-<summary>
-Contents
-</summary>
-<ol type="1">
-<li>Fundamentals of continuous random variables.</li>
-<li>Probability density function.</li>
-<li>Exponential, Beta, and Gaussian distributions.</li>
-</ol>
-</details>
-01.22: <strong>L4. Manipulating and combining distributions</strong>
-<details>
-<summary>
-Contents
-</summary>
-<ol type="1">
-<li>Functions of random variables.</li>
-<li>Sums of random variables.</li>
-<li>Transforming a distribution.</li>
-<li>Central limit theorem.</li>
-</ol>
-</details>
-01.24: <strong>L5. Multivariate Gaussian distributions</strong>
-<details>
-<summary>
-Contents
-</summary>
-<ol type="1">
-<li>Marginal distributions.</li>
-<li>Conditional distributions.</li>
-<li>Joint distribution and Schur complement.</li>
-<li>Kullback-Leibler divergence and Wasserstein-2 distance.</li>
-</ol>
-</details>
-01.29: <strong>L6. Bayesian inference in practice</strong>
-<details>
-<summary>
-Contents
-</summary>
-<ol type="1">
-<li>Conjugacy in Bayesian inference.</li>
-<li>Polynomial Bayesian inference: an example</li>
-</ol>
-</details>
-01.31: <strong>L7. Gaussian process regression</strong>
-<details>
-<summary>
-Contents
-</summary>
-<ol type="1">
-<li>Contrast weight-space vs function-space perspective.</li>
-<li>Introduction to a kernel.</li>
-<li>Likelihood and prior for a Gaussian process.</li>
-<li>Posterior mean and covariance.</li>
-</ol>
-</details>
-<p>02.05: <em>Fundamentals Mid-term</em></p>
-02.07: <strong>L8. Hyperparameters and model selection</strong>
-<details>
-<summary>
-Contents
-</summary>
-<ol type="1">
-<li>Maximum likelihood and maximum aposteriori estimate.</li>
-<li>Cross validation.</li>
-<li>Expectation maximization.</li>
-<li>Markov chain Monte Carlo (Gibbs, NUTS, HMC).</li>
-</ol>
-</details>
-02.12: <strong>L9. Variational inference</strong>
-<details>
-<summary>
-Contents
-</summary>
-<ol type="1">
-<li>Variational problem.</li>
-<li>Deriving the ELBO.</li>
-<li>Stochastic variational inference in practice.</li>
-</ol>
-</details>
-02.14: <strong>L10. Open-source resources</strong>
-<details>
-<summary>
-Contents
-</summary>
-<ol type="1">
-<li>pymc.</li>
-<li>gpytorch, gpflow.</li>
-<li>GPjax.</li>
-</ol>
-</details>
-02.14: <strong>L11. Kernel learning</strong>
-<details>
-<summary>
-Contents
-</summary>
-<ol type="1">
-<li>Kernel trick re-visited. 2. Constructing kernels piece-by-piece. 3. Constructing kernels from learnt features. 4. Spectral representations of kernels.</li>
-</ol>
-</details>
-02.19: <strong>L12. Gaussian process classification</strong>
-<details>
-<summary>
-Contents
-</summary>
-<ol type="1">
-<li>Bernoulli prior</li>
-<li>Softmax for multi-class classification</li>
-</ol>
-</details>
-02.21: <strong>L13. Scaling up Gausssian processes I</strong>
-<details>
-<summary>
-Contents
-</summary>
-<ol type="1">
-<li>Review of matrix inverse via Cholesky.</li>
-<li>Subset of data approaches</li>
-<li>Nystrom approximation</li>
-<li>Inducing points</li>
-<li>Kronecker product kernels.</li>
-</ol>
-</details>
-02.26: <strong>L14. Scaling up Gausssian processes II</strong>
-<details>
-<summary>
-Contents
-</summary>
-<ol type="1">
-<li>Variational inference</li>
-<li>ELBO derivation</li>
-<li>Minimizing the KL-divergence practically using Adam.</li>
-</ol>
-</details>
-02.28: <strong>L15. Subspace-based projections for Gaussian processes</strong>
-<details>
-<summary>
-Contents
-</summary>
-<ol type="1">
-<li>Brief introduction to matrix manifolds.</li>
-<li>Subspace-based projections.</li>
-<li>Active subspaces.</li>
-<li>Regression over an unknown subspace.</li>
-</ol>
-</details>
-03.04: <strong>L16. Proposal and project</strong>
-<details>
-<summary>
-Contents
-</summary>
-<ol type="1">
-<li>Chosen data-set(s) and problem statement.</li>
-<li>Literature review.</li>
-<li>Prior and likelihood definitions.</li>
-</ol>
-</details>
-<p>03.06: <em>Coding assignment due</em></p>
-03.06: <strong>L17. Reproducing Kernel Hilbert Spaces</strong>
-<details>
-<summary>
-Contents
-</summary>
-<ol type="1">
-<li>Hilbert space</li>
-<li>Understanding a kernel.</li>
-<li>Reproducing kernel Hilbert spaces.</li>
-<li>Representer theoreom.</li>
-</ol>
-</details>
-03.11: <strong>L18. Multi-output Gaussian processes</strong>
-<details>
-<summary>
-Contents
-</summary>
-<ol type="1">
-<li>Coregional models.</li>
-<li>Transfer learning across covariance blocks.</li>
-<li>Derivative (or gradient) enhancement.</li>
-</ol>
-</details>
-03.13: <strong>L19. Deep Gaussian processes</strong>
-<details>
-<summary>
-Contents
-</summary>
-<ol type="1">
-<li>Single and deep MLPs</li>
-<li>Depth in Gaussian processes.</li>
-<li>Posterior inference and stochastic variational inference.</li>
-</ol>
-</details>
-<p>03.13: <em>Withdrawal Deadline</em></p>
-<p>03.18-03.22: <em>Spring Break</em></p>
-<p>03.25: <em>Project proposals due</em></p>
-03.25: <strong>L20. Convolutional Gaussian processes</strong>
-<details>
-<summary>
-Contents
-</summary>
-<ol type="1">
-<li>Convolution as a linear operator.</li>
-<li>Deep convolutional Gaussian processes.</li>
-</ol>
-</details>
-03.27: <strong>L21. Latent models and unsupervised learning</strong>
-<details>
-<summary>
-Contents
-</summary>
-<ol type="1">
-<li>Contrast standard regression with latent variable model.</li>
-<li>Gaussian process latent variable model.</li>
-<li>Coding demo.</li>
-</ol>
-</details>
-04.01: <strong>L22. State-space Gaussian processes</strong>
-<details>
-<summary>
-Contents
-</summary>
-<ol type="1">
-<li>Application: time series models.</li>
-<li>Gaussian state space model.</li>
-<li>Parallels with Kalman filtering and smoothing.</li>
-<li>Creating custom state-space kernels.</li>
-</ol>
-</details>
-04.03: <strong>L23. Bayesian optimization</strong>
-<details>
-<summary>
-Contents
-</summary>
-<ol type="1">
-<li>Gaussian process surrogate.</li>
-<li>Acquisition function.</li>
-<li>Thompson’s sampling.</li>
-<li>Gaussian process dynamic model.</li>
-</ol>
-</details>
-<p>04.08: <strong>L24. Guest Lecture</strong></p>
-<p>04.22: <strong>L25. Project presentations</strong></p>
-</section>
-<section id="office-hours" class="level2">
-<h2 class="anchored" data-anchor-id="office-hours">Office hours</h2>
-<p>Professor Seshadri’s office hours:</p>
-<table class="table">
-<thead>
-<tr class="header">
-<th>Location</th>
-<th>Time</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>MK 421</td>
-<td>Fridays 14:30 to 15:30</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="textbooks" class="level2">
-<h2 class="anchored" data-anchor-id="textbooks">Textbooks</h2>
-<p>This course will make heavy use of the following texts:</p>
-<ul>
-<li>Rasmussen, C. E., Williams, C. K. <em>Gaussian Processes for Machine Learning</em>, The MIT Press, 2006.</li>
-<li>Murphy, K. P., <em>Probabilistic Machine Learning: Advanced Topics</em>, The MIT Press, 2023.</li>
-</ul>
-<p>Both these texts have been made freely available by the authors.</p>
-</section>
-<section id="important-papers" class="level2">
-<h2 class="anchored" data-anchor-id="important-papers">Important papers</h2>
-<p>Students are encouraged to read through the following papers:</p>
-<ul>
-<li><p><a href="https://doi.org/10.1098/rsta.2011.0550">Roberts, S., Osborne, M., Ebden, M., Reece, S., Gibson, N., Aigrain, S., (2013) <em>Gaussian processes for time-series modelling</em>, Philosophical Transactions of the Royal Society A: Mathematical, Physical and Engineering Sciences.</a></p></li>
-<li><p><a href="https://www.jmlr.org/papers/volume19/18-015/18-015.pdf">Dunlop, M., Girolami, M., Stuart, A., Teckentrup, A., (2018) <em>How Deep Are Deep Gaussian Processes?</em>, Journal of Machine Learning Research 19, 1-46</a></p></li>
-<li><p><a href="https://www.jmlr.org/papers/volume12/alvarez11a/alvarez11a.pdf">Alvarez, M., Lawrence, N., (2011) <em>Computationally Efficient Convolved Multiple Output Gaussian Processes</em>, Journal of Machine Learning Research 12, 1459-1500</a></p></li>
-<li><p><a href="https://dl.acm.org/doi/pdf/10.5555/3294996.3295044">Van der Wilk, M., Rasmussen, C., Hensman, J., (2017) <em>Convolutional Gaussian Processes</em>, 31st Conference on Neural Information Processing Systems</a></p></li>
-</ul>
+<section id="external-3.4-math" class="level2">
+<h2 class="anchored" data-anchor-id="external-3.4-math">External 3.4 (Math)</h2>
+<p><code>\[ J(\theta_0,\theta_1) = \sum_{i=0} \]</code></p>
 
 
+<!-- -->
+
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -820,7 +527,49 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script>
+</script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Markdown Demo</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">## External 1.1</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>Content 1.1</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>Note: This will only appear in the speaker notes window.</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">## External 1.2</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>Content 1.2</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="fu">## External 2</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>Content 2.1</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="fu">## External 3.1</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>Content 3.1</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="fu">## External 3.2</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>Content 3.2</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="fu">## External 3.3 (Image)</span></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="al">![External Image](https://s3.amazonaws.com/static.slid.es/logo/v2/slides-symbol-512x512.png)</span></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="fu">## External 3.4 (Math)</span></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="in">`\[ J(\theta_0,\theta_1) = \sum_{i=0} \]`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div></div></div></div>
 </div> <!-- /content -->
 
 

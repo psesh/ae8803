@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>AE8803: Machine Learning with Gaussian Processes - Overview</title>
+<title>AE8803: Machine Learning with Gaussian Processes - L1</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,22 +23,23 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../index.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -60,6 +61,8 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
@@ -70,7 +73,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">AE8803: Machine Learning with Gaussian Processes</span>
     </a>
   </div>
@@ -96,7 +99,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Overview</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../sample_problems/lecture_1.html">Examples</a></li><li class="breadcrumb-item"><a href="../sample_problems/lecture_1.html">L1</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -118,7 +121,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Overview</span></a>
   </div>
 </li>
@@ -132,8 +135,11 @@ ul.task-list li input[type="checkbox"] {
       </div>
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
- <span class="menu-text">sample_problems/lecture_1.ipynb</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="../sample_problems/lecture_1.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">L1</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -146,15 +152,8 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#course-description" id="toc-course-description" class="nav-link active" data-scroll-target="#course-description">Course Description:</a></li>
-  <li><a href="#grading" id="toc-grading" class="nav-link" data-scroll-target="#grading">Grading</a>
-  <ul class="collapse">
-  <li><a href="#pre-requisites" id="toc-pre-requisites" class="nav-link" data-scroll-target="#pre-requisites">Pre-requisites:</a></li>
-  </ul></li>
-  <li><a href="#lectures" id="toc-lectures" class="nav-link" data-scroll-target="#lectures">Lectures</a></li>
-  <li><a href="#office-hours" id="toc-office-hours" class="nav-link" data-scroll-target="#office-hours">Office hours</a></li>
-  <li><a href="#textbooks" id="toc-textbooks" class="nav-link" data-scroll-target="#textbooks">Textbooks</a></li>
-  <li><a href="#important-papers" id="toc-important-papers" class="nav-link" data-scroll-target="#important-papers">Important papers</a></li>
+  <li><a href="#example-1." id="toc-example-1." class="nav-link active" data-scroll-target="#example-1.">Example 1.</a></li>
+  <li><a href="#example-2." id="toc-example-2." class="nav-link" data-scroll-target="#example-2.">Example 2.</a></li>
   </ul>
 </nav>
     </div>
@@ -163,7 +162,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Overview</h1>
+<h1 class="title">L1</h1>
 </div>
 
 
@@ -178,360 +177,81 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="course-description" class="level3">
-<h3 class="anchored" data-anchor-id="course-description">Course Description:</h3>
-<p>This graduate-level course offers a practical approach to probabilistic learning with Gaussian processes (GPs). GPs represent a powerful set of methods for modeling and predicting a wide variety of spatio-temporal phenomena. Today, they are used for problems that span both regression and classification, with theoretical foundations in Bayesian inference, reproducing kernel Hilbert spaces, eigenvalue problems, and numerical integration. Rather than focus <em>solely</em> on these theoretical foundations, this course balances theory with practical probabilistic programming, using a variety of <code>python</code>-based packages. Moreover, practical engineering problems will also be discussed that see GP models that cut across other areas of machine learning including transfer learning, convolutional networks, and normalizing flows.</p>
+<section id="example-1." class="level3">
+<h3 class="anchored" data-anchor-id="example-1.">Example 1.</h3>
+<p>The probability that a scheduled flight departs on time is 0.83 and the probability that it arrives on time is 0.92. The probability that it both departs and arrives on time is 0.78. Find the probability that</p>
+<ol type="a">
+<li><p>the plane arrives on time given that it departed on time;</p></li>
+<li><p>the plane did not depart on time given that it did not arrive on time.</p></li>
+</ol>
+<details>
+<summary>
+Solution
+</summary>
+<p>It will be useful to consider the Venn diagram shown below.</p>
+<p><img src="images/image_L1_1.png" alt="cycle" width="500"></p>
+<p>Let <span class="math inline">\(\require{color}{\color[rgb]{0.000066,0.001801,0.998229}A}\)</span> denote that the plane arrives on time, while <span class="math inline">\({\color[rgb]{0.986252,0.007236,0.027423}D}\)</span> denotes that the plane departs on time. To construct the Venn diagram above note that <span class="math inline">\(\require{color}P \left( {\color[rgb]{0.000066,0.001801,0.998229}A} \cap {\color[rgb]{0.986252,0.007236,0.027423}D} \right) = 0.78\)</span>. From the sum rule of probabilities, we have:</p>
+<p><span class="math display">\[
+\require{color}
+\large
+P \left( {\color[rgb]{0.000066,0.001801,0.998229}A} \right) = P \left( {\color[rgb]{0.000066,0.001801,0.998229}A} \cap \bar{{\color[rgb]{0.986252,0.007236,0.027423}D}} \right) + P \left( {\color[rgb]{0.000066,0.001801,0.998229}A} \cap {\color[rgb]{0.986252,0.007236,0.027423}D} \right)
+\]</span></p>
+<p><span class="math display">\[
+\require{color}
+\large
+\Rightarrow 0.92 = 0.78 + P \left( {\color[rgb]{0.000066,0.001801,0.998229}A} \cap {\color[rgb]{0.986252,0.007236,0.027423}D} \right)
+\]</span></p>
+<p>which implies that <span class="math inline">\(\require{color}P \left( {\color[rgb]{0.000066,0.001801,0.998229}A} \cap {\color[rgb]{0.986252,0.007236,0.027423}D} \right) = 0.92 - 0.78 = 0.14\)</span>. Similarly, we have</p>
+<p><span class="math display">\[
+\require{color}
+\large
+P\left( {\color[rgb]{0.986252,0.007236,0.027423}D} \right) = P \left( {\color[rgb]{0.986252,0.007236,0.027423}D} \cap \bar{{\color[rgb]{0.000066,0.001801,0.998229}A}} \right) + P \left( {\color[rgb]{0.000066,0.001801,0.998229}A} \cap {\color[rgb]{0.986252,0.007236,0.027423}D} \right)
+\]</span></p>
+<p><span class="math display">\[
+\require{color}
+\large
+\Rightarrow 0.83 = P \left( {\color[rgb]{0.986252,0.007236,0.027423}D} \cap \bar{{\color[rgb]{0.059472,0.501943,0.998465}A}} \right) + 0.78
+\]</span></p>
+<p>which implies that <span class="math inline">\(\require{color}P \left( {\color[rgb]{0.986252,0.007236,0.027423}D} \cap \bar{{\color[rgb]{0.059472,0.501943,0.998465}A}} \right) = 0.05\)</span>. With these probabilities, we can now write</p>
+<ol type="a">
+<li>Calculating the conditional distribution</li>
+</ol>
+<p><span class="math display">\[
+\large \require{color}P \left( {\color[rgb]{0.000066,0.001801,0.998229}A} | {\color[rgb]{0.986252,0.007236,0.027423}D} \right) = \frac{P \left( {\color[rgb]{0.000066,0.001801,0.998229}A} \cap {\color[rgb]{0.986252,0.007236,0.027423}D} \right) }{P \left( {\color[rgb]{0.986252,0.007236,0.027423}D} \right) } = \frac{0.78}{0.83} = 0.94
+\]</span></p>
+<ol start="2" type="a">
+<li>Once again resorting to the conditional distribution</li>
+</ol>
+<p><span class="math display">\[
+\large \require{color}
+P \left( \bar{{\color[rgb]{0.986252,0.007236,0.027423}D}} | \bar{{\color[rgb]{0.000066,0.001801,0.998229}A}} \right) = \frac{P \left( \bar{{\color[rgb]{0.986252,0.007236,0.027423}D}} \cap \bar{{\color[rgb]{0.000066,0.001801,0.998229}A}} \right) }{P \left( \bar{{\color[rgb]{0.000066,0.001801,0.998229}A}} \right)} =
+\]</span></p>
+<p><span class="math display">\[
+\large \require{color}
+\frac{1 - P\left( {\color[rgb]{0.000066,0.001801,0.998229}A} \right) - P \left({\color[rgb]{0.986252,0.007236,0.027423} D }\right) + P \left( {\color[rgb]{0.000066,0.001801,0.998229}A} \cap {\color[rgb]{0.986252,0.007236,0.027423}D} \right) }{1 - P \left( {\color[rgb]{0.000066,0.001801,0.998229}A} \right) } = \frac{1 - 0.92 - 0.83 + 0.78 }{1 - 0.92 } = \frac{0.03}{0.08} = 0.375
+\]</span></p>
+</details>
 </section>
-<section id="grading" class="level2">
-<h2 class="anchored" data-anchor-id="grading">Grading</h2>
-<p>This course has four assignments; the grades are given below:</p>
-<table class="table">
-<colgroup>
-<col style="width: 53%">
-<col style="width: 46%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Assignment</th>
-<th>Grade percentage (%)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Assignment 1: Mid-term (covering fundamentals)</td>
-<td>20</td>
-</tr>
-<tr class="even">
-<td>Assignment 2: Build your own GP from scratch for a given dataset</td>
-<td>20</td>
-</tr>
-<tr class="odd">
-<td>Assignment 3: Proposal (data and literature review)</td>
-<td>20</td>
-</tr>
-<tr class="even">
-<td>Assignment 4: Final project (presentation and notebook)</td>
-<td>40</td>
-</tr>
-</tbody>
-</table>
-<section id="pre-requisites" class="level3">
-<h3 class="anchored" data-anchor-id="pre-requisites">Pre-requisites:</h3>
-<ul>
-<li>CS1371, MATH2551, MATH2552 (or equivalent)</li>
-<li>Working knowledge of <code>python</code> including familiarity with <code>numpy</code> and <code>matplotlib</code> libraries.</li>
-<li>Working local version of <code>python</code> and <code>Jupyter</code>.</li>
-</ul>
-</section>
-</section>
-<section id="lectures" class="level2">
-<h2 class="anchored" data-anchor-id="lectures">Lectures</h2>
-<p>Below you will find a list of the lectures that form the backbone of this course. Sub-topics for each lecture will be updated in due course.</p>
-01.08: <strong>L1. Introduction &amp; probability fundamentals</strong> | <a href="https://gtvault-my.sharepoint.com/:b:/g/personal/pseshadri34_gatech_edu/Edq6QWhxcXJDu1KONfch_30B3ELimiqkhzWTuYNZbLOuLg?e=Nfc5ZN" target="_blank" style="text-decoration: none">Slides</a> | <a href="sample_problems/lecture_1.html" style="text-decoration: none">Examples</a><br>
-
+<section id="example-2." class="level3">
+<h3 class="anchored" data-anchor-id="example-2.">Example 2.</h3>
+<p>Toss a coin three times, what is the probability of at least two heads?</p>
 <details>
 <summary>
-Contents
+Solution
 </summary>
+<p>There are 8 possible outcomes which, if the coin is unbiased, should all be equally likely:</p>
 <ol type="1">
-<li>Course overview.</li>
-<li>Probability fundamentals (and Bayes’ theorem).</li>
-<li>Random variables.</li>
-<li>Expectation.</li>
+<li>HHH</li>
+<li>HHT</li>
+<li>HTH</li>
+<li>HTT</li>
+<li>THH</li>
+<li>THT</li>
+<li>TTH</li>
+<li>TTT</li>
 </ol>
+<p>Two or more heads result from 4 outcomes. The probability of two or more heads is therefore <span class="math inline">\(4/8=1/2\)</span>.</p>
 </details>
-01.10: <strong>L2. Discrete probability distributions</strong>
-<details>
-<summary>
-Contents
-</summary>
-<ol type="1">
-<li>Variance.</li>
-<li>Independence.</li>
-<li>Bernoulli, Binomial, Geometric, and Poisson distributions.</li>
-</ol>
-</details>
-<p>01.15: <em>No Class (Institute Holiday)</em></p>
-01.17: <strong>L3. Continuous distributions</strong>
-<details>
-<summary>
-Contents
-</summary>
-<ol type="1">
-<li>Fundamentals of continuous random variables.</li>
-<li>Probability density function.</li>
-<li>Exponential, Beta, and Gaussian distributions.</li>
-</ol>
-</details>
-01.22: <strong>L4. Manipulating and combining distributions</strong>
-<details>
-<summary>
-Contents
-</summary>
-<ol type="1">
-<li>Functions of random variables.</li>
-<li>Sums of random variables.</li>
-<li>Transforming a distribution.</li>
-<li>Central limit theorem.</li>
-</ol>
-</details>
-01.24: <strong>L5. Multivariate Gaussian distributions</strong>
-<details>
-<summary>
-Contents
-</summary>
-<ol type="1">
-<li>Marginal distributions.</li>
-<li>Conditional distributions.</li>
-<li>Joint distribution and Schur complement.</li>
-<li>Kullback-Leibler divergence and Wasserstein-2 distance.</li>
-</ol>
-</details>
-01.29: <strong>L6. Bayesian inference in practice</strong>
-<details>
-<summary>
-Contents
-</summary>
-<ol type="1">
-<li>Conjugacy in Bayesian inference.</li>
-<li>Polynomial Bayesian inference: an example</li>
-</ol>
-</details>
-01.31: <strong>L7. Gaussian process regression</strong>
-<details>
-<summary>
-Contents
-</summary>
-<ol type="1">
-<li>Contrast weight-space vs function-space perspective.</li>
-<li>Introduction to a kernel.</li>
-<li>Likelihood and prior for a Gaussian process.</li>
-<li>Posterior mean and covariance.</li>
-</ol>
-</details>
-<p>02.05: <em>Fundamentals Mid-term</em></p>
-02.07: <strong>L8. Hyperparameters and model selection</strong>
-<details>
-<summary>
-Contents
-</summary>
-<ol type="1">
-<li>Maximum likelihood and maximum aposteriori estimate.</li>
-<li>Cross validation.</li>
-<li>Expectation maximization.</li>
-<li>Markov chain Monte Carlo (Gibbs, NUTS, HMC).</li>
-</ol>
-</details>
-02.12: <strong>L9. Variational inference</strong>
-<details>
-<summary>
-Contents
-</summary>
-<ol type="1">
-<li>Variational problem.</li>
-<li>Deriving the ELBO.</li>
-<li>Stochastic variational inference in practice.</li>
-</ol>
-</details>
-02.14: <strong>L10. Open-source resources</strong>
-<details>
-<summary>
-Contents
-</summary>
-<ol type="1">
-<li>pymc.</li>
-<li>gpytorch, gpflow.</li>
-<li>GPjax.</li>
-</ol>
-</details>
-02.14: <strong>L11. Kernel learning</strong>
-<details>
-<summary>
-Contents
-</summary>
-<ol type="1">
-<li>Kernel trick re-visited. 2. Constructing kernels piece-by-piece. 3. Constructing kernels from learnt features. 4. Spectral representations of kernels.</li>
-</ol>
-</details>
-02.19: <strong>L12. Gaussian process classification</strong>
-<details>
-<summary>
-Contents
-</summary>
-<ol type="1">
-<li>Bernoulli prior</li>
-<li>Softmax for multi-class classification</li>
-</ol>
-</details>
-02.21: <strong>L13. Scaling up Gausssian processes I</strong>
-<details>
-<summary>
-Contents
-</summary>
-<ol type="1">
-<li>Review of matrix inverse via Cholesky.</li>
-<li>Subset of data approaches</li>
-<li>Nystrom approximation</li>
-<li>Inducing points</li>
-<li>Kronecker product kernels.</li>
-</ol>
-</details>
-02.26: <strong>L14. Scaling up Gausssian processes II</strong>
-<details>
-<summary>
-Contents
-</summary>
-<ol type="1">
-<li>Variational inference</li>
-<li>ELBO derivation</li>
-<li>Minimizing the KL-divergence practically using Adam.</li>
-</ol>
-</details>
-02.28: <strong>L15. Subspace-based projections for Gaussian processes</strong>
-<details>
-<summary>
-Contents
-</summary>
-<ol type="1">
-<li>Brief introduction to matrix manifolds.</li>
-<li>Subspace-based projections.</li>
-<li>Active subspaces.</li>
-<li>Regression over an unknown subspace.</li>
-</ol>
-</details>
-03.04: <strong>L16. Proposal and project</strong>
-<details>
-<summary>
-Contents
-</summary>
-<ol type="1">
-<li>Chosen data-set(s) and problem statement.</li>
-<li>Literature review.</li>
-<li>Prior and likelihood definitions.</li>
-</ol>
-</details>
-<p>03.06: <em>Coding assignment due</em></p>
-03.06: <strong>L17. Reproducing Kernel Hilbert Spaces</strong>
-<details>
-<summary>
-Contents
-</summary>
-<ol type="1">
-<li>Hilbert space</li>
-<li>Understanding a kernel.</li>
-<li>Reproducing kernel Hilbert spaces.</li>
-<li>Representer theoreom.</li>
-</ol>
-</details>
-03.11: <strong>L18. Multi-output Gaussian processes</strong>
-<details>
-<summary>
-Contents
-</summary>
-<ol type="1">
-<li>Coregional models.</li>
-<li>Transfer learning across covariance blocks.</li>
-<li>Derivative (or gradient) enhancement.</li>
-</ol>
-</details>
-03.13: <strong>L19. Deep Gaussian processes</strong>
-<details>
-<summary>
-Contents
-</summary>
-<ol type="1">
-<li>Single and deep MLPs</li>
-<li>Depth in Gaussian processes.</li>
-<li>Posterior inference and stochastic variational inference.</li>
-</ol>
-</details>
-<p>03.13: <em>Withdrawal Deadline</em></p>
-<p>03.18-03.22: <em>Spring Break</em></p>
-<p>03.25: <em>Project proposals due</em></p>
-03.25: <strong>L20. Convolutional Gaussian processes</strong>
-<details>
-<summary>
-Contents
-</summary>
-<ol type="1">
-<li>Convolution as a linear operator.</li>
-<li>Deep convolutional Gaussian processes.</li>
-</ol>
-</details>
-03.27: <strong>L21. Latent models and unsupervised learning</strong>
-<details>
-<summary>
-Contents
-</summary>
-<ol type="1">
-<li>Contrast standard regression with latent variable model.</li>
-<li>Gaussian process latent variable model.</li>
-<li>Coding demo.</li>
-</ol>
-</details>
-04.01: <strong>L22. State-space Gaussian processes</strong>
-<details>
-<summary>
-Contents
-</summary>
-<ol type="1">
-<li>Application: time series models.</li>
-<li>Gaussian state space model.</li>
-<li>Parallels with Kalman filtering and smoothing.</li>
-<li>Creating custom state-space kernels.</li>
-</ol>
-</details>
-04.03: <strong>L23. Bayesian optimization</strong>
-<details>
-<summary>
-Contents
-</summary>
-<ol type="1">
-<li>Gaussian process surrogate.</li>
-<li>Acquisition function.</li>
-<li>Thompson’s sampling.</li>
-<li>Gaussian process dynamic model.</li>
-</ol>
-</details>
-<p>04.08: <strong>L24. Guest Lecture</strong></p>
-<p>04.22: <strong>L25. Project presentations</strong></p>
-</section>
-<section id="office-hours" class="level2">
-<h2 class="anchored" data-anchor-id="office-hours">Office hours</h2>
-<p>Professor Seshadri’s office hours:</p>
-<table class="table">
-<thead>
-<tr class="header">
-<th>Location</th>
-<th>Time</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>MK 421</td>
-<td>Fridays 14:30 to 15:30</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="textbooks" class="level2">
-<h2 class="anchored" data-anchor-id="textbooks">Textbooks</h2>
-<p>This course will make heavy use of the following texts:</p>
-<ul>
-<li>Rasmussen, C. E., Williams, C. K. <em>Gaussian Processes for Machine Learning</em>, The MIT Press, 2006.</li>
-<li>Murphy, K. P., <em>Probabilistic Machine Learning: Advanced Topics</em>, The MIT Press, 2023.</li>
-</ul>
-<p>Both these texts have been made freely available by the authors.</p>
-</section>
-<section id="important-papers" class="level2">
-<h2 class="anchored" data-anchor-id="important-papers">Important papers</h2>
-<p>Students are encouraged to read through the following papers:</p>
-<ul>
-<li><p><a href="https://doi.org/10.1098/rsta.2011.0550">Roberts, S., Osborne, M., Ebden, M., Reece, S., Gibson, N., Aigrain, S., (2013) <em>Gaussian processes for time-series modelling</em>, Philosophical Transactions of the Royal Society A: Mathematical, Physical and Engineering Sciences.</a></p></li>
-<li><p><a href="https://www.jmlr.org/papers/volume19/18-015/18-015.pdf">Dunlop, M., Girolami, M., Stuart, A., Teckentrup, A., (2018) <em>How Deep Are Deep Gaussian Processes?</em>, Journal of Machine Learning Research 19, 1-46</a></p></li>
-<li><p><a href="https://www.jmlr.org/papers/volume12/alvarez11a/alvarez11a.pdf">Alvarez, M., Lawrence, N., (2011) <em>Computationally Efficient Convolved Multiple Output Gaussian Processes</em>, Journal of Machine Learning Research 12, 1459-1500</a></p></li>
-<li><p><a href="https://dl.acm.org/doi/pdf/10.5555/3294996.3295044">Van der Wilk, M., Rasmussen, C., Hensman, J., (2017) <em>Convolutional Gaussian Processes</em>, 31st Conference on Neural Information Processing Systems</a></p></li>
-</ul>
 
 
 </section>
@@ -821,6 +541,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<nav class="page-navigation column-body">
+  <div class="nav-page nav-page-previous">
+      <a href="../index.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Overview</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
 </div> <!-- /content -->
 
 
