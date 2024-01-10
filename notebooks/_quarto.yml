@@ -16,6 +16,11 @@ website:
   page-navigation: true
   navbar:
     background: secondary
+    left:
+      - text: "Home"
+        file: index.ipynb
+      - text: "Canvas"
+        href: https://canvas.gatech.edu
     right:
       - icon: github
         href: https://github.com/psesh/ae8803
@@ -29,4 +34,8 @@ website:
       - section: "Examples"
         contents:
           - sample_problems/lecture_1.ipynb
+          - sample_problems/lecture_2.ipynb
+      - section: "Utilities"
+        contents:
+          - useful_codes/discrete.ipynb
 

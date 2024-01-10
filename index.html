@@ -80,6 +80,16 @@ ul.task-list li input[type="checkbox"] {
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link active" href="./index.html" rel="" target="" aria-current="page">
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://canvas.gatech.edu" rel="" target="">
+ <span class="menu-text">Canvas</span></a>
+  </li>  
+</ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
     <a class="nav-link" href="https://github.com/psesh/ae8803" rel="" target=""><i class="bi bi-github" role="img" aria-label="GitHub">
@@ -138,6 +148,29 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">L1 examples</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./sample_problems/lecture_2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">L2 examples</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Utilities</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./useful_codes/discrete.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Discrete distributions</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -159,6 +192,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#office-hours" id="toc-office-hours" class="nav-link" data-scroll-target="#office-hours">Office hours</a></li>
   <li><a href="#textbooks" id="toc-textbooks" class="nav-link" data-scroll-target="#textbooks">Textbooks</a></li>
   <li><a href="#important-papers" id="toc-important-papers" class="nav-link" data-scroll-target="#important-papers">Important papers</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
 </nav>
     </div>
@@ -241,18 +275,17 @@ Contents
 <li>Course overview.</li>
 <li>Probability fundamentals (and Bayes’ theorem).</li>
 <li>Random variables.</li>
-<li>Expectation.</li>
 </ol>
 </details>
-01.10: <strong>L2. Discrete probability distributions</strong>
+<p>01.10: <strong>L2. Discrete probability distributions</strong> | <a href="https://gtvault-my.sharepoint.com/:b:/g/personal/pseshadri34_gatech_edu/Ef-ZWBHcAFJMhceuoj68lS8B34zuF6xV11Vg1HnoEXQIQA?e=r5ojOP" target="_blank" style="text-decoration: none">Slides</a> | <a href="sample_problems/lecture_2.html" style="text-decoration: none">Examples</a> | <a href="useful_codes/discrete.html" style="text-decoration: none">Notebook</a></p>
 <details>
 <summary>
 Contents
 </summary>
 <ol type="1">
-<li>Variance.</li>
+<li>Expectation and variance.</li>
 <li>Independence.</li>
-<li>Bernoulli, Binomial, Geometric, and Poisson distributions.</li>
+<li>Bernoulli and Binomial distributions.</li>
 </ol>
 </details>
 <p>01.15: <em>No Class (Institute Holiday)</em></p>
@@ -391,7 +424,7 @@ Contents
 <li>Minimizing the KL-divergence practically using Adam.</li>
 </ol>
 </details>
-02.28: <strong>L15. Subspace-based projections for Gaussian processes</strong>
+02.28: <strong>L15. Sparse (and subspace-based) Gaussian processes</strong>
 <details>
 <summary>
 Contents
@@ -400,7 +433,7 @@ Contents
 <li>Brief introduction to matrix manifolds.</li>
 <li>Subspace-based projections.</li>
 <li>Active subspaces.</li>
-<li>Regression over an unknown subspace.</li>
+<li>Sparsity promoting priors.</li>
 </ol>
 </details>
 03.04: <strong>L16. Proposal and project</strong>
@@ -535,6 +568,15 @@ Contents
 <li><p><a href="https://www.jmlr.org/papers/volume19/18-015/18-015.pdf">Dunlop, M., Girolami, M., Stuart, A., Teckentrup, A., (2018) <em>How Deep Are Deep Gaussian Processes?</em>, Journal of Machine Learning Research 19, 1-46</a></p></li>
 <li><p><a href="https://www.jmlr.org/papers/volume12/alvarez11a/alvarez11a.pdf">Alvarez, M., Lawrence, N., (2011) <em>Computationally Efficient Convolved Multiple Output Gaussian Processes</em>, Journal of Machine Learning Research 12, 1459-1500</a></p></li>
 <li><p><a href="https://dl.acm.org/doi/pdf/10.5555/3294996.3295044">Van der Wilk, M., Rasmussen, C., Hensman, J., (2017) <em>Convolutional Gaussian Processes</em>, 31st Conference on Neural Information Processing Systems</a></p></li>
+</ul>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<p>Material used in this course has been adapted from</p>
+<ul>
+<li>CUED Part IB probability course notes</li>
+<li>Alto University’s module on Gaussian Processes</li>
+<li>Slides from the Gaussian Process Summer Schools</li>
 </ul>
 
 
