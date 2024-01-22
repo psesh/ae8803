@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>AE8803: Machine Learning with Gaussian Processes - Discrete distributions</title>
+<title>AE8803: Machine Learning with Gaussian Processes - L4 examples</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -64,7 +64,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../sample_problems/lecture_4.html" rel="prev">
+<link href="../useful_codes/discrete.html" rel="next">
+<link href="../sample_problems/lecture_3.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -143,7 +144,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../useful_codes/discrete.html">Utilities</a></li><li class="breadcrumb-item"><a href="../useful_codes/discrete.html">Discrete distributions</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../sample_problems/lecture_1.html">Examples</a></li><li class="breadcrumb-item"><a href="../sample_problems/lecture_4.html">L4 examples</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -198,7 +199,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../sample_problems/lecture_4.html" class="sidebar-item-text sidebar-link">
+  <a href="../sample_problems/lecture_4.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">L4 examples</span></a>
   </div>
 </li>
@@ -215,7 +216,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../useful_codes/discrete.html" class="sidebar-item-text sidebar-link active">
+  <a href="../useful_codes/discrete.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Discrete distributions</span></a>
   </div>
 </li>
@@ -231,11 +232,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#scope" id="toc-scope" class="nav-link active" data-scroll-target="#scope">Scope</a>
-  <ul class="collapse">
-  <li><a href="#bernoulli" id="toc-bernoulli" class="nav-link" data-scroll-target="#bernoulli">Bernoulli</a></li>
-  <li><a href="#binomial" id="toc-binomial" class="nav-link" data-scroll-target="#binomial">Binomial</a></li>
-  </ul></li>
+  <li><a href="#problem-1" id="toc-problem-1" class="nav-link active" data-scroll-target="#problem-1">Problem 1</a></li>
+  <li><a href="#problem-2" id="toc-problem-2" class="nav-link" data-scroll-target="#problem-2">Problem 2</a></li>
+  <li><a href="#problem-3" id="toc-problem-3" class="nav-link" data-scroll-target="#problem-3">Problem 3</a></li>
+  <li><a href="#problem-4" id="toc-problem-4" class="nav-link" data-scroll-target="#problem-4">Problem 4</a></li>
   </ul>
 </nav>
     </div>
@@ -244,7 +244,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">Discrete distributions</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li></ul></div></div>
+<div class="quarto-title-block"><div><h1 class="title">L4 examples</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li></ul></div></div>
 </div>
 
 
@@ -259,156 +259,191 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<section id="scope" class="level2">
-<h2 class="anchored" data-anchor-id="scope">Scope</h2>
-<p>This notebook is has useful boiler plate code for generating distributions and visualizing them.</p>
-<div class="cell" data-execution_count="1">
+<div class="cell" data-execution_count="2">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np </span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> bernoulli, binom</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> bernoulli, binom, expon</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.special <span class="im">import</span> comb</span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>sns.<span class="bu">set</span>(font_scale<span class="op">=</span><span class="fl">1.0</span>)</span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>sns.set_style(<span class="st">"white"</span>)</span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>sns.set_style(<span class="st">"ticks"</span>)</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>palette <span class="op">=</span> sns.color_palette(<span class="st">'deep'</span>)</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">#plt.style.use('dark_background') # cosmetic!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>palette <span class="op">=</span> sns.color_palette(<span class="st">'deep'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<section id="bernoulli" class="level3">
-<h3 class="anchored" data-anchor-id="bernoulli">Bernoulli</h3>
-<p>The probability mass function for a Bernoulli distribution is given by</p>
-<p><span class="math display">\[
-p \left( x \right) = \begin{cases}
-\begin{array}{c}
-1 - p  \; \; \; \textrm{if} \; x = 0 \\
-p \; \; \; \textrm{if} \; x = 1
-\end{array}\end{cases}
-\]</span></p>
-<p>for <span class="math inline">\(x \in \left\{0, 1 \right\}\)</span> and where <span class="math inline">\(0 \leq p \leq 1\)</span>.</p>
-<div class="cell" data-execution_count="2">
+<section id="problem-1" class="level2">
+<h2 class="anchored" data-anchor-id="problem-1">Problem 1</h2>
+<p>Find the probability density function of <span class="math inline">\(Y = h \left( X \right) = X^2\)</span>, for any <span class="math inline">\(y &gt; 0\)</span>, where <span class="math inline">\(X\)</span> is a continuous random variable with a known probability density function.</p>
 <details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> <span class="fl">0.4</span> <span class="co"># Bernoulli parameter</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>probabilities <span class="op">=</span> bernoulli.pmf(x, p)</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">4</span>))</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>plt.plot(x, probabilities, <span class="st">'o'</span>, ms<span class="op">=</span><span class="dv">8</span>, color<span class="op">=</span><span class="st">'orangered'</span>)</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>plt.vlines(x, <span class="dv">0</span>, probabilities, colors<span class="op">=</span><span class="st">'orangered'</span>, lw<span class="op">=</span><span class="dv">5</span>, alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'x'</span>)</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Probability'</span>)</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">'pdf.png'</span>, dpi<span class="op">=</span><span class="dv">150</span>, bbox_inches<span class="op">=</span><span class="st">'tight'</span>, transparent<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<summary>
+Solution
+</summary>
+<p>For <span class="math inline">\(y &gt; 0\)</span> we have</p>
+<p><span class="math display">\[
+F_Y \left( y \right) = p \left( Y \leq y \right) = p \left( X^2 \leq y \right) = p \left( - \sqrt{y} \leq X \leq \sqrt{y} \right)
+\]</span></p>
+<p><span class="math display">\[
+\Rightarrow F_Y \left( y \right) = F_{X} \left( \sqrt{y} \right) - F_{X} \left( - \sqrt{y} \right)
+\]</span></p>
+<p>Thus, by differentiating and applying the chain rule we have</p>
+<p><span class="math display">\[
+f_{Y} \left( y \right) = \frac{1}{2\sqrt{y}} f_{X} \left( \sqrt{y} \right) + \frac{1}{2 \sqrt{y}} f_{X} \left( - \sqrt{y} \right), \; \; \; \; y &gt; 0
+\]</span></p>
 </details>
-<div class="cell-output cell-output-display">
-<p><img src="discrete_files/figure-html/cell-3-output-1.png" class="img-fluid"></p>
-</div>
-</div>
-<p>One can generate random values from this distribution, i.e.,</p>
+</section>
+<section id="problem-2" class="level2">
+<h2 class="anchored" data-anchor-id="problem-2">Problem 2</h2>
+<p>Find the probability density function of <span class="math inline">\(Y = exp \left( X^2 \right)\)</span> if <span class="math inline">\(X\)</span> is a non-negative random variable.</p>
+<details>
+<summary>
+Solution
+</summary>
+<p>Note that <span class="math inline">\(F_Y \left( y \right) = 0\)</span> for <span class="math inline">\(y &lt; 1\)</span>. For <span class="math inline">\(y \geq 1\)</span>, we have</p>
+<p><span class="math display">\[
+F_{Y} \left( y \right) = p \left(exp \left(X^2 \right) \leq y \right) = p \left(X^2 \leq log \left( y \right) \right)
+\]</span></p>
+<p><span class="math display">\[
+\Rightarrow F_{Y} = p \left( X \leq \sqrt{log \left( y \right) } \right).
+\]</span></p>
+<p>By differentiating and using the chain rule, we obtain</p>
+<p><span class="math display">\[
+f_{Y} \left( y \right) = f_{X} \left( \sqrt{log \left( y \right) } \right) \frac{1}{2y \sqrt{log \left( y \right) } }, \; \; \; y &gt; 1.
+\]</span></p>
+</details>
 <div class="cell" data-execution_count="3">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> bernoulli.rvs(p, size<span class="op">=</span><span class="dv">500</span>)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(X)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1 0 1 1 0 1 1 0 0 0 0 1 1 1 0 0 1 1 0 0 1 0 0 0 1 1 1 0 0 1 0 1 1 0 1 0 0
- 0 1 1 0 0 0 0 0 0 1 0 1 0 0 0 0 0 1 0 0 1 0 0 1 0 0 0 1 0 0 0 0 1 0 0 0 0
- 0 1 1 0 1 1 0 0 1 1 0 0 1 1 0 0 0 0 1 0 0 0 0 0 1 0 1 1 0 0 1 0 0 0 0 1 0
- 0 0 1 0 0 0 0 0 1 0 1 0 1 0 0 0 0 1 0 1 0 1 0 1 0 1 1 0 1 1 0 1 0 0 1 0 0
- 0 1 1 0 0 1 0 0 0 0 0 0 1 1 0 0 0 0 0 1 0 0 0 0 1 1 0 0 1 1 0 1 0 0 0 1 0
- 0 0 1 0 1 1 0 1 0 0 0 0 1 1 1 0 1 0 0 1 0 0 0 0 0 0 0 0 1 1 0 1 0 1 1 0 1
- 0 0 0 1 0 1 0 0 0 1 1 1 0 0 1 1 0 0 0 0 0 1 1 0 0 0 1 0 0 0 0 0 1 0 0 0 0
- 1 1 0 1 1 1 1 0 0 0 1 0 0 1 1 1 0 1 1 0 1 1 0 1 0 0 0 0 0 1 0 1 1 0 1 1 0
- 0 1 0 0 0 1 0 0 1 1 1 0 1 1 0 0 0 0 1 0 0 0 1 1 1 0 1 0 1 0 0 0 0 0 0 0 1
- 0 0 0 1 0 0 1 1 1 1 1 0 0 0 0 1 0 0 1 1 0 1 0 1 1 1 0 0 1 0 0 0 0 1 1 0 1
- 1 0 1 1 1 0 1 1 1 0 1 0 0 1 0 1 1 0 1 1 0 0 1 0 1 0 0 0 1 0 0 1 0 0 0 0 1
- 1 0 1 0 1 1 1 1 1 0 1 0 0 1 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0
- 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 1 1 0 0 0 1 0 1 1 0 0 1 1 0 0 1 1 0 0 0 0 1
- 1 0 0 1 0 0 0 1 0 0 0 0 0 0 1 0 1 0 1]</code></pre>
-</div>
-</div>
-<p>Thus, random values from a Bernoulli distribution are inherently binary, and the number of 0s vs 1s will vary depending on the choice of the parameter, <span class="math inline">\(p\)</span>. We will see later on (in another notebook) how this relatively simple idea can be used to train a <em>Naive Bayes Classifier</em>. For now, we will plot the expected value of the Bernoulli random variable with increasing number of samples.</p>
-<div class="cell" data-execution_count="5">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>numbers <span class="op">=</span> [<span class="dv">10</span>, <span class="dv">50</span>, <span class="dv">100</span>, <span class="dv">200</span>, <span class="dv">300</span>, <span class="dv">500</span>, <span class="dv">1000</span>, <span class="dv">2000</span>, <span class="dv">5000</span>, <span class="dv">10000</span>]</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>means <span class="op">=</span> []</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>stds <span class="op">=</span> []</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> j <span class="kw">in</span> numbers:</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    X_val <span class="op">=</span> []</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> q <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>, <span class="dv">10</span>):</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>        X <span class="op">=</span> bernoulli.rvs(p, size<span class="op">=</span>j)</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>        X_val.append(np.mean(X))</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    means.append(np.mean(X_val))</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    stds.append(np.std(X_val))</span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>means <span class="op">=</span> np.array(means)</span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>stds <span class="op">=</span> np.array(stds)</span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>numbers <span class="op">=</span> np.array(numbers)</span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">4</span>))</span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>plt.plot(numbers, means, <span class="st">'ro-'</span>, lw<span class="op">=</span><span class="dv">2</span>)</span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>plt.fill_between(numbers, means <span class="op">+</span> stds, means <span class="op">-</span> stds, color<span class="op">=</span><span class="st">'crimson'</span>, alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Number of random samples'</span>)</span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Expectation'</span>)</span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">'convergence.png'</span>, dpi<span class="op">=</span><span class="dv">150</span>, bbox_inches<span class="op">=</span><span class="st">'tight'</span>, transparent<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>lam <span class="op">=</span> <span class="fl">1.</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> expon.rvs(size<span class="op">=</span><span class="dv">15000</span>, scale<span class="op">=</span><span class="dv">1</span><span class="op">/</span>lam)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>Y <span class="op">=</span> np.sin(X)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">3</span>))</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>plt.subplot(<span class="dv">121</span>)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>plt.hist(X,<span class="dv">40</span>, density<span class="op">=</span><span class="va">True</span>, color<span class="op">=</span><span class="st">'crimson'</span>)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="vs">r'$f_</span><span class="sc">{X}</span><span class="vs">(x)$'</span>)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'x'</span>)</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>plt.subplot(<span class="dv">122</span>)</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>plt.hist(Y,<span class="dv">40</span>, density<span class="op">=</span><span class="va">True</span>, color<span class="op">=</span><span class="st">'dodgerblue'</span>)</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="vs">r'$f_</span><span class="sc">{Y}</span><span class="vs">(y)$'</span>)</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'y'</span>)</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
-<p><img src="discrete_files/figure-html/cell-5-output-1.png" class="img-fluid"></p>
+<p><img src="lecture_4_files/figure-html/cell-3-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 </section>
-<section id="binomial" class="level3">
-<h3 class="anchored" data-anchor-id="binomial">Binomial</h3>
-<p>Next, we consider the Binomial distribution. It has a probability mass function</p>
+<section id="problem-3" class="level2">
+<h2 class="anchored" data-anchor-id="problem-3">Problem 3</h2>
+<p>Following the bit of code above, let <span class="math inline">\(X\)</span> be an exponential random variable with parameter <span class="math inline">\(\lambda\)</span>, i.e., <span class="math inline">\(f_{X} \left( x \right) = \lambda exp \left( -\lambda x \right)\)</span> and <span class="math inline">\(F_{X} \left( x \right) = 1 - exp \left( -\lambda x \right)\)</span>. Let <span class="math inline">\(Y= sin\left( X \right)\)</span>. Determine <span class="math inline">\(F_Y\left( y \right)\)</span> and <span class="math inline">\(f_{Y} \left( y \right)\)</span>.</p>
+<details>
+<summary>
+Solution
+</summary>
+<p>From the event <span class="math inline">\(\left\{ Y \leq y \right\}\)</span>, we can conclude that for <span class="math inline">\(x = sin^{-1} \left( y \right)\)</span> we have</p>
 <p><span class="math display">\[
-p \left( x \right) = \left(\begin{array}{c}
-n\\
-x
-\end{array}\right)p^{x}\left(1-p\right)^{n-x}
+F_{Y} \left( y \right) = p \left( Y \leq y \right)
 \]</span></p>
-<p>for <span class="math inline">\(x \in \left\{0, 1, \ldots, n \right\}\)</span> and where <span class="math inline">\(0 \leq p \leq 1\)</span>.</p>
-<div class="cell" data-execution_count="29">
+<p><span class="math display">\[
+F_{Y} \left( y \right) = p \left( X \leq x \right) + \sum_{k=1}^{\infty} \left[ F_{X} \left( 2 k \pi + x \right) - F_{X} \left( \left(2k - 1 \right) \pi - x\right) \right]
+\]</span></p>
+<p><span class="math display">\[
+F_{Y} \left( y \right) = p \left( X \leq x \right) + \sum_{k=1}^{\infty} \left[  1 - exp\left( -\lambda x - 2 \lambda k \pi \right) - 1 + exp \left( \lambda x + \lambda \pi - 2 \lambda k \pi \right) \right]
+\]</span></p>
+<p><span class="math display">\[
+= p \left( X \leq x \right) + \left[ exp\left( \lambda x \right) exp \left( \lambda \pi \right) - exp \left( - \lambda x \right) \right] \sum_{k=1}^{\infty}  exp \left( - 2 \lambda k \pi \right)
+\]</span></p>
+<p><span class="math display">\[
+= p \left( X \leq sin^{-1} \left( y \right) \right) + \left[ exp \left( \lambda sin^{-1} \left( y \right) + \lambda \pi \right) - exp \left( -\lambda sin^{-1} \left( y \right) \right) \right] \frac{exp \left( -2 \lambda \pi \right) }{1 - exp \left( -2 \lambda \pi \right)}
+\]</span></p>
+<p>This expansion uses the <em>sum of a geometric sequence</em> formula. The first term above is zero for negative <span class="math inline">\(y \in [-1, 0)\)</span> and</p>
+<p><span class="math display">\[
+p \left( X \leq sin^{-1} \left( y \right) \right) = F_{X} \left( sin^{-1} \left( y \right) \right) = 1 - exp(- \lambda sin^{-1}\left( y \right) )
+\]</span></p>
+<p>for non-negative <span class="math inline">\(y \in [0, 1]\)</span>. Since <span class="math inline">\(F_{X} \left(0\right) = 0\)</span>, the cumulative probability <span class="math inline">\(F_Y\left( y \right)\)</span> will remain continuous at <span class="math inline">\(y=0\)</span>. However, its derivative is discontinuous and we will be unable to derive an expression for <span class="math inline">\(f_{Y} \left( 0 \right)\)</span>. Hence, for negative <span class="math inline">\(y \in [-1, 0)\)</span> we have</p>
+<p><span class="math display">\[
+f_{Y} \left( y \right) = \frac{d}{dx} F_{X} \left( x \right) \frac{dx}{dy} = \frac{\lambda}{\sqrt{1 - y^2}} \frac{exp \left( \lambda \left(sin^{-1} \left( y \right) + \pi \right) \right) + exp \left( -\lambda sin^{-1} \left( y \right) \right) }{exp \left( 2 \lambda \pi -1 \right) }.
+\]</span></p>
+<p>For positive <span class="math inline">\(y \in (0, 1]\)</span>, we have</p>
+<p><span class="math display">\[
+f_{Y} \left( y \right) = \frac{d}{dx} F_{X} \left( x \right) \frac{dx}{dy} = \frac{\lambda}{\sqrt{1 - y^2}} \left[ \frac{exp \left( \lambda \left(sin^{-1} \left( y \right) + \pi \right) \right) + exp \left( -\lambda sin^{-1} \left( y \right) \right) }{exp \left( 2 \lambda \pi -1 \right) } + exp \left( -\lambda sin^{-1} \left( y \right) \right) \right].
+\]</span></p>
+</details>
+<div class="cell" data-execution_count="21">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> <span class="fl">0.3</span> <span class="co"># Bernoulli parameter</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">7</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.arange(<span class="dv">0</span>, n<span class="op">+</span><span class="dv">1</span>)</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>probabilities <span class="op">=</span> binom(n, p)</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">4</span>))</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>plt.plot(x, probabilities.pmf(x), <span class="st">'o'</span>, ms<span class="op">=</span><span class="dv">8</span>, color<span class="op">=</span><span class="st">'deeppink'</span>)</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>plt.vlines(x, <span class="dv">0</span>, probabilities.pmf(x), colors<span class="op">=</span><span class="st">'deeppink'</span>, lw<span class="op">=</span><span class="dv">5</span> )</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'x'</span>)</span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Probability'</span>)</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">'pdf_2.png'</span>, dpi<span class="op">=</span><span class="dv">150</span>, bbox_inches<span class="op">=</span><span class="st">'tight'</span>, transparent<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="fl">2.5</span>, <span class="fl">2.5</span>, <span class="dv">500</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> np.sin(x)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> f_y(y):</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    f_y <span class="op">=</span> np.zeros((y.shape[<span class="dv">0</span>]))</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>, f_y.shape[<span class="dv">0</span>]):</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> y[i] <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>            f_y[i] <span class="op">=</span> lam<span class="op">/</span>np.sqrt(<span class="dv">1</span> <span class="op">-</span> y[i]<span class="op">**</span><span class="dv">2</span>) <span class="op">*</span> (np.exp(<span class="op">-</span>lam <span class="op">*</span> np.arcsin(y[i])) <span class="op">\</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>                        <span class="op">+</span> (np.exp(lam <span class="op">*</span> np.arcsin(y[i]) <span class="op">+</span> lam <span class="op">*</span> np.pi) <span class="op">+</span> <span class="op">\</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>                          np.exp(<span class="op">-</span>lam <span class="op">*</span> np.arcsin(y[i])))<span class="op">/</span>(np.exp(<span class="dv">2</span> <span class="op">*</span> lam <span class="op">*</span> np.pi) <span class="op">-</span> <span class="dv">1</span>))</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>            f_y[i] <span class="op">=</span> lam<span class="op">/</span>np.sqrt(<span class="dv">1</span> <span class="op">-</span> y[i]<span class="op">**</span><span class="dv">2</span>) <span class="op">*</span> ((np.exp(lam <span class="op">*</span> np.arcsin(y[i]) <span class="op">+</span> lam <span class="op">*</span> np.pi) <span class="op">+</span> <span class="op">\</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>                          np.exp(<span class="op">-</span>lam <span class="op">*</span> np.arcsin(y[i])))<span class="op">/</span>(np.exp(<span class="dv">2</span> <span class="op">*</span> lam <span class="op">*</span> np.pi) <span class="op">-</span> <span class="dv">1</span>))</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> f_y</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> plt.figure(figsize<span class="op">=</span>(<span class="dv">6</span>,<span class="dv">4</span>))</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>plt.plot(y, f_y(y), color<span class="op">=</span><span class="st">'navy'</span>, lw<span class="op">=</span><span class="dv">3</span>)</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>plt.hist(Y,<span class="dv">40</span>, density<span class="op">=</span><span class="va">True</span>, color<span class="op">=</span><span class="st">'dodgerblue'</span>)</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="vs">r'$f_</span><span class="sc">{Y}</span><span class="vs">(y)$'</span>)</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'y'</span>)</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>plt.ylim([<span class="dv">0</span>, <span class="fl">2.7</span>])</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
-<p><img src="discrete_files/figure-html/cell-6-output-1.png" class="img-fluid"></p>
+<p><img src="lecture_4_files/figure-html/cell-4-output-1.png" class="img-fluid"></p>
 </div>
 </div>
-<p>To work out the probability at <span class="math inline">\(x=3\)</span>, we can compute:</p>
-<div class="cell" data-execution_count="30">
+</section>
+<section id="problem-4" class="level2">
+<h2 class="anchored" data-anchor-id="problem-4">Problem 4</h2>
+<p>Let <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> be independent and uniform between <span class="math inline">\(0\)</span> and <span class="math inline">\(1\)</span>. Compute <span class="math inline">\(X + Y\)</span>. To set the stage for the problem, consider the code and plot below.</p>
+<div class="cell" data-execution_count="23">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>prob <span class="op">=</span> comb(N<span class="op">=</span>n, k<span class="op">=</span><span class="dv">3</span>) <span class="op">*</span> p<span class="op">**</span><span class="dv">3</span> <span class="op">*</span> (<span class="dv">1</span> <span class="op">-</span> p)<span class="op">**</span>(n <span class="op">-</span> <span class="dv">3</span>)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(prob)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> np.random.rand(<span class="dv">9000</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>Y <span class="op">=</span> np.random.rand(<span class="dv">9000</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>S <span class="op">=</span> X <span class="op">+</span> Y </span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> plt.figure(figsize<span class="op">=</span>(<span class="dv">6</span>,<span class="dv">3</span>))</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>plt.hist(X<span class="op">+</span>Y,<span class="dv">40</span>, density<span class="op">=</span><span class="va">True</span>, color<span class="op">=</span><span class="st">'orangered'</span>)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="vs">r'$f_</span><span class="sc">{S}</span><span class="vs">(s)$'</span>)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'s'</span>)</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code>0.22689449999999992</code></pre>
+<div class="cell-output cell-output-display">
+<p><img src="lecture_4_files/figure-html/cell-5-output-1.png" class="img-fluid"></p>
 </div>
 </div>
+<p>It appears we have a triangular distribution. In what follows we shall aim to derive this analytically.</p>
+<details>
+<summary>
+Solution
+</summary>
+<p>From the Lecture notes, we have:</p>
+<p><span class="math display">\[
+f_{S} \left( s \right) = \int_{0}^{1} f_{X} \left( x \right) f_{Y} \left( s - x \right) dx = \int_{0}^{1} f_{Y} \left( s - x \right) dx
+\]</span></p>
+<p><span class="math display">\[
+\Rightarrow f_{S} \left( s \right) = \begin{cases}
+\begin{array}{c}
+\int_{0}^{s}1dx=s\\
+\int_{s-1}^{1}1dx=2-s
+\end{array} &amp; \begin{array}{c}
+\textrm{for} \; \; s \in [0, 1] \\
+\textrm{for} \; \; s \in [1, 2]
+\end{array}\end{cases}
+\]</span></p>
+</details>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -698,11 +733,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation column-body">
   <div class="nav-page nav-page-previous">
-      <a href="../sample_problems/lecture_4.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">L4 examples</span>
+      <a href="../sample_problems/lecture_3.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">L3 examples</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="../useful_codes/discrete.html" class="pagination-link">
+        <span class="nav-page-text">Discrete distributions</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->

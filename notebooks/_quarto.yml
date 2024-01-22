@@ -36,6 +36,7 @@ website:
           - sample_problems/lecture_1.ipynb
           - sample_problems/lecture_2.ipynb
           - sample_problems/lecture_3.ipynb
+          - sample_problems/lecture_4.ipynb
       - section: "Utilities"
         contents:
           - useful_codes/discrete.ipynb
