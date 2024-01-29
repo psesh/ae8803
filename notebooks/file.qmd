@@ -1,0 +1,43 @@
+project:
+  type: website
+
+
+format:
+  html:
+    page-layout: full
+    toc: true
+    code-fold: true
+    theme: flatly
+    code-tools: true
+      
+
+website:
+  title: "AE8803: Machine Learning with Gaussian Processes"
+  page-navigation: true
+  navbar:
+    background: secondary
+    left:
+      - text: "Home"
+        file: index.ipynb
+      - text: "Canvas"
+        href: https://canvas.gatech.edu
+    right:
+      - icon: github
+        href: https://github.com/psesh/ae8803
+        aria-label: GitHub
+  sidebar:
+    title: "AE2010/11"
+    search: true
+    style: "docked"
+    contents:
+      - index.ipynb
+      - section: "Examples"
+        contents:
+          - sample_problems/lecture_1.ipynb
+          - sample_problems/lecture_2.ipynb
+          - sample_problems/lecture_3.ipynb
+          - sample_problems/lecture_4.ipynb
+      - section: "Utilities"
+        contents:
+          - useful_codes/discrete.ipynb
+
