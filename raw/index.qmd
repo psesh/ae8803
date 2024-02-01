@@ -1,0 +1,302 @@
+---
+title: "Overview"
+format:
+    html:
+        code-fold: true
+jupyter: python3
+fontsize: 1.2em
+linestretch: 1.5
+toc: true
+notebook-view: true
+---
+
+### Course Description:
+
+This graduate-level course offers a practical approach to probabilistic learning with Gaussian processes (GPs). GPs represent a powerful set of methods for modeling and predicting a wide variety of spatio-temporal phenomena. Today, they are used for problems that span both regression and classification, with theoretical foundations in Bayesian inference, reproducing kernel Hilbert spaces, eigenvalue problems, and numerical integration. Rather than focus *solely* on these theoretical foundations, this course balances theory with practical probabilistic programming, using a variety of ``python``-based packages. Moreover, practical engineering problems will also be discussed that see GP models that cut across other areas of machine learning including transfer learning, convolutional networks, and normalizing flows. 
+
+
+## Grading
+
+This course has four assignments; the grades are given below:
+
+
+| Assignment  | Grade percentage (%)    |
+| --------  | ------- |
+| Assignment 1: Mid-term (covering fundamentals)    | 20 |
+| Assignment 2: Build your own GP from scratch for a given dataset | 20 |
+| Assignment 3: Proposal (data and literature review)   | 20    |
+| Assignment 4: Final project (presentation and notebook)  | 40    |
+
+
+### Pre-requisites:
+
+- CS1371, MATH2551, MATH2552 (or equivalent)
+- Working knowledge of ``python`` including familiarity with ``numpy`` and ``matplotlib`` libraries. 
+- Working local version of ``python`` and ``Jupyter``. 
+
+## Lectures
+
+Below you will find a list of the lectures that form the backbone of this course. Sub-topics for each lecture will be updated in due course. 
+
+01.08: **L1. Introduction & probability fundamentals** | <a href="https://gtvault-my.sharepoint.com/:b:/g/personal/pseshadri34_gatech_edu/Edq6QWhxcXJDu1KONfch_30B3ELimiqkhzWTuYNZbLOuLg?e=Nfc5ZN" target="_blank" style="text-decoration: none">Slides</a> | <a href="sample_problems/lecture_1.html" style="text-decoration: none">Examples</a>  
+<details>
+  <summary>Contents</summary>
+
+  1. Course overview.
+  2. Probability fundamentals (and Bayes' theorem).
+  3. Random variables.
+</details>
+
+01.10: **L2. Discrete probability distributions** | <a href="https://gtvault-my.sharepoint.com/:b:/g/personal/pseshadri34_gatech_edu/Ef-ZWBHcAFJMhceuoj68lS8B34zuF6xV11Vg1HnoEXQIQA?e=r5ojOP" target="_blank" style="text-decoration: none">Slides</a> | <a href="sample_problems/lecture_2.html" style="text-decoration: none">Examples</a>  | <a href="useful_codes/discrete.html" style="text-decoration: none">Notebook</a> 
+
+<details>
+  <summary>Contents</summary>
+
+  1. Expectation and variance.
+  2. Independence.
+  3. Bernoulli and Binomial distributions. 
+
+</details>
+
+01.15: *No Class (Institute Holiday)*
+
+01.17: **L3. Continuous distributions** | <a href="https://gtvault-my.sharepoint.com/:b:/g/personal/pseshadri34_gatech_edu/ESS4uUotKydPv19X7I-S-nwBSAb8eHrX_OprBEx9PTuIEQ?e=8JOnXp" target="_blank" style="text-decoration: none">Slides</a> | <a href="sample_problems/lecture_3.html" style="text-decoration: none">Examples</a>  
+<details>
+  <summary>Contents</summary>
+
+  1. Fundamentals of continuous random variables.
+  2. Probability density function.
+  3. Gaussian and Beta distributions. 
+</details>
+
+01.22: **L4. Manipulating and combining distributions** | <a href="https://gtvault-my.sharepoint.com/:b:/g/personal/pseshadri34_gatech_edu/Ea3zGq-pugFPpzH9havolU8BVqh33PKmgpnzfmBdX3ayZw?e=Xn0ONO" target="_blank" style="text-decoration: none">Slides</a> | <a href="sample_problems/lecture_4.html" style="text-decoration: none">Examples</a> 
+<details>
+  <summary>Contents</summary>
+
+  1. Functions of random variables. 
+  2. Sums of random variables.
+</details>
+
+01.24: *No Class*
+
+01.29: **L5. Multivariate Gaussian distributions** | <a href="slides/lecture-1/index.html"  style="text-decoration: none">Slides</a>
+<details>
+  <summary>Contents</summary>
+
+  1. Marginal distributions.
+  2. Conditional distributions.
+  3. Joint distribution and Schur complement. 
+
+</details>
+
+01.31: **L6. Linear modelling** | <a href="slides/lecture-1/index.html"  style="text-decoration: none">Slides</a>
+<details>
+  <summary>Contents</summary>
+
+  1. Least squares.
+  2. Regularization.
+  3. Gaussian noise model. 
+    
+</details>
+
+
+02.05: **L7. Gaussian process regression** 
+<details>
+  <summary>Contents</summary>
+
+  1. Contrast weight-space vs function-space perspective.
+  2. Introduction to a kernel. 
+  3. Likelihood and prior for a Gaussian process.
+  3. Posterior mean and covariance. 
+</details>
+
+
+02.07: **L8. Hyperparameters and model selection** 
+<details>
+  <summary>Contents</summary>
+
+  1. Maximum likelihood and maximum aposteriori estimate. 
+  2. Cross validation.
+  3. Expectation maximization.
+  4. Markov chain Monte Carlo (Gibbs, NUTS, HMC). 
+</details>
+
+02.12: *Fundamentals Mid-term*
+
+02.14: **L9. Variational inference** 
+<details>
+  <summary>Contents</summary>
+
+  1. Variational problem.
+  2. Deriving the ELBO.
+  3. Stochastic variational inference in practice. 
+</details>
+
+02.19: **L10. Open-source resources** 
+<details>
+  <summary>Contents</summary>
+
+  1. pymc.
+  2. gpytorch, gpflow.
+  3. GPjax.
+</details>
+
+02.21: **L11. Kernel learning** 
+<details>
+  <summary>Contents</summary>
+    
+    1. Kernel trick re-visited.
+    2. Constructing kernels piece-by-piece.
+    3. Constructing kernels from learnt features.
+    4. Spectral representations of kernels. 
+</details>
+
+
+02.26: **L12. Gaussian process classification** 
+<details>
+  <summary>Contents</summary>
+
+  1. Bernoulli prior
+  2. Softmax for multi-class classification
+</details>
+
+02.28: **L13. Scaling up Gausssian processes I** 
+<details>
+  <summary>Contents</summary>
+
+  1. Review of matrix inverse via Cholesky.
+  2. Subset of data approaches
+  3. Nystrom approximation
+  4. Inducing points
+  5. Kronecker product kernels.
+</details>
+
+03.04: **L14. Scaling up Gausssian processes II** 
+<details>
+  <summary>Contents</summary>
+
+  1. Variational inference
+  2. ELBO derivation
+  3. Minimizing the KL-divergence practically using Adam. 
+</details>
+
+03.06: *Coding assignment due*
+
+03.06: **L15. Sparse (and subspace-based) Gaussian processes** 
+<details>
+  <summary>Contents</summary>
+
+  1. Brief introduction to matrix manifolds.
+  2. Subspace-based projections.
+  3. Active subspaces.
+  4. Sparsity promoting priors.
+</details>
+
+
+03.11: **L16. Reproducing Kernel Hilbert Spaces** 
+<details>
+  <summary>Contents</summary>
+
+  1. Project overview
+  2. Hilbert space
+  2. Understanding a kernel. 
+  3. Reproducing kernel Hilbert spaces. 
+  4. Representer theoreom.
+</details>
+
+03.13: **L17. Multi-output and deep Gaussian processes** 
+<details>
+  <summary>Contents</summary>
+
+  1. Coregional models.
+  2. Transfer learning across covariance blocks.
+  3. Derivative (or gradient) enhancement.
+  4. Depth in Gaussian processes. 
+  5. Posterior inference and stochastic variational inference
+</details>
+
+03.13: *Withdrawal Deadline*
+
+03.18-03.22: *Spring Break*
+
+03.25: *Project proposals due*
+
+03.25: **L19. Convolutional Gaussian processes** 
+<details>
+  <summary>Contents</summary>
+
+  1. Convolution as a linear operator.
+  2. Deep convolutional Gaussian processes.
+</details>
+
+
+03.27: **L20. Latent models and unsupervised learning** 
+<details>
+  <summary>Contents</summary>
+
+  1. Contrast standard regression with latent variable model.
+  2. Gaussian process latent variable model.
+  3. Coding demo. 
+</details>
+
+
+04.01: **L21. State-space Gaussian processes** 
+<details>
+  <summary>Contents</summary>
+
+  1. Application: time series models.
+  2. Gaussian state space model.
+  3. Parallels with Kalman filtering and smoothing.
+  4. Creating custom state-space kernels. 
+</details>
+
+04.03: **L22. Bayesian optimization** 
+<details>
+  <summary>Contents</summary>
+
+  1. Gaussian process surrogate.
+  2. Acquisition function.
+  3. Thompson's sampling. 
+  4. Gaussian process dynamic model. 
+</details>
+
+04.08: **L23. Guest Lecture** 
+
+04.22: **L24. Project presentations** 
+
+## Office hours
+
+Professor Seshadri's office hours:
+
+| Location  | Time    |
+| --------  | ------- |
+| MK 421    | Fridays 14:30 to 15:30 |
+
+## Textbooks
+
+This course will make heavy use of the following texts:
+
+- Rasmussen, C. E., Williams, C. K. *Gaussian Processes for Machine Learning*, The MIT Press, 2006.
+- Murphy, K. P., *Probabilistic Machine Learning: Advanced Topics*, The MIT Press, 2023.
+
+Both these texts have been made freely available by the authors.
+
+## Important papers
+
+Students are encouraged to read through the following papers:
+
+- [Roberts, S., Osborne, M., Ebden, M., Reece, S., Gibson, N., Aigrain, S., (2013) *Gaussian processes for time-series modelling*, Philosophical Transactions of the Royal Society A: Mathematical, Physical and Engineering Sciences.](https://doi.org/10.1098/rsta.2011.0550)
+
+- [Dunlop, M., Girolami, M., Stuart, A., Teckentrup, A., (2018) *How Deep Are Deep Gaussian Processes?*, Journal of Machine Learning Research 19, 1-46](https://www.jmlr.org/papers/volume19/18-015/18-015.pdf)
+
+- [Alvarez, M., Lawrence, N., (2011) *Computationally Efficient Convolved Multiple Output Gaussian Processes*, Journal of Machine Learning Research 12, 1459-1500](https://www.jmlr.org/papers/volume12/alvarez11a/alvarez11a.pdf)
+
+- [Van der Wilk, M., Rasmussen, C., Hensman, J., (2017) *Convolutional Gaussian Processes*, 31st Conference on Neural Information Processing Systems](https://dl.acm.org/doi/pdf/10.5555/3294996.3295044)
+
+## References
+
+Material used in this course has been adapted from 
+
+- CUED Part IB probability course notes
+- Alto University's module on Gaussian Processes
+- Slides from the Gaussian Process Summer Schools

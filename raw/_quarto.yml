@@ -1,0 +1,38 @@
+project:
+  type: website
+  output-dir: site
+  render:
+    - index.qmd
+    - slides/lecture-1/index.qmd
+    
+format:
+  html:
+    page-layout: full
+    toc: true
+    code-fold: true
+    theme: flatly
+    code-tools: true
+    description-meta: Course website for AE8803 that comprises fluid fundamentals and thermodynamics. It can be taken either as a 3-credit course (without thermodynamics) or as a 4-credit course (with thermodynamics). It is a mandatory course for all aerospace engineering students. 
+    favicon: images/logo.ico
+    keywords: pranay seshadri, machine learning, gaussian processes
+    pagetitle: AE8803 | Georgia Institute of Technology
+
+website:
+  title: "AE8803: Machine Learning with Gaussian Processes"
+  page-navigation: true
+  navbar:
+    background: secondary
+    left:
+      - text: "Home"
+      - text: "Canvas"
+        href: https://canvas.gatech.edu
+    right:
+      - icon: github
+        href: https://github.com/psesh/ae8803
+        aria-label: GitHub
+  sidebar:
+    title: "AE2010/11"
+    search: true
+    style: "docked"
+# 
+# freeze: false
