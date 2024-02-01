@@ -48,7 +48,6 @@ Below you will find a list of the lectures that form the backbone of this course
 </details>
 
 01.10: **L2. Discrete probability distributions** | <a href="https://gtvault-my.sharepoint.com/:b:/g/personal/pseshadri34_gatech_edu/Ef-ZWBHcAFJMhceuoj68lS8B34zuF6xV11Vg1HnoEXQIQA?e=r5ojOP" target="_blank" style="text-decoration: none">Slides</a> | <a href="sample_problems/lecture_2.html" style="text-decoration: none">Examples</a>  | <a href="useful_codes/discrete.html" style="text-decoration: none">Notebook</a> 
-
 <details>
   <summary>Contents</summary>
 
