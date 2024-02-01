@@ -1,0 +1,64 @@
+---
+title: "L2 examples"
+format:
+    html:
+        code-fold: true
+jupyter: python3
+fontsize: 1.2em
+linestretch: 1.5
+toc: true
+notebook-view: true
+---
+
+## Problem 1
+
+Commercial airline pilots need to pass four out of five separate tests for certification. Assume that the tests are equally difficult, and that the performance on separate tests are independent.
+
+a. If the probability of failing each separate test is $p=0.2$, then what is the probability of failing certification?
+
+b. To improve safety, more stringent regulations require that pilots pass all five tests. To be able to meet the demand, the individual tests are made easier. What should the new individual failure rate be if the overall certification probability is to remain unchanged?
+
+
+<details>
+<summary>Solution</summary> 
+    
+a. Given that each test is independent, the combined probabilities follow a Binomial distribution. A pilot will fail certification if they fail two or more tests, and they will pass if they fail zero or one of the individual tests. Thus, the probability of passing certification is
+
+$$
+\large
+p_{pass} = \left(\begin{array}{c}
+5\\
+0
+\end{array}\right) p^{0} \left( 1 - p \right)^{5} + \left(\begin{array}{c}
+5\\
+1
+\end{array}\right)p^{1} \left( 1 - p \right)^{4}
+$$
+
+From the code snippet below this is roughly 0.737. Thus the combined failure rate is $1 - 0.7373 = 0.2627$. 
+
+
+b. Under the new certification protocol, as there is no possibility of failing a test, we have
+
+$$
+\large
+\left(1 - p_{fail, new} \right)^{5} = 1 - 0.2627 \Rightarrow p_{fail, new} = 0.06
+$$
+    
+</details>
+
+```{python}
+
+from scipy.special import comb
+import numpy as np
+
+# part a.
+p = 0.2
+p_pass = comb(5, 0) * p**0 * (1 - p)**5 + comb(5, 1) * p**1 * (1 - p)**4
+p_fail = 1 - p_pass
+print(p_fail)
+
+# part b.
+p_fail_new = 1 - (1 - p_fail)**(1/5)
+print(p_fail_new)
+```

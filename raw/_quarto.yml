@@ -5,11 +5,11 @@ project:
     - index.qmd
     - slides/lecture-5/index.qmd
     - slides/lecture-6/index.qmd
-    - sample_problems/lecture_1.ipynb
-    - sample_problems/lecture_2.ipynb
-    - sample_problems/lecture_3.ipynb
-    - sample_problems/lecture_4.ipynb
-    - useful_codes/discrete.ipynb
+    - sample_problems/lecture_1.qmd
+    - sample_problems/lecture_2.qmd
+    - sample_problems/lecture_3.qmd
+    - sample_problems/lecture_4.qmd
+    - useful_codes/discrete.qmd
 format:
   html:
     page-layout: full

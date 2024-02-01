@@ -584,7 +584,7 @@ $$
 
 - Just as we did earlier, with the least squares solution, we can set the derivative of the logarithm of the loss function to be zero. 
 $$
-\frac{\partial \; log \left( \mathcal{L} \right) }{\partial \mathbf{{\color{blue}{w}}} } = \frac{1}{\sigma^2} \sum_{j=1}^{N} \mathbf{x}_{j} \left( t_{j} - \mathbf{x}_{j}^{T} \mathbf{{\color{blue}{w}}} \right) = \frac{1}{\sigma^2} \sum_{j=1}^{N} \mathbf{x}_{j} t_j - \mathbf{x}_{j} \mathbf{x}_{j}^{T} \mathbf{{\color{blue}{w}}} \equiv 0
+\frac{\partial \; log \left( \mathcal{L} \right) }{\partial \mathbf{{\color{blue}{w}}}} = \frac{1}{\sigma^2} \sum_{j=1}^{N} \mathbf{x}_{j} \left( t_{j} - \mathbf{x}_{j}^{T} \mathbf{{\color{blue}{w}}} \right) = \frac{1}{\sigma^2} \sum_{j=1}^{N} \mathbf{x}_{j} t_j - \mathbf{x}_{j} \mathbf{x}_{j}^{T} \mathbf{{\color{blue}{w}}} \equiv 0
 $$
 
 - Just as we did before, we can use matrix vector notation to write this out as

@@ -1,0 +1,33 @@
+---
+title: "L3 examples"
+format:
+    html:
+        code-fold: true
+jupyter: python3
+fontsize: 1.2em
+linestretch: 1.5
+toc: true
+notebook-view: true
+---
+
+## Problem 1
+
+In going through some historical records, you find that scientists from a lost civilization tried to measure the distance from the ground to some clouds. Based on the data you assume that the distance is a Gaussian random variable with a mean of 1830m and a standard deviation of 460m. What is the probability that the clouds would actually be at a height of 2750m?
+
+<details>
+<summary>Solution</summary> 
+    
+Let $X$ be this Gaussian random variable. This problem essentially requires us to work out $p \left( X > 2750 \right)$. This can be expressed as
+    
+$$
+\large
+p \left(X > 2750 \right) = 1 - p \left( X \leq 2750 \right) = 1 - \Phi \left( z \right) 
+$$
+    
+where $z = (2750 - 1830)/460 = 2$. Thus we have 
+    
+$$
+\large
+1 - \Phi \left( 2 \right) = 1 - 0.9772 = 0.0228
+$$
+</details>
