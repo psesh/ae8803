@@ -3,8 +3,13 @@ project:
   output-dir: site
   render:
     - index.qmd
-    - slides/lecture-1/index.qmd
-    
+    - slides/lecture-5/index.qmd
+    - slides/lecture-6/index.qmd
+    - sample_problems/lecture_1.ipynb
+    - sample_problems/lecture_2.ipynb
+    - sample_problems/lecture_3.ipynb
+    - sample_problems/lecture_4.ipynb
+    - useful_codes/discrete.ipynb
 format:
   html:
     page-layout: full
@@ -24,6 +29,7 @@ website:
     background: secondary
     left:
       - text: "Home"
+        href: https://psesh.github.io/ae8803/
       - text: "Canvas"
         href: https://canvas.gatech.edu
     right:
@@ -31,8 +37,22 @@ website:
         href: https://github.com/psesh/ae8803
         aria-label: GitHub
   sidebar:
-    title: "AE2010/11"
     search: true
     style: "docked"
+    contents:
+      - section: "Examples"
+        contents:
+              - text: "L1"
+                href: https://github.com/psesh/ae8803/sample_problems/lecture_1.html
+              - text: "L2"
+                href: https://github.com/psesh/ae8803/sample_problems/lecture_2.html
+              - text: "L3"
+                href: https://github.com/psesh/ae8803/sample_problems/lecture_3.html
+              - text: "L4"
+                href: https://github.com/psesh/ae8803/sample_problems/lecture_4.html
+      - section: "Utilities"
+        contents:
+          - text: "Useful codes"
+            href: https://github.com/psesh/ae8803/useful_codes/discrete.html
 # 
 # freeze: false

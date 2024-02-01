@@ -79,7 +79,7 @@ Below you will find a list of the lectures that form the backbone of this course
 
 01.24: *No Class*
 
-01.29: **L5. Multivariate Gaussian distributions** | <a href="slides/lecture-1/index.html"  style="text-decoration: none">Slides</a>
+01.29: **L5. Multivariate Gaussian distributions** | <a href="slides/lecture-5/index.html"  style="text-decoration: none">Slides</a>
 <details>
   <summary>Contents</summary>
 
@@ -89,7 +89,7 @@ Below you will find a list of the lectures that form the backbone of this course
 
 </details>
 
-01.31: **L6. Linear modelling** | <a href="slides/lecture-1/index.html"  style="text-decoration: none">Slides</a>
+01.31: **L6. Linear modelling** | <a href="slides/lecture-6/index.html"  style="text-decoration: none">Slides</a>
 <details>
   <summary>Contents</summary>
 
