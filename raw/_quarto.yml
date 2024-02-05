@@ -5,6 +5,7 @@ project:
     - index.qmd
     - slides/lecture-5/index.qmd
     - slides/lecture-6/index.qmd
+    - slides/lecture-7/index.qmd
     - sample_problems/lecture_1.qmd
     - sample_problems/lecture_2.qmd
     - sample_problems/lecture_3.qmd

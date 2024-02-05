@@ -22,7 +22,7 @@ This course has four assignments; the grades are given below:
 
 | Assignment  | Grade percentage (%)    |
 | --------  | ------- |
-| Assignment 1: Mid-term (covering fundamentals)    | 20 |
+| Assignment 1: Take-home mid-term (covering fundamentals)    | 20 |
 | Assignment 2: Build your own GP from scratch for a given dataset | 20 |
 | Assignment 3: Proposal (data and literature review)   | 20    |
 | Assignment 4: Final project (presentation and notebook)  | 40    |
@@ -99,14 +99,14 @@ Below you will find a list of the lectures that form the backbone of this course
 </details>
 
 
-02.05: **L7. Gaussian process regression** 
+02.05: **L7. Towards Bayesian Inference** | <a href="slides/lecture-7/index.html"  style="text-decoration: none">Slides</a>
 <details>
   <summary>Contents</summary>
 
-  1. Contrast weight-space vs function-space perspective.
-  2. Introduction to a kernel. 
-  3. Likelihood and prior for a Gaussian process.
-  3. Posterior mean and covariance. 
+  1. Posterior mean and covariance for a linear model.
+  2. Fisher information matrix.
+  3. Bayesian model introduction.
+  4. Posterior definition. 
 </details>
 
 
@@ -120,7 +120,7 @@ Below you will find a list of the lectures that form the backbone of this course
   4. Markov chain Monte Carlo (Gibbs, NUTS, HMC). 
 </details>
 
-02.12: *Fundamentals Mid-term*
+02.12: *Fundamentals Mid-term (take-home)*
 
 02.14: **L9. Variational inference** 
 <details>

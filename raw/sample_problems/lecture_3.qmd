@@ -12,7 +12,7 @@ notebook-view: true
 
 ## Problem 1
 
-In going through some historical records, you find that scientists from a lost civilization tried to measure the distance from the ground to some clouds. Based on the data you assume that the distance is a Gaussian random variable with a mean of 1830m and a standard deviation of 460m. What is the probability that the clouds would actually be at a height of 2750m?
+In going through some historical records, you find that scientists from a lost civilization tried to measure the distance from the ground to some clouds. Based on the data you assume that the distance is a Gaussian random variable with a mean of 1830m and a standard deviation of 460m. What is the probability that the clouds would be at a height above 2750m?
 
 <details>
 <summary>Solution</summary> 
