@@ -85,7 +85,6 @@ Below you will find a list of the lectures that form the backbone of this course
   1. Marginal distributions.
   2. Conditional distributions.
   3. Joint distribution and Schur complement. 
-
 </details>
 
 01.31: **L6. Linear modelling** | <a href="slides/lecture-6/index.html"  style="text-decoration: none">Slides</a>
@@ -94,8 +93,7 @@ Below you will find a list of the lectures that form the backbone of this course
 
   1. Least squares.
   2. Regularization.
-  3. Gaussian noise model. 
-    
+  3. Gaussian noise model.  
 </details>
 
 
@@ -110,17 +108,26 @@ Below you will find a list of the lectures that form the backbone of this course
 </details>
 
 
-02.07: **L8. Hyperparameters and model selection** 
+02.07: **L8. Bayesian inference in action**  | <a href="slides/lecture-8/index.html"  style="text-decoration: none">Slides</a>
 <details>
   <summary>Contents</summary>
 
-  1. Maximum likelihood and maximum aposteriori estimate. 
-  2. Cross validation.
-  3. Expectation maximization.
-  4. Markov chain Monte Carlo (Gibbs, NUTS, HMC). 
+  1. Analytical calculation of the posterior
+  2. Conjugacy in Bayesian inference
+  3. A function-space perspective
 </details>
 
 02.12: *Fundamentals Mid-term (take-home)*
+
+02.12: **L9. Introduction to Gaussian Processes** 
+<details>
+  <summary>Contents</summary>
+
+  1. Gaussian process prior 
+  2. Noise-free regression 
+  3. Noisy regression 
+  4. Covariance functions
+</details>
 
 02.14: **L9. Variational inference** 
 <details>

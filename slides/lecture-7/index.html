@@ -633,7 +633,7 @@ Cov \left[ \mathbf{\hat{w}} \right] = - \left( \frac{\partial^2 \mathcal{L} }{\p
 \begin{aligned}
 \mathbb{E}_{p \left( \mathbf{t} | \mathbf{X}, \mathbf{w}, \sigma^2 \right)} \left[ \mathbf{t}_{new}  \right] &amp; = \mathbf{X}_{new} \mathbb{E}_{p \left( \mathbf{t} | \mathbf{X}, \mathbf{w}, \sigma^2 \right)} \left[ \mathbf{\hat{w}} \right] = \mathbf{X}_{new} \mathbf{w} \\
 Cov_{p \left( \mathbf{t} | \mathbf{X}, \mathbf{w}, \sigma^2 \right)} \left[ \mathbf{t}_{new}  \right] &amp; = \sigma^2 \mathbf{X}^{T}_{new} \left( \mathbf{X}^{T} \mathbf{X} \right)^{-1} \mathbf{X}_{new} \\
-&amp; = \sigma^2 \mathbf{X}_{new} Cov \left[ \mathbf{\hat{w}} \right] \mathbf{X}^{T}_{new}
+&amp; = \mathbf{X}_{new} Cov \left[ \mathbf{\hat{w}} \right] \mathbf{X}^{T}_{new}
 \end{aligned}
 </span></p>
 </section>

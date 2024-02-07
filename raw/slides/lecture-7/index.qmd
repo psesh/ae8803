@@ -271,7 +271,7 @@ $$
 \begin{aligned}
 \mathbb{E}_{p \left( \mathbf{t} | \mathbf{X}, \mathbf{w}, \sigma^2 \right)} \left[ \mathbf{t}_{new}  \right] & = \mathbf{X}_{new} \mathbb{E}_{p \left( \mathbf{t} | \mathbf{X}, \mathbf{w}, \sigma^2 \right)} \left[ \mathbf{\hat{w}} \right] = \mathbf{X}_{new} \mathbf{w} \\ 
 Cov_{p \left( \mathbf{t} | \mathbf{X}, \mathbf{w}, \sigma^2 \right)} \left[ \mathbf{t}_{new}  \right] & = \sigma^2 \mathbf{X}^{T}_{new} \left( \mathbf{X}^{T} \mathbf{X} \right)^{-1} \mathbf{X}_{new} \\ 
-& = \sigma^2 \mathbf{X}_{new} Cov \left[ \mathbf{\hat{w}} \right] \mathbf{X}^{T}_{new}
+& = \mathbf{X}_{new} Cov \left[ \mathbf{\hat{w}} \right] \mathbf{X}^{T}_{new}
 \end{aligned}
 $$
 
