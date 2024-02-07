@@ -43,7 +43,7 @@ $$
 
 $$
 p \left( \mathbf{w} | \mathbf{t}, \mathbf{X}, \sigma^2 \right) \propto exp \left\{ - \frac{1}{2} \left( \frac{1}{\sigma^2} \left( \mathbf{t} - \mathbf{Xw} \right)^{T}   \left( \mathbf{t} - \mathbf{Xw} \right) + \left(   \mathbf{w} - \boldsymbol{\mu}_{0}  \right)^{T} \boldsymbol{\Sigma
-}_{0} \left(   \mathbf{w} - \boldsymbol{\mu}_{0}  \right)  \right) \right\} 
+}_{0}^{-1} \left(   \mathbf{w} - \boldsymbol{\mu}_{0}  \right)  \right) \right\} 
 $$
 
 Multiplying the terms in the bracket out, and removing any terms that do not involve a $\mathbf{w}$ yields
@@ -70,7 +70,7 @@ If we expand @eq-mean-cov, we arrive at
 
 $$
 \begin{aligned}
-p \left( \mathbf{w} | \mathbf{t}, \mathbf{X}, \sigma^2 \right) & \propto exp \left\{ - \frac{1}{2} \left( \mathbf{w} - \boldsymbol{\mu}_{\mathbf{w}} \right)^{T} \boldsymbol{\Sigma}_{\mathbf{w}} \left( \mathbf{w} - \boldsymbol{\mu}_{\mathbf{w}} \right)  \right\} \\ 
+p \left( \mathbf{w} | \mathbf{t}, \mathbf{X}, \sigma^2 \right) & \propto exp \left\{ - \frac{1}{2} \left( \mathbf{w} - \boldsymbol{\mu}_{\mathbf{w}} \right)^{T} \boldsymbol{\Sigma}_{\mathbf{w}}^{-1} \left( \mathbf{w} - \boldsymbol{\mu}_{\mathbf{w}} \right)  \right\} \\ 
 & \propto exp \left\{ - \frac{1}{2} \left( \mathbf{w}^{T} \boldsymbol{\Sigma}^{-1}_{\mathbf{w}} \mathbf{w} - 2 \boldsymbol{\mu}_{\mathbf{w}}^{T} \boldsymbol{\Sigma}_{\mathbf{w}}^{-1} \mathbf{w} \right)  \right\}
 \end{aligned}
 $${#eq-terms}
