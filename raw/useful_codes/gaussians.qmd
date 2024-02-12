@@ -1,0 +1,85 @@
+---
+title: "Gaussian marginals and conditionals"
+format:
+    html:
+        code-fold: true
+jupyter: python3
+fontsize: 1.2em
+linestretch: 1.5
+toc: true
+notebook-view: true
+---
+
+## Overview
+
+This notebook covers a few basic ideas with regards to Gaussian marginals and conditionals. 
+
+### Marginals
+
+Consider a random vector $\mathbf{u} = \left[u_1, u_2, u_3, u_4 \right]^{T}$ following a multivariate Gaussian distribution a mean vector $\boldsymbol{\mu}$ and a covariance matrix $\mathbf{K}$. These are given by
+
+$$
+\boldsymbol{\mu}=\left[\begin{array}{c}
+\mu_{1}\\
+\mu_{2}\\
+\mu_{3}\\
+\mu_{4}
+\end{array}\right], \; \; \; \; \mathbf{K}=\left[\begin{array}{cccc}
+k_{11} & k_{12} & k_{13} & k_{14}\\
+k_{21} & k_{22} & k_{23} & k_{24}\\
+k_{31} & k_{32} & k_{33} & k_{34}\\
+k_{41} & k_{42} & k_{43} & k_{44}
+\end{array}\right]
+$$
+
+The marginal distribution of any subset of these four variables is obtained by integrating over the remaining ones. This can be trivially done by simply extracting the relevant elements of $\boldsymbol{\mu}$ and $\mathbf{K}$. For instance the joint distribution given by $p\left(u_2, u_3 \right)$ is a Gaussian
+
+$$
+p\left( u_2, u_3 \right) = \mathcal{N} \left( \boldsymbol{\mu}_{\left(2,3\right)}, \boldsymbol{\Sigma}_{\left( 2,3 \right)} \right) 
+$$
+
+where
+
+$$
+\boldsymbol{\mu}_{\left(2,3\right)}=\left[\begin{array}{c}
+\mu_{2}\\
+\mu_{3}
+\end{array}\right], \; \; \; \; \boldsymbol{\Sigma}_{\left(2,3\right)} = \left[\begin{array}{cc}
+k_{22} & k_{23} \\
+k_{32} & k_{33} 
+\end{array}\right].
+$$
+
+Similarly, the marginal distribution of $p\left( u_1 \right)$ is a Gaussian with a mean of $\mu_1$ and a variance of $k_{11}$. 
+
+### Conditionals
+
+Consider a random vector $\mathbf{u}$, composed of two sets $\mathbf{u}_{1}$ and $\mathbf{u}_{2}$. Assume, as before, that $\mathbf{u} = p \left( \boldsymbol{\mu}, \boldsymbol{\Sigma} \right)$, where
+
+$$
+\boldsymbol{\mu} =\left[\begin{array}{c}
+\boldsymbol{\mu}_{1}\\
+\boldsymbol{\mu}_{2}
+\end{array}\right], \; \; \; \; \boldsymbol{\Sigma} = \left[\begin{array}{cc}
+\boldsymbol{\Sigma}_{11} & \boldsymbol{\Sigma}_{12} \\
+\boldsymbol{\Sigma}_{21} & \boldsymbol{\Sigma}_{22} 
+\end{array}\right].
+$$
+
+If we observe one of these sets, say $\mathbf{u}_{1}$, then the conditional density of the other set $\mathbf{u}_{2}$ is a Gaussian of the form
+
+$$
+p \left(\mathbf{u}_{2} | \mathbf{u}_{1} \right) = \mathcal{N} \left( \mathbf{d}, \mathbf{D} \right) 
+$$
+
+where
+
+$$
+\mathbf{d} = \boldsymbol{\mu}_{2} + \boldsymbol{\Sigma}_{12}^{T} \boldsymbol{\Sigma}_{11}^{-1} \left( \mathbf{z}_1 - \boldsymbol{\mu}_{1} \right)
+$$
+
+and
+
+$$
+\mathbf{D} = \boldsymbol{\Sigma}_{22} - \boldsymbol{\Sigma}_{12}^{T} \boldsymbol{\Sigma}_{11}^{-1} \boldsymbol{\Sigma}_{12}
+$$

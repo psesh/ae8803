@@ -22,7 +22,7 @@ This course has four assignments; the grades are given below:
 
 | Assignment  | Grade percentage (%)    |
 | --------  | ------- |
-| Assignment 1: Take-home mid-term (covering fundamentals)    | 20 |
+| Assignment 1: <a href="https://gtvault-my.sharepoint.com/:u:/g/personal/pseshadri34_gatech_edu/EUX0hSg8eIdNjlFIUsR4Qq0BRewWmfMuoVeoDfisYT_MCQ?e=tPl4Ql">Take-home mid-term (covering fundamentals) </a>    | 20 |
 | Assignment 2: Build your own GP from scratch for a given dataset | 20 |
 | Assignment 3: Proposal (data and literature review)   | 20    |
 | Assignment 4: Final project (presentation and notebook)  | 40    |
@@ -117,44 +117,42 @@ Below you will find a list of the lectures that form the backbone of this course
   3. A function-space perspective
 </details>
 
-02.12: *Fundamentals Mid-term (take-home)*
+02.12: <a href="https://gtvault-my.sharepoint.com/:u:/g/personal/pseshadri34_gatech_edu/EUX0hSg8eIdNjlFIUsR4Qq0BRewWmfMuoVeoDfisYT_MCQ?e=tPl4Ql"> *Fundamentals Mid-term (take-home)*</a>
 
-02.12: **L9. Introduction to Gaussian Processes** 
+02.12: **L9. An introduction to Gaussian Processes** | <a href="slides/lecture-9/index.html"  style="text-decoration: none">Slides</a> | <a href="https://psesh.github.io/ae8803/useful_codes/gaussians.html"  style="text-decoration: none">Notebook</a>
 <details>
   <summary>Contents</summary>
 
   1. Gaussian process prior 
   2. Noise-free regression 
-  3. Noisy regression 
-  4. Covariance functions
+  3. Kernel functions
+  4. Midterm overview
 </details>
 
-02.14: **L9. Variational inference** 
+02.14: **L9. Kernel learning ** 
 <details>
   <summary>Contents</summary>
 
-  1. Variational problem.
-  2. Deriving the ELBO.
-  3. Stochastic variational inference in practice. 
+  1. Kernel trick and kernel construction
+  2. Constructing kernels from learnt features.
+  3. Spectral representations of kernels. 
 </details>
 
 02.19: **L10. Open-source resources** 
 <details>
   <summary>Contents</summary>
 
-  1. pymc.
-  2. gpytorch, gpflow.
-  3. GPjax.
+  1. Introduction to ``pymc, gpytorch, gpflow, GPjax``. 
+  2. Overview of ``pandas``
 </details>
 
-02.21: **L11. Kernel learning** 
+02.21: **L11. Hyperparameters** 
 <details>
   <summary>Contents</summary>
     
-    1. Kernel trick re-visited.
-    2. Constructing kernels piece-by-piece.
-    3. Constructing kernels from learnt features.
-    4. Spectral representations of kernels. 
+    1. Hyperparameter optimization
+    2. Distance metrics
+    3. Markov chain Monte Carlo and variational inference
 </details>
 
 

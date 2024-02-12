@@ -7,11 +7,13 @@ project:
     - slides/lecture-6/index.qmd
     - slides/lecture-7/index.qmd
     - slides/lecture-8/index.qmd
+    - slides/lecture-9/index.qmd
     - sample_problems/lecture_1.qmd
     - sample_problems/lecture_2.qmd
     - sample_problems/lecture_3.qmd
     - sample_problems/lecture_4.qmd
     - useful_codes/discrete.qmd
+    - useful_codes/gaussians.qmd
 format:
   html:
     page-layout: full
@@ -19,7 +21,7 @@ format:
     code-fold: true
     theme: flatly
     code-tools: true
-    description-meta: Course website for AE8803 that comprises fluid fundamentals and thermodynamics. It can be taken either as a 3-credit course (without thermodynamics) or as a 4-credit course (with thermodynamics). It is a mandatory course for all aerospace engineering students. 
+    description-meta: Course website for AE8803 -- a graduate-level course on Gaussian processes.
     favicon: images/logo.ico
     keywords: pranay seshadri, machine learning, gaussian processes
     pagetitle: AE8803 | Georgia Institute of Technology
@@ -56,5 +58,7 @@ website:
         contents:
           - text: "Useful codes"
             href: https://psesh.github.io/ae8803/useful_codes/discrete.html
-# 
+          - text: "Gaussians"
+            href: https://psesh.github.io/ae8803/useful_codes/gaussians.html
+#   
 # freeze: false
