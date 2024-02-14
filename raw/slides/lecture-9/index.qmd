@@ -53,7 +53,7 @@ where $l$ is the length scale and $\alpha$ is the amplitude.
 ::: panel-tabset
 ### Plot
 
-Defining a grid of points $\mathcal{X} \equiv \left[-2, 2 \right]$, and choosing values for $\alpha$ and $l$, we can sample vectors $\mathbf{f}$ from the GP prior $\mathcal{N}\left(\mathbf{0}, \mathbf{C} \right)$, where $\mathbf{C}_{ij} = k \left( \boldsymbol{x}_{i}, \boldsymbol{x}_{j} \right)$. 
+Defining a grid of points $\mathcal{X} \equiv \left[-2, 2 \right]$, and choosing values for $\alpha$ and $l$, we can sample vectors $\mathbf{t}$ from the GP prior $\mathcal{N}\left(\mathbf{0}, \mathbf{C} \right)$, where $\mathbf{C}_{ij} = k \left( \boldsymbol{x}_{i}, \boldsymbol{x}_{j} \right)$. 
 
 ![](figures/prior.png)
 
@@ -239,7 +239,7 @@ $$
 $$
 \begin{aligned}
 p \left( \mathbf{t}^{\ast} | \mathbf{t} \right) & = \mathcal{N}\left( \boldsymbol{\mu}^{\ast}, \boldsymbol{\Sigma}^{\ast} \right), \; \; \; \; \text{where} \\ 
-\boldsymbol{\mu}^{\ast} = \mathbf{R}^{T} \mathbf{C}^{-1} \mathbf{f}, \; \; & \; \; \boldsymbol{\Sigma}^{\ast} = \mathbf{C}^{\ast} - \mathbf{R}^{T} \mathbf{C}^{-1} \mathbf{R}
+\boldsymbol{\mu}^{\ast} = \mathbf{R}^{T} \mathbf{C}^{-1} \mathbf{t}, \; \; & \; \; \boldsymbol{\Sigma}^{\ast} = \mathbf{C}^{\ast} - \mathbf{R}^{T} \mathbf{C}^{-1} \mathbf{R}
 \end{aligned}
 $$
 

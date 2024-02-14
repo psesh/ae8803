@@ -444,7 +444,7 @@ k \left( \boldsymbol{x}, \boldsymbol{x}' \right) = \alpha \; exp \left(- \frac{1
 <ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">Plot</a></li><li><a href="#tabset-1-2">Code</a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1">
-<p>Defining a grid of points <span class="math inline">\mathcal{X} \equiv \left[-2, 2 \right]</span>, and choosing values for <span class="math inline">\alpha</span> and <span class="math inline">l</span>, we can sample vectors <span class="math inline">\mathbf{f}</span> from the GP prior <span class="math inline">\mathcal{N}\left(\mathbf{0}, \mathbf{C} \right)</span>, where <span class="math inline">\mathbf{C}_{ij} = k \left( \boldsymbol{x}_{i}, \boldsymbol{x}_{j} \right)</span>.</p>
+<p>Defining a grid of points <span class="math inline">\mathcal{X} \equiv \left[-2, 2 \right]</span>, and choosing values for <span class="math inline">\alpha</span> and <span class="math inline">l</span>, we can sample vectors <span class="math inline">\mathbf{t}</span> from the GP prior <span class="math inline">\mathcal{N}\left(\mathbf{0}, \mathbf{C} \right)</span>, where <span class="math inline">\mathbf{C}_{ij} = k \left( \boldsymbol{x}_{i}, \boldsymbol{x}_{j} \right)</span>.</p>
 <p><img data-src="figures/prior.png"></p>
 </div>
 <div id="tabset-1-2">
@@ -611,7 +611,7 @@ p \left( \mathbf{\hat{t}} \right) = \mathcal{N} \left( \mathbf{0}, \left[\begin{
 <li><p>From our prior foray into Gaussian conditionals, we recognize this to be <span class="math display">
 \begin{aligned}
 p \left( \mathbf{t}^{\ast} | \mathbf{t} \right) &amp; = \mathcal{N}\left( \boldsymbol{\mu}^{\ast}, \boldsymbol{\Sigma}^{\ast} \right), \; \; \; \; \text{where} \\
-\boldsymbol{\mu}^{\ast} = \mathbf{R}^{T} \mathbf{C}^{-1} \mathbf{f}, \; \; &amp; \; \; \boldsymbol{\Sigma}^{\ast} = \mathbf{C}^{\ast} - \mathbf{R}^{T} \mathbf{C}^{-1} \mathbf{R}
+\boldsymbol{\mu}^{\ast} = \mathbf{R}^{T} \mathbf{C}^{-1} \mathbf{t}, \; \; &amp; \; \; \boldsymbol{\Sigma}^{\ast} = \mathbf{C}^{\ast} - \mathbf{R}^{T} \mathbf{C}^{-1} \mathbf{R}
 \end{aligned}
 </span></p></li>
 </ul>

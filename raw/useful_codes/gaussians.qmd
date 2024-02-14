@@ -52,7 +52,11 @@ $$
 
 Similarly, the marginal distribution of $p\left( u_1 \right)$ is a Gaussian with a mean of $\mu_1$ and a variance of $k_{11}$. 
 
+
+
 ### Conditionals
+
+
 
 Consider a random vector $\mathbf{u}$, composed of two sets $\mathbf{u}_{1}$ and $\mathbf{u}_{2}$. Assume, as before, that $\mathbf{u} = p \left( \boldsymbol{\mu}, \boldsymbol{\Sigma} \right)$, where
 
@@ -75,7 +79,7 @@ $$
 where
 
 $$
-\mathbf{d} = \boldsymbol{\mu}_{2} + \boldsymbol{\Sigma}_{12}^{T} \boldsymbol{\Sigma}_{11}^{-1} \left( \mathbf{z}_1 - \boldsymbol{\mu}_{1} \right)
+\mathbf{d} = \boldsymbol{\mu}_{2} + \boldsymbol{\Sigma}_{12}^{T} \boldsymbol{\Sigma}_{11}^{-1} \left( \mathbf{u}_1 - \boldsymbol{\mu}_{1} \right)
 $$
 
 and
@@ -83,3 +87,91 @@ and
 $$
 \mathbf{D} = \boldsymbol{\Sigma}_{22} - \boldsymbol{\Sigma}_{12}^{T} \boldsymbol{\Sigma}_{11}^{-1} \boldsymbol{\Sigma}_{12}
 $$
+
+#### Proof for the above
+
+The proof for the result above begins with the definition of the conditional distribution, i.e.,
+
+$$
+p \left( \mathbf{u}_2 | \mathbf{u}_1 \right) = \frac{p\left( \mathbf{u}_2 , \mathbf{u}_1 \right) }{ p \left( \mathbf{u}_1 \right) }
+$$
+
+Plugging in the definition of a [multivariate normal distribution](https://en.wikipedia.org/wiki/Multivariate_normal_distribution), we have:
+
+$$
+p\left( \mathbf{u}_2 , \mathbf{u}_1 \right) = p \left( \mathbf{u} \right) = \frac{1}{\sqrt{\left( 2 \pi \right)^{N} |\boldsymbol{\Sigma} | }} exp \left[ -\frac{1}{2} \left(\mathbf{u} - \boldsymbol{\mu} \right)^{T} \boldsymbol{\Sigma}^{-1}  \left(\mathbf{u} - \boldsymbol{\mu} \right) \right]
+$$
+
+and
+
+$$
+p\left( \mathbf{u}_1 \right) =  \frac{1}{\sqrt{\left( 2 \pi \right)^{N_1} |\boldsymbol{\Sigma}_{11} | }} exp \left[ -\frac{1}{2} \left(\mathbf{u}_1 - \boldsymbol{\mu}_1 \right)^{T} \boldsymbol{\Sigma}_{11}^{-1}  \left(\mathbf{u}_{1} - \boldsymbol{\mu}_{1} \right) \right]
+$$
+
+
+Thus, 
+
+$$
+p \left( \mathbf{u}_2 | \mathbf{u}_1 \right) =  \frac{\sqrt{|\boldsymbol{\Sigma}_{11} |}}{\sqrt{\left( 2 \pi \right)^{N - N_1} |\boldsymbol{\Sigma} | }} exp \left[ -\frac{1}{2} \left(\mathbf{u} - \boldsymbol{\mu} \right)^{T} \boldsymbol{\Sigma}^{-1}  \left(\mathbf{u} - \boldsymbol{\mu} \right) + \frac{1}{2} \left(\mathbf{u}_1 - \boldsymbol{\mu}_1 \right)^{T} \boldsymbol{\Sigma}_{11}^{-1}  \left(\mathbf{u}_{1} - \boldsymbol{\mu}_{1} \right) \right]
+$$
+
+Expanding the above, we arrive at
+
+$$
+p \left( \mathbf{u}_2 | \mathbf{u}_1 \right) = \frac{\sqrt{|\boldsymbol{\Sigma}_{11} |}}{\sqrt{\left( 2 \pi \right)^{N - N_1} |\boldsymbol{\Sigma} | }}exp \left[ -\frac{1}{2} \left(\mathbf{u}_1 - \boldsymbol{\mu}_1 \right)^{T} \boldsymbol{\Gamma}_{11}  \left(\mathbf{u}_1 - \boldsymbol{\mu}_1 \right) + 
+\left(\mathbf{u}_1 - \boldsymbol{\mu}_1 \right)^{T} \boldsymbol{\Gamma}_{12}  \left(\mathbf{u}_2 - \boldsymbol{\mu}_2 \right) - 
+\frac{1}{2}\left(\mathbf{u}_2 - \boldsymbol{\mu}_2 \right)^{T} \boldsymbol{\Gamma}_{22}  \left(\mathbf{u}_2 - \boldsymbol{\mu}_2 \right) 
+-\frac{1}{2}  \left(\mathbf{u}_1 - \boldsymbol{\mu}_1 \right)^{T} \boldsymbol{\Sigma}_{11}^{-1}  \left(\mathbf{u}_1 - \boldsymbol{\mu}_1 \right)
+\right]
+$$
+
+where
+
+$$
+\boldsymbol{\Sigma}^{-1} = \left[\begin{array}{cc}
+\boldsymbol{\Gamma}_{11} & \boldsymbol{\Gamma}_{12} \\
+\boldsymbol{\Gamma}_{21} & \boldsymbol{\Gamma}_{22} 
+\end{array}\right].
+$$
+
+Using the block matrix inverse and Woodbury matrix identity, we have
+
+$$
+\boldsymbol{\Gamma}_{11} = \boldsymbol{\Sigma}_{11}^{-1} \boldsymbol{\Sigma}_{12}\left( \boldsymbol{\Sigma}_{22} - \boldsymbol{\Sigma}_{21} \boldsymbol{\Sigma}_{11}^{-1} \boldsymbol{\Sigma}_{12} \right)^{-1} \boldsymbol{\Sigma}_{21} \boldsymbol{\Sigma}_{11}^{-1}
+$$
+
+$$
+\boldsymbol{\Gamma}_{12} = - \boldsymbol{\Sigma}_{11}^{-1} \boldsymbol{\Sigma}_{12} \left( \boldsymbol{\Sigma}_{22} - \boldsymbol{\Sigma}_{21} \boldsymbol{\Sigma}_{11}^{-1} \boldsymbol{\Sigma}_{12} \right)^{-1}
+$$
+
+$$
+\boldsymbol{\Gamma}_{22} = \left( \boldsymbol{\Sigma}_{22} - \boldsymbol{\Sigma}_{21} \boldsymbol{\Sigma}_{11}^{-1} \boldsymbol{\Sigma}_{12} \right)^{-1}
+$$
+
+The prior expansion then yields
+
+$$
+p \left( \mathbf{u}_2 | \mathbf{u}_1 \right) = \frac{\sqrt{|\boldsymbol{\Sigma}_{11} |}}{\sqrt{\left( 2 \pi \right)^{N - N_1} |\boldsymbol{\Sigma} | }}exp \left[ -\frac{1}{2} \left[ 
+\left(\mathbf{u}_1 - \boldsymbol{\mu}_1 \right)^{T} \left( \boldsymbol{\Gamma}_{11} -  \boldsymbol{\Sigma}_{11}^{-1} \right) \left(\mathbf{u}_1 - \boldsymbol{\mu}_1 \right) -  
+2\left(\mathbf{u}_1 - \boldsymbol{\mu}_1 \right)^{T} \boldsymbol{\Gamma}_{12}  \left(\mathbf{u}_2 - \boldsymbol{\mu}_2 \right) + 
+ \left(\mathbf{u}_2 - \boldsymbol{\mu}_2 \right)^{T} \boldsymbol{\Gamma}_{22}  \left(\mathbf{u}_2 - \boldsymbol{\mu}_2 \right) \right] \right]
+$$ 
+
+Expanding this out and grouping similar terms leads to
+
+$$
+p \left( \mathbf{u}_2 | \mathbf{u}_1 \right) = \frac{\sqrt{|\boldsymbol{\Sigma}_{11} |}}{\sqrt{\left( 2 \pi \right)^{N - N_1} |\boldsymbol{\Sigma} | }}exp \left[ -\frac{1}{2} \left[ \left(\mathbf{u}_2 - \boldsymbol{\mu}_2 - \boldsymbol{\Sigma}_{21}\boldsymbol{\Sigma}^{-1}\left(\mathbf{u}_1 - \boldsymbol{\mu}_{1} \right) \right)^{T} \left( \boldsymbol{\Sigma}_{22} - \boldsymbol{\Sigma}_{21} \boldsymbol{\Sigma}_{11}^{-1} \boldsymbol{\Sigma}_{12} \right)^{-1} \left(u_2 - \mu_2 - \boldsymbol{\Sigma}_{21}\boldsymbol{\Sigma}^{-1}\left(\mathbf{u}_1 - \boldsymbol{\mu}_{1} \right) \right) \right] \right]
+$$  
+
+
+From this it is readily apparent that the mean and covariance of the new density is given by
+
+$$
+\mathbb{E}\left[ p \left( \mathbf{u}_2 | \mathbf{u}_1 \right) \right ] =    \boldsymbol{\mu}_2 + \boldsymbol{\Sigma}_{21}\boldsymbol{\Sigma}_{11}^{-1}\left(\mathbf{u}_1 - \boldsymbol{\mu}_{1} \right) 
+$$
+
+$$
+Cov \left[ p \left( \mathbf{u}_2 | \mathbf{u}_1 \right) \right ] =  \boldsymbol{\Sigma}_{22} - \boldsymbol{\Sigma}_{21} \boldsymbol{\Sigma}_{11}^{-1} \boldsymbol{\Sigma}_{12} 
+$$
+
+The scaling constant in the equation prior can be expanded using the determinant of a block matrix identity. 

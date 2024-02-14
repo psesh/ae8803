@@ -313,16 +313,79 @@ p \left(\mathbf{u}_{2} | \mathbf{u}_{1} \right) = \mathcal{N} \left( \mathbf{d},
 \]</span></p>
 <p>where</p>
 <p><span class="math display">\[
-\mathbf{d} = \boldsymbol{\mu}_{2} + \boldsymbol{\Sigma}_{12}^{T} \boldsymbol{\Sigma}_{11}^{-1} \left( \mathbf{z}_1 - \boldsymbol{\mu}_{1} \right)
+\mathbf{d} = \boldsymbol{\mu}_{2} + \boldsymbol{\Sigma}_{12}^{T} \boldsymbol{\Sigma}_{11}^{-1} \left( \mathbf{u}_1 - \boldsymbol{\mu}_{1} \right)
 \]</span></p>
 <p>and</p>
 <p><span class="math display">\[
 \mathbf{D} = \boldsymbol{\Sigma}_{22} - \boldsymbol{\Sigma}_{12}^{T} \boldsymbol{\Sigma}_{11}^{-1} \boldsymbol{\Sigma}_{12}
 \]</span></p>
+<section id="proof-for-the-above" class="level4">
+<h4 class="anchored" data-anchor-id="proof-for-the-above">Proof for the above</h4>
+<p>The proof for the result above begins with the definition of the conditional distribution, i.e.,</p>
+<p><span class="math display">\[
+p \left( \mathbf{u}_2 | \mathbf{u}_1 \right) = \frac{p\left( \mathbf{u}_2 , \mathbf{u}_1 \right) }{ p \left( \mathbf{u}_1 \right) }
+\]</span></p>
+<p>Plugging in the definition of a <a href="https://en.wikipedia.org/wiki/Multivariate_normal_distribution">multivariate normal distribution</a>, we have:</p>
+<p><span class="math display">\[
+p\left( \mathbf{u}_2 , \mathbf{u}_1 \right) = p \left( \mathbf{u} \right) = \frac{1}{\sqrt{\left( 2 \pi \right)^{N} |\boldsymbol{\Sigma} | }} exp \left[ -\frac{1}{2} \left(\mathbf{u} - \boldsymbol{\mu} \right)^{T} \boldsymbol{\Sigma}^{-1}  \left(\mathbf{u} - \boldsymbol{\mu} \right) \right]
+\]</span></p>
+<p>and</p>
+<p><span class="math display">\[
+p\left( \mathbf{u}_1 \right) =  \frac{1}{\sqrt{\left( 2 \pi \right)^{N_1} |\boldsymbol{\Sigma}_{11} | }} exp \left[ -\frac{1}{2} \left(\mathbf{u}_1 - \boldsymbol{\mu}_1 \right)^{T} \boldsymbol{\Sigma}_{11}^{-1}  \left(\mathbf{u}_{1} - \boldsymbol{\mu}_{1} \right) \right]
+\]</span></p>
+<p>Thus,</p>
+<p><span class="math display">\[
+p \left( \mathbf{u}_2 | \mathbf{u}_1 \right) =  \frac{\sqrt{|\boldsymbol{\Sigma}_{11} |}}{\sqrt{\left( 2 \pi \right)^{N - N_1} |\boldsymbol{\Sigma} | }} exp \left[ -\frac{1}{2} \left(\mathbf{u} - \boldsymbol{\mu} \right)^{T} \boldsymbol{\Sigma}^{-1}  \left(\mathbf{u} - \boldsymbol{\mu} \right) + \frac{1}{2} \left(\mathbf{u}_1 - \boldsymbol{\mu}_1 \right)^{T} \boldsymbol{\Sigma}_{11}^{-1}  \left(\mathbf{u}_{1} - \boldsymbol{\mu}_{1} \right) \right]
+\]</span></p>
+<p>Expanding the above, we arrive at</p>
+<p><span class="math display">\[
+p \left( \mathbf{u}_2 | \mathbf{u}_1 \right) = \frac{\sqrt{|\boldsymbol{\Sigma}_{11} |}}{\sqrt{\left( 2 \pi \right)^{N - N_1} |\boldsymbol{\Sigma} | }}exp \left[ -\frac{1}{2} \left(\mathbf{u}_1 - \boldsymbol{\mu}_1 \right)^{T} \boldsymbol{\Gamma}_{11}  \left(\mathbf{u}_1 - \boldsymbol{\mu}_1 \right) +
+\left(\mathbf{u}_1 - \boldsymbol{\mu}_1 \right)^{T} \boldsymbol{\Gamma}_{12}  \left(\mathbf{u}_2 - \boldsymbol{\mu}_2 \right) -
+\frac{1}{2}\left(\mathbf{u}_2 - \boldsymbol{\mu}_2 \right)^{T} \boldsymbol{\Gamma}_{22}  \left(\mathbf{u}_2 - \boldsymbol{\mu}_2 \right)
+-\frac{1}{2}  \left(\mathbf{u}_1 - \boldsymbol{\mu}_1 \right)^{T} \boldsymbol{\Sigma}_{11}^{-1}  \left(\mathbf{u}_1 - \boldsymbol{\mu}_1 \right)
+\right]
+\]</span></p>
+<p>where</p>
+<p><span class="math display">\[
+\boldsymbol{\Sigma}^{-1} = \left[\begin{array}{cc}
+\boldsymbol{\Gamma}_{11} &amp; \boldsymbol{\Gamma}_{12} \\
+\boldsymbol{\Gamma}_{21} &amp; \boldsymbol{\Gamma}_{22}
+\end{array}\right].
+\]</span></p>
+<p>Using the block matrix inverse and Woodbury matrix identity, we have</p>
+<p><span class="math display">\[
+\boldsymbol{\Gamma}_{11} = \boldsymbol{\Sigma}_{11}^{-1} \boldsymbol{\Sigma}_{12}\left( \boldsymbol{\Sigma}_{22} - \boldsymbol{\Sigma}_{21} \boldsymbol{\Sigma}_{11}^{-1} \boldsymbol{\Sigma}_{12} \right)^{-1} \boldsymbol{\Sigma}_{21} \boldsymbol{\Sigma}_{11}^{-1}
+\]</span></p>
+<p><span class="math display">\[
+\boldsymbol{\Gamma}_{12} = - \boldsymbol{\Sigma}_{11}^{-1} \boldsymbol{\Sigma}_{12} \left( \boldsymbol{\Sigma}_{22} - \boldsymbol{\Sigma}_{21} \boldsymbol{\Sigma}_{11}^{-1} \boldsymbol{\Sigma}_{12} \right)^{-1}
+\]</span></p>
+<p><span class="math display">\[
+\boldsymbol{\Gamma}_{22} = \left( \boldsymbol{\Sigma}_{22} - \boldsymbol{\Sigma}_{21} \boldsymbol{\Sigma}_{11}^{-1} \boldsymbol{\Sigma}_{12} \right)^{-1}
+\]</span></p>
+<p>The prior expansion then yields</p>
+<p><span class="math display">\[
+p \left( \mathbf{u}_2 | \mathbf{u}_1 \right) = \frac{\sqrt{|\boldsymbol{\Sigma}_{11} |}}{\sqrt{\left( 2 \pi \right)^{N - N_1} |\boldsymbol{\Sigma} | }}exp \left[ -\frac{1}{2} \left[
+\left(\mathbf{u}_1 - \boldsymbol{\mu}_1 \right)^{T} \left( \boldsymbol{\Gamma}_{11} -  \boldsymbol{\Sigma}_{11}^{-1} \right) \left(\mathbf{u}_1 - \boldsymbol{\mu}_1 \right) -  
+2\left(\mathbf{u}_1 - \boldsymbol{\mu}_1 \right)^{T} \boldsymbol{\Gamma}_{12}  \left(\mathbf{u}_2 - \boldsymbol{\mu}_2 \right) +
+\left(\mathbf{u}_2 - \boldsymbol{\mu}_2 \right)^{T} \boldsymbol{\Gamma}_{22}  \left(\mathbf{u}_2 - \boldsymbol{\mu}_2 \right) \right] \right]
+\]</span></p>
+<p>Expanding this out and grouping similar terms leads to</p>
+<p><span class="math display">\[
+p \left( \mathbf{u}_2 | \mathbf{u}_1 \right) = \frac{\sqrt{|\boldsymbol{\Sigma}_{11} |}}{\sqrt{\left( 2 \pi \right)^{N - N_1} |\boldsymbol{\Sigma} | }}exp \left[ -\frac{1}{2} \left[ \left(\mathbf{u}_2 - \boldsymbol{\mu}_2 - \boldsymbol{\Sigma}_{21}\boldsymbol{\Sigma}^{-1}\left(\mathbf{u}_1 - \boldsymbol{\mu}_{1} \right) \right)^{T} \left( \boldsymbol{\Sigma}_{22} - \boldsymbol{\Sigma}_{21} \boldsymbol{\Sigma}_{11}^{-1} \boldsymbol{\Sigma}_{12} \right)^{-1} \left(u_2 - \mu_2 - \boldsymbol{\Sigma}_{21}\boldsymbol{\Sigma}^{-1}\left(\mathbf{u}_1 - \boldsymbol{\mu}_{1} \right) \right) \right] \right]
+\]</span></p>
+<p>From this it is readily apparent that the mean and covariance of the new density is given by</p>
+<p><span class="math display">\[
+\mathbb{E}\left[ p \left( \mathbf{u}_2 | \mathbf{u}_1 \right) \right ] =    \boldsymbol{\mu}_2 + \boldsymbol{\Sigma}_{21}\boldsymbol{\Sigma}_{11}^{-1}\left(\mathbf{u}_1 - \boldsymbol{\mu}_{1} \right)
+\]</span></p>
+<p><span class="math display">\[
+Cov \left[ p \left( \mathbf{u}_2 | \mathbf{u}_1 \right) \right ] =  \boldsymbol{\Sigma}_{22} - \boldsymbol{\Sigma}_{21} \boldsymbol{\Sigma}_{11}^{-1} \boldsymbol{\Sigma}_{12}
+\]</span></p>
+<p>The scaling constant in the equation prior can be expanded using the determinant of a block matrix identity.</p>
 
 
 <!-- -->
 
+</section>
 </section>
 </section>
 
@@ -665,37 +728,129 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>Similarly, the marginal distribution of $p\left( u_1 \right)$ is a Gaussian with a mean of $\mu_1$ and a variance of $k_{11}$. </span>
 <span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a><span class="fu">### Conditionals</span></span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>Consider a random vector $\mathbf{u}$, composed of two sets $\mathbf{u}_{1}$ and $\mathbf{u}_{2}$. Assume, as before, that $\mathbf{u} = p \left( \boldsymbol{\mu}, \boldsymbol{\Sigma} \right)$, where</span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a><span class="fu">### Conditionals</span></span>
 <span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>\boldsymbol{\mu} =\left[\begin{array}{c}</span>
-<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>\boldsymbol{\mu}_{1}<span class="sc">\\</span></span>
-<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>\boldsymbol{\mu}_{2}</span>
-<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>\end{array}\right], \; \; \; \; \boldsymbol{\Sigma} = \left[\begin{array}{cc}</span>
-<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a>\boldsymbol{\Sigma}_{11} &amp; \boldsymbol{\Sigma}_{12} <span class="sc">\\</span></span>
-<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a>\boldsymbol{\Sigma}_{21} &amp; \boldsymbol{\Sigma}_{22} </span>
-<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a>\end{array}\right].</span>
-<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a>If we observe one of these sets, say $\mathbf{u}_{1}$, then the conditional density of the other set $\mathbf{u}_{2}$ is a Gaussian of the form</span>
-<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>Consider a random vector $\mathbf{u}$, composed of two sets $\mathbf{u}_{1}$ and $\mathbf{u}_{2}$. Assume, as before, that $\mathbf{u} = p \left( \boldsymbol{\mu}, \boldsymbol{\Sigma} \right)$, where</span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a>\boldsymbol{\mu} =\left[\begin{array}{c}</span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a>\boldsymbol{\mu}_{1}<span class="sc">\\</span></span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a>\boldsymbol{\mu}_{2}</span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a>\end{array}\right], \; \; \; \; \boldsymbol{\Sigma} = \left[\begin{array}{cc}</span>
+<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a>\boldsymbol{\Sigma}_{11} &amp; \boldsymbol{\Sigma}_{12} <span class="sc">\\</span></span>
+<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a>\boldsymbol{\Sigma}_{21} &amp; \boldsymbol{\Sigma}_{22} </span>
+<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a>\end{array}\right].</span>
 <span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a>p \left(\mathbf{u}_{2} | \mathbf{u}_{1} \right) = \mathcal{N} \left( \mathbf{d}, \mathbf{D} \right) </span>
-<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a>If we observe one of these sets, say $\mathbf{u}_{1}$, then the conditional density of the other set $\mathbf{u}_{2}$ is a Gaussian of the form</span>
 <span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a>where</span>
-<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a>p \left(\mathbf{u}_{2} | \mathbf{u}_{1} \right) = \mathcal{N} \left( \mathbf{d}, \mathbf{D} \right) </span>
 <span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a>\mathbf{d} = \boldsymbol{\mu}_{2} + \boldsymbol{\Sigma}_{12}^{T} \boldsymbol{\Sigma}_{11}^{-1} \left( \mathbf{z}_1 - \boldsymbol{\mu}_{1} \right)</span>
-<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a>where</span>
 <span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a>and</span>
-<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a>\mathbf{d} = \boldsymbol{\mu}_{2} + \boldsymbol{\Sigma}_{12}^{T} \boldsymbol{\Sigma}_{11}^{-1} \left( \mathbf{u}_1 - \boldsymbol{\mu}_{1} \right)</span>
 <span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a>\mathbf{D} = \boldsymbol{\Sigma}_{22} - \boldsymbol{\Sigma}_{12}^{T} \boldsymbol{\Sigma}_{11}^{-1} \boldsymbol{\Sigma}_{12}</span>
-<span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a>$$</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a>and</span>
+<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb1-88"><a href="#cb1-88" aria-hidden="true" tabindex="-1"></a>\mathbf{D} = \boldsymbol{\Sigma}_{22} - \boldsymbol{\Sigma}_{12}^{T} \boldsymbol{\Sigma}_{11}^{-1} \boldsymbol{\Sigma}_{12}</span>
+<span id="cb1-89"><a href="#cb1-89" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb1-90"><a href="#cb1-90" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-91"><a href="#cb1-91" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Proof for the above</span></span>
+<span id="cb1-92"><a href="#cb1-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-93"><a href="#cb1-93" aria-hidden="true" tabindex="-1"></a>The proof for the result above begins with the definition of the conditional distribution, i.e.,</span>
+<span id="cb1-94"><a href="#cb1-94" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-95"><a href="#cb1-95" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb1-96"><a href="#cb1-96" aria-hidden="true" tabindex="-1"></a>p \left( \mathbf{u}_2 | \mathbf{u}_1 \right) = \frac{p\left( \mathbf{u}_2 , \mathbf{u}_1 \right) }{ p \left( \mathbf{u}_1 \right) }</span>
+<span id="cb1-97"><a href="#cb1-97" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb1-98"><a href="#cb1-98" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-99"><a href="#cb1-99" aria-hidden="true" tabindex="-1"></a>Plugging in the definition of a <span class="co">[</span><span class="ot">multivariate normal distribution</span><span class="co">](https://en.wikipedia.org/wiki/Multivariate_normal_distribution)</span>, we have:</span>
+<span id="cb1-100"><a href="#cb1-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-101"><a href="#cb1-101" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb1-102"><a href="#cb1-102" aria-hidden="true" tabindex="-1"></a>p\left( \mathbf{u}_2 , \mathbf{u}_1 \right) = p \left( \mathbf{u} \right) = \frac{1}{\sqrt{\left( 2 \pi \right)^{N} |\boldsymbol{\Sigma} | }} exp \left<span class="co">[</span><span class="ot"> -\frac{1}{2} \left(\mathbf{u} - \boldsymbol{\mu} \right)^{T} \boldsymbol{\Sigma}^{-1}  \left(\mathbf{u} - \boldsymbol{\mu} \right) \right</span><span class="co">]</span></span>
+<span id="cb1-103"><a href="#cb1-103" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb1-104"><a href="#cb1-104" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-105"><a href="#cb1-105" aria-hidden="true" tabindex="-1"></a>and</span>
+<span id="cb1-106"><a href="#cb1-106" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-107"><a href="#cb1-107" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb1-108"><a href="#cb1-108" aria-hidden="true" tabindex="-1"></a>p\left( \mathbf{u}_1 \right) =  \frac{1}{\sqrt{\left( 2 \pi \right)^{N_1} |\boldsymbol{\Sigma}_{11} | }} exp \left[ -\frac{1}{2} \left(\mathbf{u}_1 - \boldsymbol{\mu}_1 \right)^{T} \boldsymbol{\Sigma}_{11}^{-1}  \left(\mathbf{u}_{1} - \boldsymbol{\mu}_{1} \right) \right]</span>
+<span id="cb1-109"><a href="#cb1-109" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb1-110"><a href="#cb1-110" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-111"><a href="#cb1-111" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-112"><a href="#cb1-112" aria-hidden="true" tabindex="-1"></a>Thus, </span>
+<span id="cb1-113"><a href="#cb1-113" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-114"><a href="#cb1-114" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb1-115"><a href="#cb1-115" aria-hidden="true" tabindex="-1"></a>p \left( \mathbf{u}_2 | \mathbf{u}_1 \right) =  \frac{\sqrt{|\boldsymbol{\Sigma}_{11} |}}{\sqrt{\left( 2 \pi \right)^{N - N_1} |\boldsymbol{\Sigma} | }} exp \left[ -\frac{1}{2} \left(\mathbf{u} - \boldsymbol{\mu} \right)^{T} \boldsymbol{\Sigma}^{-1}  \left(\mathbf{u} - \boldsymbol{\mu} \right) + \frac{1}{2} \left(\mathbf{u}_1 - \boldsymbol{\mu}_1 \right)^{T} \boldsymbol{\Sigma}_{11}^{-1}  \left(\mathbf{u}_{1} - \boldsymbol{\mu}_{1} \right) \right]</span>
+<span id="cb1-116"><a href="#cb1-116" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb1-117"><a href="#cb1-117" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-118"><a href="#cb1-118" aria-hidden="true" tabindex="-1"></a>Expanding the above, we arrive at</span>
+<span id="cb1-119"><a href="#cb1-119" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-120"><a href="#cb1-120" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb1-121"><a href="#cb1-121" aria-hidden="true" tabindex="-1"></a>p \left( \mathbf{u}_2 | \mathbf{u}_1 \right) = \frac{\sqrt{|\boldsymbol{\Sigma}_{11} |}}{\sqrt{\left( 2 \pi \right)^{N - N_1} |\boldsymbol{\Sigma} | }}exp \left[ -\frac{1}{2} \left(\mathbf{u}_1 - \boldsymbol{\mu}_1 \right)^{T} \boldsymbol{\Gamma}_{11}  \left(\mathbf{u}_1 - \boldsymbol{\mu}_1 \right) + </span>
+<span id="cb1-122"><a href="#cb1-122" aria-hidden="true" tabindex="-1"></a>\left(\mathbf{u}_1 - \boldsymbol{\mu}_1 \right)^{T} \boldsymbol{\Gamma}_{12}  \left(\mathbf{u}_2 - \boldsymbol{\mu}_2 \right) - </span>
+<span id="cb1-123"><a href="#cb1-123" aria-hidden="true" tabindex="-1"></a>\frac{1}{2}\left(\mathbf{u}_2 - \boldsymbol{\mu}_2 \right)^{T} \boldsymbol{\Gamma}_{22}  \left(\mathbf{u}_2 - \boldsymbol{\mu}_2 \right) </span>
+<span id="cb1-124"><a href="#cb1-124" aria-hidden="true" tabindex="-1"></a>-\frac{1}{2}  \left(\mathbf{u}_1 - \boldsymbol{\mu}_1 \right)^{T} \boldsymbol{\Sigma}_{11}^{-1}  \left(\mathbf{u}_1 - \boldsymbol{\mu}_1 \right)</span>
+<span id="cb1-125"><a href="#cb1-125" aria-hidden="true" tabindex="-1"></a>\right]</span>
+<span id="cb1-126"><a href="#cb1-126" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb1-127"><a href="#cb1-127" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-128"><a href="#cb1-128" aria-hidden="true" tabindex="-1"></a>where</span>
+<span id="cb1-129"><a href="#cb1-129" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-130"><a href="#cb1-130" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb1-131"><a href="#cb1-131" aria-hidden="true" tabindex="-1"></a>\boldsymbol{\Sigma}^{-1} = \left[\begin{array}{cc}</span>
+<span id="cb1-132"><a href="#cb1-132" aria-hidden="true" tabindex="-1"></a>\boldsymbol{\Gamma}_{11} &amp; \boldsymbol{\Gamma}_{12} <span class="sc">\\</span></span>
+<span id="cb1-133"><a href="#cb1-133" aria-hidden="true" tabindex="-1"></a>\boldsymbol{\Gamma}_{21} &amp; \boldsymbol{\Gamma}_{22} </span>
+<span id="cb1-134"><a href="#cb1-134" aria-hidden="true" tabindex="-1"></a>\end{array}\right].</span>
+<span id="cb1-135"><a href="#cb1-135" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb1-136"><a href="#cb1-136" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-137"><a href="#cb1-137" aria-hidden="true" tabindex="-1"></a>Using the block matrix inverse and Woodbury matrix identity, we have</span>
+<span id="cb1-138"><a href="#cb1-138" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-139"><a href="#cb1-139" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb1-140"><a href="#cb1-140" aria-hidden="true" tabindex="-1"></a>\boldsymbol{\Gamma}_{11} = \boldsymbol{\Sigma}_{11}^{-1} \boldsymbol{\Sigma}_{12}\left( \boldsymbol{\Sigma}_{22} - \boldsymbol{\Sigma}_{21} \boldsymbol{\Sigma}_{11}^{-1} \boldsymbol{\Sigma}_{12} \right)^{-1} \boldsymbol{\Sigma}_{21} \boldsymbol{\Sigma}_{11}^{-1}</span>
+<span id="cb1-141"><a href="#cb1-141" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb1-142"><a href="#cb1-142" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-143"><a href="#cb1-143" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb1-144"><a href="#cb1-144" aria-hidden="true" tabindex="-1"></a>\boldsymbol{\Gamma}_{12} = - \boldsymbol{\Sigma}_{11}^{-1} \boldsymbol{\Sigma}_{12} \left( \boldsymbol{\Sigma}_{22} - \boldsymbol{\Sigma}_{21} \boldsymbol{\Sigma}_{11}^{-1} \boldsymbol{\Sigma}_{12} \right)^{-1}</span>
+<span id="cb1-145"><a href="#cb1-145" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb1-146"><a href="#cb1-146" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-147"><a href="#cb1-147" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb1-148"><a href="#cb1-148" aria-hidden="true" tabindex="-1"></a>\boldsymbol{\Gamma}_{22} = \left( \boldsymbol{\Sigma}_{22} - \boldsymbol{\Sigma}_{21} \boldsymbol{\Sigma}_{11}^{-1} \boldsymbol{\Sigma}_{12} \right)^{-1}</span>
+<span id="cb1-149"><a href="#cb1-149" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb1-150"><a href="#cb1-150" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-151"><a href="#cb1-151" aria-hidden="true" tabindex="-1"></a>The prior expansion then yields</span>
+<span id="cb1-152"><a href="#cb1-152" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-153"><a href="#cb1-153" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb1-154"><a href="#cb1-154" aria-hidden="true" tabindex="-1"></a>p \left( \mathbf{u}_2 | \mathbf{u}_1 \right) = \frac{\sqrt{|\boldsymbol{\Sigma}_{11} |}}{\sqrt{\left( 2 \pi \right)^{N - N_1} |\boldsymbol{\Sigma} | }}exp \left[ -\frac{1}{2} \left[ </span>
+<span id="cb1-155"><a href="#cb1-155" aria-hidden="true" tabindex="-1"></a>\left(\mathbf{u}_1 - \boldsymbol{\mu}_1 \right)^{T} \left( \boldsymbol{\Gamma}_{11} -  \boldsymbol{\Sigma}_{11}^{-1} \right) \left(\mathbf{u}_1 - \boldsymbol{\mu}_1 \right) -  </span>
+<span id="cb1-156"><a href="#cb1-156" aria-hidden="true" tabindex="-1"></a>2\left(\mathbf{u}_1 - \boldsymbol{\mu}_1 \right)^{T} \boldsymbol{\Gamma}_{12}  \left(\mathbf{u}_2 - \boldsymbol{\mu}_2 \right) + </span>
+<span id="cb1-157"><a href="#cb1-157" aria-hidden="true" tabindex="-1"></a> \left(\mathbf{u}_2 - \boldsymbol{\mu}_2 \right)^{T} \boldsymbol{\Gamma}_{22}  \left(\mathbf{u}_2 - \boldsymbol{\mu}_2 \right) \right] \right]</span>
+<span id="cb1-158"><a href="#cb1-158" aria-hidden="true" tabindex="-1"></a>$$ </span>
+<span id="cb1-159"><a href="#cb1-159" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-160"><a href="#cb1-160" aria-hidden="true" tabindex="-1"></a>Expanding this out and grouping similar terms leads to</span>
+<span id="cb1-161"><a href="#cb1-161" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-162"><a href="#cb1-162" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb1-163"><a href="#cb1-163" aria-hidden="true" tabindex="-1"></a>p \left( \mathbf{u}_2 | \mathbf{u}_1 \right) = \frac{\sqrt{|\boldsymbol{\Sigma}_{11} |}}{\sqrt{\left( 2 \pi \right)^{N - N_1} |\boldsymbol{\Sigma} | }}exp \left[ -\frac{1}{2} \left[ \left(\mathbf{u}_2 - \boldsymbol{\mu}_2 - \boldsymbol{\Sigma}_{21}\boldsymbol{\Sigma}^{-1}\left(\mathbf{u}_1 - \boldsymbol{\mu}_{1} \right) \right)^{T} \left( \boldsymbol{\Sigma}_{22} - \boldsymbol{\Sigma}_{21} \boldsymbol{\Sigma}_{11}^{-1} \boldsymbol{\Sigma}_{12} \right)^{-1} \left(u_2 - \mu_2 - \boldsymbol{\Sigma}_{21}\boldsymbol{\Sigma}^{-1}\left(\mathbf{u}_1 - \boldsymbol{\mu}_{1} \right) \right) \right] \right]</span>
+<span id="cb1-164"><a href="#cb1-164" aria-hidden="true" tabindex="-1"></a>$$  </span>
+<span id="cb1-165"><a href="#cb1-165" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-166"><a href="#cb1-166" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-167"><a href="#cb1-167" aria-hidden="true" tabindex="-1"></a>From this it is readily apparent that the mean and covariance of the new density is given by</span>
+<span id="cb1-168"><a href="#cb1-168" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-169"><a href="#cb1-169" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb1-170"><a href="#cb1-170" aria-hidden="true" tabindex="-1"></a>\mathbb{E}\left<span class="co">[</span><span class="ot"> p \left( \mathbf{u}_2 | \mathbf{u}_1 \right) \right </span><span class="co">]</span> =    \boldsymbol{\mu}_2 + \boldsymbol{\Sigma}_{21}\boldsymbol{\Sigma}_{11}^{-1}\left(\mathbf{u}_1 - \boldsymbol{\mu}_{1} \right) </span>
+<span id="cb1-171"><a href="#cb1-171" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb1-172"><a href="#cb1-172" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-173"><a href="#cb1-173" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb1-174"><a href="#cb1-174" aria-hidden="true" tabindex="-1"></a>Cov \left<span class="co">[</span><span class="ot"> p \left( \mathbf{u}_2 | \mathbf{u}_1 \right) \right </span><span class="co">]</span> =  \boldsymbol{\Sigma}_{22} - \boldsymbol{\Sigma}_{21} \boldsymbol{\Sigma}_{11}^{-1} \boldsymbol{\Sigma}_{12} </span>
+<span id="cb1-175"><a href="#cb1-175" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb1-176"><a href="#cb1-176" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-177"><a href="#cb1-177" aria-hidden="true" tabindex="-1"></a>The scaling constant in the equation prior can be expanded using the determinant of a block matrix identity. </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 
