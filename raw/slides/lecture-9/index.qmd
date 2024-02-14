@@ -150,33 +150,33 @@ Click [here](https://psesh.github.io/ae8803/useful_codes/gaussians.html).
 
 - We will consider the Olympic winning times dataset again, but this time assume there is no observational sensor noise. 
 
-- The markers denote the training $\left(x_i, t_i \right)$ pairs, while the dashed lines denote the locations are which we would like to make predictions. we will use the superscript $\ast$ to denote points at which we would like to infer predictions
+- The markers denote the training $\left(x_i, f_i \right)$ pairs, while the dashed lines denote the locations are which we would like to make predictions. we will use the superscript $\ast$ to denote points at which we would like to infer predictions
 $$
 \underbrace{\mathbf{x}=\left[\begin{array}{c}
 x_1 \\
 x_2 \\
 \vdots \\
 x_N \\
-\end{array}\right], \; \;\; \mathbf{t}=\left[\begin{array}{c}
-t_1\\
-t_2\\
+\end{array}\right], \; \;\; \mathbf{f}=\left[\begin{array}{c}
+f_1\\
+f_2\\
 \vdots \\
-t_N \\
+f_N \\
 \end{array}\right]}_{\text{training}}, \; \; \; \; \; \;  \underbrace{\mathbf{x}^{\ast}=\left[\begin{array}{c}
 x_1^{\ast} \\
 x_2^{\ast} \\
 \vdots \\
 x_L^{\ast} \\
-\end{array}\right], \; \;\; \mathbf{t}^{\ast}=\left[\begin{array}{c}
-t_1^{\ast}\\
-t_2^{\ast}\\
+\end{array}\right], \; \;\; \mathbf{f}^{\ast}=\left[\begin{array}{c}
+f_1^{\ast}\\
+f_2^{\ast}\\
 \vdots \\
-t_L^{\ast} \\
+f_L^{\ast} \\
 \end{array}\right]}_{\text{prediction}}
 $$
 where $N$ denotes the number of points in the training set, and $L$ denotes the number of points in the prediction set. 
 
-- It will be useful to combine the winning times (both training and prediction) in the same vector, i.e., $\mathbf{\hat{t}} = \left[ \mathbf{t}, \mathbf{t}^{\ast} \right]^{T}$. 
+- It will be useful to combine the winning times (both training and prediction) in the same vector, i.e., $\mathbf{\hat{f}} = \left[ \mathbf{f}, \mathbf{f}^{\ast} \right]^{T}$. 
 
 
 ## An introduction to Gaussian processes
@@ -225,7 +225,7 @@ $$
 
 - Assuming a zero mean, the GP prior over $\hat{\mathbf{t}}$ is given by
 $$
-p \left( \mathbf{\hat{t}} \right) = \mathcal{N} \left( \mathbf{0}, \left[\begin{array}{cc}
+p \left( \mathbf{\hat{f}} \right) = \mathcal{N} \left( \mathbf{0}, \left[\begin{array}{cc}
 \mathbf{C} & \mathbf{R} \\
 \mathbf{R}^{T} & \mathbf{C}^{\ast}
 \end{array}\right]  \right)
@@ -238,8 +238,8 @@ $$
 - From our prior foray into Gaussian conditionals, we recognize this to be
 $$
 \begin{aligned}
-p \left( \mathbf{t}^{\ast} | \mathbf{t} \right) & = \mathcal{N}\left( \boldsymbol{\mu}^{\ast}, \boldsymbol{\Sigma}^{\ast} \right), \; \; \; \; \text{where} \\ 
-\boldsymbol{\mu}^{\ast} = \mathbf{R}^{T} \mathbf{C}^{-1} \mathbf{t}, \; \; & \; \; \boldsymbol{\Sigma}^{\ast} = \mathbf{C}^{\ast} - \mathbf{R}^{T} \mathbf{C}^{-1} \mathbf{R}
+p \left( \mathbf{f}^{\ast} | \mathbf{f} \right) & = \mathcal{N}\left( \boldsymbol{\mu}^{\ast}, \boldsymbol{\Sigma}^{\ast} \right), \; \; \; \; \text{where} \\ 
+\boldsymbol{\mu}^{\ast} = \mathbf{R}^{T} \mathbf{C}^{-1} \mathbf{f}, \; \; & \; \; \boldsymbol{\Sigma}^{\ast} = \mathbf{C}^{\ast} - \mathbf{R}^{T} \mathbf{C}^{-1} \mathbf{R}
 \end{aligned}
 $$
 

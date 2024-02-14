@@ -129,13 +129,13 @@ Below you will find a list of the lectures that form the backbone of this course
   4. Midterm overview
 </details>
 
-02.14: **L9. Kernel learning ** 
+02.14: **L10. More on Gaussian Processes and Kernels** | <a href="slides/lecture-10/index.html"  style="text-decoration: none">Slides</a> | <a href="https://psesh.github.io/ae8803/useful_codes/gaussians.html"  style="text-decoration: none">Notebook</a>
 <details>
   <summary>Contents</summary>
 
-  1. Kernel trick and kernel construction
-  2. Constructing kernels from learnt features.
-  3. Spectral representations of kernels. 
+  1. Noisy regression
+  2. More about kernels 
+  3. Kernel trick
 </details>
 
 02.19: **L10. Open-source resources** 

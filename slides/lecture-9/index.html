@@ -535,30 +535,30 @@ k \left( \boldsymbol{r} \right) =  \alpha \; exp \left(- \frac{1}{2l^2}  \boldsy
 <h3 id="noise-free-regression">Noise-free regression</h3>
 <ul>
 <li><p>We will consider the Olympic winning times dataset again, but this time assume there is no observational sensor noise.</p></li>
-<li><p>The markers denote the training <span class="math inline">\left(x_i, t_i \right)</span> pairs, while the dashed lines denote the locations are which we would like to make predictions. we will use the superscript <span class="math inline">\ast</span> to denote points at which we would like to infer predictions <span class="math display">
+<li><p>The markers denote the training <span class="math inline">\left(x_i, f_i \right)</span> pairs, while the dashed lines denote the locations are which we would like to make predictions. we will use the superscript <span class="math inline">\ast</span> to denote points at which we would like to infer predictions <span class="math display">
 \underbrace{\mathbf{x}=\left[\begin{array}{c}
 x_1 \\
 x_2 \\
 \vdots \\
 x_N \\
-\end{array}\right], \; \;\; \mathbf{t}=\left[\begin{array}{c}
-t_1\\
-t_2\\
+\end{array}\right], \; \;\; \mathbf{f}=\left[\begin{array}{c}
+f_1\\
+f_2\\
 \vdots \\
-t_N \\
+f_N \\
 \end{array}\right]}_{\text{training}}, \; \; \; \; \; \;  \underbrace{\mathbf{x}^{\ast}=\left[\begin{array}{c}
 x_1^{\ast} \\
 x_2^{\ast} \\
 \vdots \\
 x_L^{\ast} \\
-\end{array}\right], \; \;\; \mathbf{t}^{\ast}=\left[\begin{array}{c}
-t_1^{\ast}\\
-t_2^{\ast}\\
+\end{array}\right], \; \;\; \mathbf{f}^{\ast}=\left[\begin{array}{c}
+f_1^{\ast}\\
+f_2^{\ast}\\
 \vdots \\
-t_L^{\ast} \\
+f_L^{\ast} \\
 \end{array}\right]}_{\text{prediction}}
 </span> where <span class="math inline">N</span> denotes the number of points in the training set, and <span class="math inline">L</span> denotes the number of points in the prediction set.</p></li>
-<li><p>It will be useful to combine the winning times (both training and prediction) in the same vector, i.e., <span class="math inline">\mathbf{\hat{t}} = \left[ \mathbf{t}, \mathbf{t}^{\ast} \right]^{T}</span>.</p></li>
+<li><p>It will be useful to combine the winning times (both training and prediction) in the same vector, i.e., <span class="math inline">\mathbf{\hat{f}} = \left[ \mathbf{f}, \mathbf{f}^{\ast} \right]^{T}</span>.</p></li>
 </ul>
 </section>
 <section id="an-introduction-to-gaussian-processes-6" class="slide level2">
@@ -601,7 +601,7 @@ k\left(x_{N},x_{1}^{\ast}\right) &amp; \cdots &amp; k\left(x_{N},x_{L}^{\ast}\ri
 <h3 id="noise-free-regression-2">Noise-free regression</h3>
 <ul>
 <li><p>Assuming a zero mean, the GP prior over <span class="math inline">\hat{\mathbf{t}}</span> is given by <span class="math display">
-p \left( \mathbf{\hat{t}} \right) = \mathcal{N} \left( \mathbf{0}, \left[\begin{array}{cc}
+p \left( \mathbf{\hat{f}} \right) = \mathcal{N} \left( \mathbf{0}, \left[\begin{array}{cc}
 \mathbf{C} &amp; \mathbf{R} \\
 \mathbf{R}^{T} &amp; \mathbf{C}^{\ast}
 \end{array}\right]  \right)
@@ -610,8 +610,8 @@ p \left( \mathbf{\hat{t}} \right) = \mathcal{N} \left( \mathbf{0}, \left[\begin{
 <li><p>Making predictions amounts to manipulating this distribution to give a distribution over the function values at the prediction points conditioned on the observed training data, i.e., <span class="math inline">p \left( \mathbf{t}^{\ast} | \mathbf{t} \right)</span></p></li>
 <li><p>From our prior foray into Gaussian conditionals, we recognize this to be <span class="math display">
 \begin{aligned}
-p \left( \mathbf{t}^{\ast} | \mathbf{t} \right) &amp; = \mathcal{N}\left( \boldsymbol{\mu}^{\ast}, \boldsymbol{\Sigma}^{\ast} \right), \; \; \; \; \text{where} \\
-\boldsymbol{\mu}^{\ast} = \mathbf{R}^{T} \mathbf{C}^{-1} \mathbf{t}, \; \; &amp; \; \; \boldsymbol{\Sigma}^{\ast} = \mathbf{C}^{\ast} - \mathbf{R}^{T} \mathbf{C}^{-1} \mathbf{R}
+p \left( \mathbf{f}^{\ast} | \mathbf{f} \right) &amp; = \mathcal{N}\left( \boldsymbol{\mu}^{\ast}, \boldsymbol{\Sigma}^{\ast} \right), \; \; \; \; \text{where} \\
+\boldsymbol{\mu}^{\ast} = \mathbf{R}^{T} \mathbf{C}^{-1} \mathbf{f}, \; \; &amp; \; \; \boldsymbol{\Sigma}^{\ast} = \mathbf{C}^{\ast} - \mathbf{R}^{T} \mathbf{C}^{-1} \mathbf{R}
 \end{aligned}
 </span></p></li>
 </ul>
