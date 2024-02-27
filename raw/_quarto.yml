@@ -15,6 +15,7 @@ project:
     - sample_problems/lecture_4.qmd
     - useful_codes/discrete.qmd
     - useful_codes/gaussians.qmd
+    - useful_codes/kernels.ipynb
 format:
   html:
     page-layout: full
@@ -59,6 +60,8 @@ website:
         contents:
           - text: "Useful codes"
             href: https://psesh.github.io/ae8803/useful_codes/discrete.html
+          - text: "Kernels"
+            href: https://psesh.github.io/ae8803/useful_codes/kernels.html
           - text: "Gaussians"
             href: https://psesh.github.io/ae8803/useful_codes/gaussians.html
 #   
