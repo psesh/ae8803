@@ -35,7 +35,7 @@ that has two hyperparameters, $\sigma_{f}$ and $l$.
 
 # Hyperparameters
 
-- Recall from before, the **marginal likelihood** for a Gaussian process (assuming a Gaussian likelihood and Gaussian model prior) is given by 
+- Recall from before, the **marginal likelihood** for a Gaussian process:
 $$
 p \left( \mathbf{t} | \sigma^2 \right) = \int p \left( \mathbf{t} | \mathbf{f}, \sigma^2 \right) p \left( \mathbf{f} \right) d \mathbf{f} = \mathcal{N} \left(\mathbf{0}, \mathbf{C} + \sigma^2 \mathbf{I}_{N} \right) 
 $$
@@ -64,7 +64,7 @@ $$
 $$
 
 # MAP vs Maximum likelihood
-- Note, if the priors $p \left( \boldsymbol{\theta} \boldsymbol \right)$ are uniform, then 
+- Note, if the priors $p \left( \boldsymbol{\theta} \right)$ are uniform, then 
 $$
 \begin{aligned}
 \hat{\boldsymbol{\theta}}_{MAP} & = \underset{\boldsymbol{\theta}}{argmax} \; log \; p \left( \mathbf{t} | \boldsymbol{\theta} \right) + log \;  p \left( \boldsymbol{\theta} \right) \\
@@ -85,6 +85,60 @@ $$
 $$
 \begin{aligned}
 log \left(p \left( \mathbf{t} | \sigma^2, \boldsymbol{\theta} \right)  \right) & = log \; \mathcal{N} \left(\mathbf{0}, \mathbf{C}\left( \boldsymbol{\theta} \right) + \sigma^2 \mathbf{I}_{N} \right) \\ 
-& = log \left[  \left( 2 \pi \right)^{-\frac{d}{2}}  \right]
+& = log \left[  \left( 2 \pi \right)^{-\frac{N}{2}}  \left| \sigma^2 \mathbf{I} + \mathbf{C} \right|^{-\frac{1}{2}} exp \left( - \frac{1}{2} \left(\sigma^2 \mathbf{I} + \mathbf{C} \right)^{-1} \mathbf{t} \right)  \right] \\ 
+& = - \frac{N}{2} log \left( 2 \pi \right) - \frac{1}{2} log  \left| \sigma^2 \mathbf{I} + \mathbf{C} \right| - \frac{1}{2} \mathbf{t}^{T} \left(\sigma^2 \mathbf{I} + \mathbf{C} \right)^{-1} \mathbf{t}
 \end{aligned}
 $$
+
+# Marginal likelihood
+
+- From the prior slide 
+$$
+log \left(p \left( \mathbf{t} | \sigma^2, \boldsymbol{\theta} \right)  \right) = \underbrace{-\frac{N}{2} log \left( 2 \pi \right)}_{\textsf{constant}} - \underbrace{\frac{1}{2} log  \left| \sigma^2 \mathbf{I} + \mathbf{C} \right|}_{\textsf{complexity}} - \underbrace{\frac{1}{2} \mathbf{t}^{T} \left(\sigma^2 \mathbf{I} + \mathbf{C} \right)^{-1} \mathbf{t}}_{\textsf{data fit}}
+$$
+- Standard approach is to optimize this using gradient-based methods by computing
+$$
+\nabla_{\boldsymbol{\theta}} log \left(p \left( \mathbf{t} | \sigma^2, \boldsymbol{\theta} \right)  \right)
+$$
+
+# Practical computation
+
+- For all intents and purposes, avoid directly computing inverses and determinants!
+
+- For instance:
+
+```{python}
+
+#| echo: true
+
+import numpy as np
+
+det = np.linalg.det(np.eye(200) * 0.1)
+print('determinant '+str(det)) 
+print('log determinant '+str(np.log(det)))
+```
+
+# Practical computation
+
+We can break up the calculation into a few steps:
+
+1. Compute the Cholesky factorization, $\mathbf{S} = \mathbf{K} + \sigma^2 \mathbf{I}$, to yield $\mathbf{S} = \mathbf{LL}^{T}$. 
+
+2. Compute the log determinant via 
+$$
+log  \left| \mathbf{S} \right| = log  \left| \mathbf{L}\mathbf{L}^{T} \right| = 2 log \left| \mathbf{L} \right| = 2 \sum_{i=1}^{N} log \; \mathbf{L}_{ii}
+$$
+
+3. Compute the quadratic term via 
+$$
+\mathbf{t}^{T} \mathbf{S}^{-1} \mathbf{t} = \mathbf{t}^{T} \mathbf{LL}^{-T} \mathbf{t} = \left( \mathbf{L}^{-1} \mathbf{t} \right)^{T} \left( \mathbf{L}^{-1} \mathbf{t}\right) = \mathbf{a}^{T} \mathbf{a}
+$$
+
+# Practical computation
+
+4. Summing it all up: 
+$$
+log \left(p \left( \mathbf{t} | \sigma^2, \boldsymbol{\theta} \right)  \right) = - \frac{N}{2} log \left( 2 \pi \right) - \sum_{i=1}^{N} log \; \mathbf{L}_{ii} - \frac{1}{2} \mathbf{a}^{T} \mathbf{a}
+$$
+
+Note: never compute the determinant or the inverse of $\mathbf{S}$ directly! 

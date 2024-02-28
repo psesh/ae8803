@@ -161,8 +161,7 @@ Below you will find a list of the lectures that form the backbone of this course
     
     1. MAP
     2. Marginal likelihood
-    3. Metrics for model evaluation
-    4. Demonstration using ``gpytorch``
+    3. Demonstration using ``gpytorch``
 </details>
 
 *Please ignore the contents below, this needs to be edited*

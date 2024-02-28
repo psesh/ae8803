@@ -28,6 +28,71 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+      }
+    pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+    div.sourceCode
+      { color: #f8f8f2;  }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #f8f8f2; } /* Normal */
+    code span.al { color: #f07178; background-color: #2a0f15; font-weight: bold; } /* Alert */
+    code span.an { color: #d4d0ab; } /* Annotation */
+    code span.at { color: #00e0e0; } /* Attribute */
+    code span.bn { color: #d4d0ab; } /* BaseN */
+    code span.bu { color: #abe338; } /* BuiltIn */
+    code span.cf { color: #ffa07a; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #abe338; } /* Char */
+    code span.cn { color: #ffd700; } /* Constant */
+    code span.co { color: #f8f8f2; font-style: italic; } /* Comment */
+    code span.cv { color: #ffd700; } /* CommentVar */
+    code span.do { color: #f8f8f2; } /* Documentation */
+    code span.dt { color: #ffa07a; } /* DataType */
+    code span.dv { color: #d4d0ab; } /* DecVal */
+    code span.er { color: #f07178; text-decoration: underline; } /* Error */
+    code span.ex { color: #00e0e0; font-weight: bold; } /* Extension */
+    code span.fl { color: #d4d0ab; } /* Float */
+    code span.fu { color: #ffa07a; } /* Function */
+    code span.im { color: #abe338; } /* Import */
+    code span.in { color: #d4d0ab; } /* Information */
+    code span.kw { color: #ffa07a; font-weight: bold; } /* Keyword */
+    code span.op { color: #ffa07a; } /* Operator */
+    code span.ot { color: #00e0e0; } /* Other */
+    code span.pp { color: #dcc6e0; } /* Preprocessor */
+    code span.re { color: #00e0e0; background-color: #f8f8f2; } /* RegionMarker */
+    code span.sc { color: #abe338; } /* SpecialChar */
+    code span.ss { color: #abe338; } /* SpecialString */
+    code span.st { color: #abe338; } /* String */
+    code span.va { color: #00e0e0; } /* Variable */
+    code span.vs { color: #abe338; } /* VerbatimString */
+    code span.wa { color: #dcc6e0; } /* Warning */
   </style>
   <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto.css">
   <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
@@ -351,7 +416,11 @@
 </section>
 <section id="hyperparameters" class="title-slide slide level1 center">
 <h1>Hyperparameters</h1>
-<p>Much of the content today will be based on Chapter 5 in RW. Please read sections 5.1 to 5.4 (inclusive). # Hyperparameters</p>
+<p>Much of the content today will be based on Chapter 5 in RW. Please read sections 5.1 to 5.4 (inclusive).</p>
+</section>
+
+<section id="hyperparameters-1" class="title-slide slide level1 center">
+<h1>Hyperparameters</h1>
 <ul>
 <li><p>Almost all covariance functions have <em>unknown</em> hyperparameters. In many cases, the selection and subsequent optimal set of values of hyperparameters can provide useful insight about the function.</p></li>
 <li><p>Consider the squared exponential kernel <span class="math display">
@@ -361,10 +430,10 @@ k \left( \mathbf{x}, \mathbf{x}' \right) = \sigma_{f}^2 exp \left( -\frac{1}{2l^
 </ul>
 </section>
 
-<section id="hyperparameters-1" class="title-slide slide level1 center">
+<section id="hyperparameters-2" class="title-slide slide level1 center">
 <h1>Hyperparameters</h1>
 <ul>
-<li><p>Recall from before, the <strong>marginal likelihood</strong> for a Gaussian process (assuming a Gaussian likelihood and Gaussian model prior) is given by <span class="math display">
+<li><p>Recall from before, the <strong>marginal likelihood</strong> for a Gaussian process: <span class="math display">
 p \left( \mathbf{t} | \sigma^2 \right) = \int p \left( \mathbf{t} | \mathbf{f}, \sigma^2 \right) p \left( \mathbf{f} \right) d \mathbf{f} = \mathcal{N} \left(\mathbf{0}, \mathbf{C} + \sigma^2 \mathbf{I}_{N} \right)
 </span></p></li>
 <li><p>Now, let <span class="math inline">\boldsymbol{\theta} = \left[ \sigma_f, l, \ldots \right]</span>. Then, we want to work out <span class="math display">
@@ -392,11 +461,11 @@ p \left( \boldsymbol{\theta} | \mathbf{t} \right) = \frac{p \left( \mathbf{t} | 
 <section id="map-vs-maximum-likelihood" class="title-slide slide level1 center">
 <h1>MAP vs Maximum likelihood</h1>
 <ul>
-<li>Note, if the priors <span class="math inline">p \left( \boldsymbol{\theta} \boldsymbol)</span> are uniform, then <span class="math display">
+<li>Note, if the priors <span class="math inline">p \left( \boldsymbol{\theta} \right)</span> are uniform, then <span class="math display">
 \begin{aligned}
 \hat{\boldsymbol{\theta}}_{MAP} &amp; = \underset{\boldsymbol{\theta}}{argmax} \; log \; p \left( \mathbf{t} | \boldsymbol{\theta} \right) + log \;  p \left( \boldsymbol{\theta} \right) \\
-&amp; = \underset{\boldsymbol{\theta}}{argmax} \; log \; p \left( \mathbf{t} | \boldsymbol{\theta} \right) + log \; \textrm{constant}
-&amp; \propto \underset{\boldsymbol{\theta}}{argmax} \; log \; p \left( \mathbf{t} | \boldsymbol{\theta} \right)
+&amp; = \underset{\boldsymbol{\theta}}{argmax} \; log \; p \left( \mathbf{t} | \boldsymbol{\theta} \right) + log \; \textrm{constant} \\
+&amp; \propto \underset{\boldsymbol{\theta}}{argmax} \; log \; p \left( \mathbf{t} | \boldsymbol{\theta} \right) \\
 &amp; = \hat{\boldsymbol{\theta}}_{ML}
 \end{aligned}
 </span> in which case we have the marginal likelihood estimate.</li>
@@ -407,15 +476,71 @@ p \left( \boldsymbol{\theta} | \mathbf{t} \right) = \frac{p \left( \mathbf{t} | 
 <h1>Marginal likelihood</h1>
 <ul>
 <li><p>Once again, we can write the marginal likelihood as <span class="math display">
-p \left( \mathbf{t} | \sigma^2, \boldsymbol{\theta} \right) = \int p \left( \mathbf{t} | \mathbf{f}, \sigma^2 \right) p \left( \mathbf{f} \right) d \mathbf{f} = \mathcal{N} \left(\mathbf{0}, \mathbf{C}\left( \boldsymbol{\theta} \right) + \sigma^2 \mathbf{I}_{N} \right).
+p \left( \mathbf{t} | \sigma^2, \boldsymbol{\theta} \right) = \int p \left( \mathbf{t} | \mathbf{f}, \sigma^2 \right) p \left( \mathbf{f} \right) d \mathbf{f} = \mathcal{N} \left(\mathbf{t} | \mathbf{0}, \mathbf{C}\left( \boldsymbol{\theta} \right) + \sigma^2 \mathbf{I}_{N} \right).
 </span></p></li>
 <li><p>From which, we can write <span class="math display">
 \begin{aligned}
 log \left(p \left( \mathbf{t} | \sigma^2, \boldsymbol{\theta} \right)  \right) &amp; = log \; \mathcal{N} \left(\mathbf{0}, \mathbf{C}\left( \boldsymbol{\theta} \right) + \sigma^2 \mathbf{I}_{N} \right) \\
-&amp; = log \left[    \right]
+&amp; = log \left[  \left( 2 \pi \right)^{-\frac{N}{2}}  \left| \sigma^2 \mathbf{I} + \mathbf{C} \right|^{-\frac{1}{2}} exp \left( - \frac{1}{2} \left(\sigma^2 \mathbf{I} + \mathbf{C} \right)^{-1} \mathbf{t} \right)  \right] \\
+&amp; = - \frac{N}{2} log \left( 2 \pi \right) - \frac{1}{2} log  \left| \sigma^2 \mathbf{I} + \mathbf{C} \right| - \frac{1}{2} \mathbf{t}^{T} \left(\sigma^2 \mathbf{I} + \mathbf{C} \right)^{-1} \mathbf{t}
 \end{aligned}
 </span></p></li>
 </ul>
+</section>
+
+<section id="marginal-likelihood-1" class="title-slide slide level1 center">
+<h1>Marginal likelihood</h1>
+<ul>
+<li>From the prior slide <span class="math display">
+log \left(p \left( \mathbf{t} | \sigma^2, \boldsymbol{\theta} \right)  \right) = \underbrace{-\frac{N}{2} log \left( 2 \pi \right)}_{\textsf{constant}} - \underbrace{\frac{1}{2} log  \left| \sigma^2 \mathbf{I} + \mathbf{C} \right|}_{\textsf{complexity}} - \underbrace{\frac{1}{2} \mathbf{t}^{T} \left(\sigma^2 \mathbf{I} + \mathbf{C} \right)^{-1} \mathbf{t}}_{\textsf{data fit}}
+</span></li>
+<li>Standard approach is to optimize this using gradient-based methods by computing <span class="math display">
+\nabla_{\boldsymbol{\theta}} log \left(p \left( \mathbf{t} | \sigma^2, \boldsymbol{\theta} \right)  \right)
+</span></li>
+</ul>
+</section>
+
+<section id="practical-computation" class="title-slide slide level1 center">
+<h1>Practical computation</h1>
+<ul>
+<li><p>For all intents and purposes, avoid directly computing inverses and determinants!</p></li>
+<li><p>For instance:</p></li>
+</ul>
+<div class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2"></a></span>
+<span id="cb1-3"><a href="#cb1-3"></a>det <span class="op">=</span> np.linalg.det(np.eye(<span class="dv">200</span>) <span class="op">*</span> <span class="fl">0.1</span>)</span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="bu">print</span>(<span class="st">'determinant '</span><span class="op">+</span><span class="bu">str</span>(det)) </span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="bu">print</span>(<span class="st">'log determinant '</span><span class="op">+</span><span class="bu">str</span>(np.log(det)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>determinant 1.0000000000012853e-200
+log determinant -460.51701859880785</code></pre>
+</div>
+</div>
+</section>
+
+<section id="practical-computation-1" class="title-slide slide level1 center">
+<h1>Practical computation</h1>
+<p>We can break up the calculation into a few steps:</p>
+<ol type="1">
+<li><p>Compute the Cholesky factorization, <span class="math inline">\mathbf{S} = \mathbf{K} + \sigma^2 \mathbf{I}</span>, to yield <span class="math inline">\mathbf{S} = \mathbf{LL}^{T}</span>.</p></li>
+<li><p>Compute the log determinant via <span class="math display">
+log  \left| \mathbf{S} \right| = log  \left| \mathbf{L}\mathbf{L}^{T} \right| = 2 log \left| \mathbf{L} \right| = 2 \sum_{i=1}^{N} log \; \mathbf{L}_{ii}
+</span></p></li>
+<li><p>Compute the quadratic term via <span class="math display">
+\mathbf{t}^{T} \mathbf{S}^{-1} \mathbf{t} = \mathbf{t}^{T} \mathbf{LL}^{-T} \mathbf{t} = \left( \mathbf{L}^{-1} \mathbf{t} \right)^{T} \left( \mathbf{L}^{-1} \mathbf{t}\right) = \mathbf{a}^{T} \mathbf{a}
+</span></p></li>
+</ol>
+</section>
+
+<section id="practical-computation-2" class="title-slide slide level1 center">
+<h1>Practical computation</h1>
+<ol start="4" type="1">
+<li>Summing it all up: <span class="math display">
+log \left(p \left( \mathbf{t} | \sigma^2, \boldsymbol{\theta} \right)  \right) = - \frac{N}{2} log \left( 2 \pi \right) - \sum_{i=1}^{N} log \; \mathbf{L}_{ii} - \frac{1}{2} \mathbf{a}^{T} \mathbf{a}
+</span></li>
+</ol>
+<p>Note: never compute the determinant or the inverse of <span class="math inline">\mathbf{S}</span> directly!</p>
 
 <div class="footer footer-default">
 <p>L12 | Hyperparameter inference</p>
