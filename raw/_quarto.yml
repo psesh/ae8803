@@ -9,6 +9,7 @@ project:
     - slides/lecture-8/index.qmd
     - slides/lecture-9/index.qmd
     - slides/lecture-10/index.qmd
+    - slides/lecture-12/index.qmd
     - sample_problems/lecture_1.qmd
     - sample_problems/lecture_2.qmd
     - sample_problems/lecture_3.qmd

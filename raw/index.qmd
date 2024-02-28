@@ -138,25 +138,36 @@ Below you will find a list of the lectures that form the backbone of this course
   3. Kernel trick
 </details>
 
-02.19: **L10. Open-source resources** 
-<details>
-  <summary>Contents</summary>
+02.19: **No class**
 
-  1. Introduction to ``pymc, gpytorch, gpflow, GPjax``. 
-  2. Overview of ``pandas``
-</details>
+02.21: **No class**
 
-02.21: **L11. Hyperparameters** 
+02.26: **L11. More about Kernels** | <a href="https://psesh.github.io/ae8803/useful_codes/kernels.html"  style="text-decoration: none">Notebook 1</a> | <a href="https://psesh.github.io/ae8803/useful_codes/eigen.html"  style="text-decoration: none">Notebook 2</a> | <a href="https://psesh.github.io/ae8803/useful_codes/fourier.html"  style="text-decoration: none">Notebook 3</a> |
 <details>
   <summary>Contents</summary>
     
-    1. Hyperparameter optimization
-    2. Distance metrics
-    3. Markov chain Monte Carlo and variational inference
+    1. Minimum norm problems
+    2. The case of infinitely many feature vectors
+    3. Eigenfunction analysis
+    4. Fourier analysis
 </details>
 
+02.28: *Coding assignment isseued*
 
-02.26: **L12. Gaussian process classification** 
+
+02.28: **L12. Hyperparameters inference** <a href="slides/lecture-12/index.html"  style="text-decoration: none">Slides</a>
+<details>
+  <summary>Contents</summary>
+    
+    1. MAP
+    2. Marginal likelihood
+    3. Metrics for model evaluation
+    4. Demonstration using ``gpytorch``
+</details>
+
+*Please ignore the contents below, this needs to be edited*
+
+02.26: **L13. Gaussian process classification** 
 <details>
   <summary>Contents</summary>
 
@@ -183,8 +194,6 @@ Below you will find a list of the lectures that form the backbone of this course
   2. ELBO derivation
   3. Minimizing the KL-divergence practically using Adam. 
 </details>
-
-03.06: *Coding assignment due*
 
 03.06: **L15. Sparse (and subspace-based) Gaussian processes** 
 <details>
