@@ -16,6 +16,10 @@ project:
     - useful_codes/discrete.qmd
     - useful_codes/gaussians.qmd
     - useful_codes/kernels.ipynb
+    - useful_codes/eigen.ipynb
+    - useful_codes/fourier.ipynb
+    - useful_codes/gp101.ipynb
+    - coding-1/coding-1.ipynb
 format:
   html:
     page-layout: full
@@ -56,13 +60,23 @@ website:
                 href: https://psesh.github.io/ae8803/sample_problems/lecture_3.html
               - text: "L4"
                 href: https://psesh.github.io/ae8803/sample_problems/lecture_4.html
-      - section: "Utilities"
+      - section: "Notebooks"
         contents:
-          - text: "Useful codes"
+          - text: "Discrete distributions"
             href: https://psesh.github.io/ae8803/useful_codes/discrete.html
-          - text: "Kernels"
-            href: https://psesh.github.io/ae8803/useful_codes/kernels.html
-          - text: "Gaussians"
+          - text: "Marginal and conditional Gaussians"
             href: https://psesh.github.io/ae8803/useful_codes/gaussians.html
+          - text: "Kernel trick and lifting"
+            href: https://psesh.github.io/ae8803/useful_codes/kernels.html
+          - text: "Eigenfunction analysis of kernels"
+            href: https://psesh.github.io/ae8803/useful_codes/eigen.html
+          - text: "Fourier analysis of kernels"
+            href: https://psesh.github.io/ae8803/useful_codes/fourier.html
+          - text: "GP 101"
+            href: https://psesh.github.io/ae8803/useful_codes/gp101.html
+      - section: "Assignments"
+        contents:
+              - text: "Assignment 2"
+                href: https://psesh.github.io/ae8803/coding-1/coding-1.html
 #   
 # freeze: false

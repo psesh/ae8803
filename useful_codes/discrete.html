@@ -202,7 +202,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
- <span class="menu-text">Utilities</span></a>
+ <span class="menu-text">Notebooks</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -211,19 +211,54 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="https://psesh.github.io/ae8803/useful_codes/discrete.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Useful codes</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="https://psesh.github.io/ae8803/useful_codes/kernels.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Kernels</span></a>
+ <span class="menu-text">Discrete distributions</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="https://psesh.github.io/ae8803/useful_codes/gaussians.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Gaussians</span></a>
+ <span class="menu-text">Marginal and conditional Gaussians</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://psesh.github.io/ae8803/useful_codes/kernels.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Kernel trick and lifting</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://psesh.github.io/ae8803/useful_codes/eigen.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Eigenfunction analysis of kernels</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://psesh.github.io/ae8803/useful_codes/fourier.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Fourier analysis of kernels</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://psesh.github.io/ae8803/useful_codes/gp101.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">GP 101</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">Assignments</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://psesh.github.io/ae8803/coding-1/coding-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Assignment 2</span></a>
   </div>
 </li>
       </ul>
@@ -324,20 +359,20 @@ p \; \; \; \textrm{if} \; x = 1
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(X)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1 0 0 1 0 0 1 0 1 1 1 1 1 0 1 1 0 0 0 1 1 0 0 0 1 0 1 1 0 0 1 1 0 1 1 0 1
- 0 1 1 0 1 0 0 1 0 1 0 1 0 0 1 1 1 0 1 1 0 1 0 1 0 1 0 1 1 1 0 0 1 1 1 1 1
- 0 0 0 0 0 0 0 1 0 0 0 1 0 1 0 1 1 0 1 0 0 0 0 1 0 1 0 1 1 0 0 1 1 0 0 1 1
- 1 0 1 0 0 1 1 1 1 0 0 1 0 0 0 0 0 0 0 0 1 1 0 0 0 0 0 0 0 0 0 1 1 0 1 0 1
- 0 1 0 0 1 0 1 1 1 1 1 0 0 1 0 1 0 0 0 1 1 0 0 1 0 0 0 1 0 1 0 0 1 0 0 1 0
- 0 0 0 0 1 1 1 0 0 1 1 0 1 1 0 1 0 1 1 1 1 0 0 0 1 0 1 0 0 0 1 1 1 0 0 0 1
- 0 0 0 1 1 0 1 0 0 0 0 0 0 1 1 0 0 0 0 0 0 0 0 0 0 1 1 0 0 1 0 0 1 0 0 1 1
- 0 0 0 0 1 0 0 0 1 1 0 0 0 0 0 1 0 0 1 0 0 0 0 1 0 1 1 1 1 1 0 1 0 0 0 0 0
- 0 0 0 0 0 0 1 1 0 1 0 0 0 0 1 1 1 0 0 0 0 1 1 0 0 0 1 0 1 0 0 0 0 1 0 1 0
- 0 1 1 0 0 1 0 0 1 0 0 0 0 0 0 0 0 1 0 1 0 1 1 1 0 0 1 0 1 0 0 1 1 1 0 1 0
- 0 0 0 0 0 1 0 1 0 0 0 0 1 1 1 0 0 0 0 0 0 1 1 1 0 0 0 0 0 1 0 0 1 1 1 1 0
- 0 0 0 1 1 0 1 0 1 1 0 0 1 0 0 1 1 1 0 1 1 1 0 0 0 1 0 0 0 0 0 0 1 0 1 1 0
- 1 1 0 1 0 1 1 0 0 1 0 1 1 1 1 0 0 0 0 1 0 1 1 0 0 0 1 0 0 0 1 1 0 0 0 0 0
- 0 0 1 0 0 0 1 1 0 0 1 0 1 1 0 0 0 0 0]</code></pre>
+<pre><code>[1 1 0 1 0 0 0 0 1 0 0 0 0 0 0 1 1 1 0 1 0 0 0 0 1 0 0 0 1 0 1 0 0 0 0 1 0
+ 1 0 0 1 0 0 1 0 1 1 1 0 0 1 0 1 0 1 0 0 0 0 1 0 1 0 0 0 0 0 1 1 0 1 0 1 0
+ 1 0 0 1 1 0 0 0 0 0 0 0 0 0 0 1 1 0 1 0 0 0 1 1 0 0 1 0 1 1 0 0 0 0 1 0 0
+ 0 0 0 1 1 0 1 0 0 1 1 0 0 0 0 0 0 1 1 0 0 1 0 0 1 0 0 0 0 0 1 0 0 0 0 0 0
+ 0 0 1 1 0 0 1 0 0 1 0 0 1 0 0 1 0 1 0 0 1 1 0 1 1 0 1 0 0 0 0 0 1 1 0 0 0
+ 0 1 1 0 0 0 0 0 1 1 0 1 1 0 0 1 0 1 1 0 0 1 0 0 0 0 0 0 0 0 1 0 0 1 1 1 0
+ 1 0 1 0 0 1 1 1 0 1 1 1 0 1 1 0 0 0 1 0 1 0 0 0 0 0 0 1 0 0 1 0 1 0 1 0 0
+ 1 0 0 0 1 0 0 1 1 0 1 0 0 0 0 1 0 0 0 0 1 0 1 0 0 1 0 1 1 1 0 0 1 0 1 0 1
+ 1 0 0 0 0 0 1 0 0 0 1 0 0 1 0 0 0 0 0 0 1 0 0 1 0 0 0 1 0 1 0 0 1 1 0 1 0
+ 0 1 1 0 1 0 0 0 1 0 1 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 1 0 0 1 1 1 0 1 0
+ 0 0 0 1 0 0 1 0 1 0 1 1 1 1 1 1 0 0 1 0 0 0 0 1 1 1 0 0 1 1 0 0 1 1 0 0 1
+ 1 0 0 1 0 0 0 0 1 1 1 0 0 0 1 0 0 0 0 1 0 1 1 0 1 0 0 1 0 0 1 0 1 0 0 0 1
+ 0 0 0 0 0 0 0 1 1 1 1 1 0 0 1 0 0 0 0 1 0 0 0 0 1 1 0 1 0 1 0 1 1 0 0 1 1
+ 1 0 0 0 0 1 1 1 1 1 1 0 0 0 1 0 1 1 0]</code></pre>
 </div>
 </div>
 <p>Thus, random values from a Bernoulli distribution are inherently binary, and the number of 0s vs 1s will vary depending on the choice of the parameter, <span class="math inline">\(p\)</span>. We will see later on (in another notebook) how this relatively simple idea can be used to train a <em>Naive Bayes Classifier</em>. For now, we will plot the expected value of the Bernoulli random variable with increasing number of samples.</p>

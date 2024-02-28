@@ -147,7 +147,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Notes on kernels</li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Kernel trick and lifting</li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -205,7 +205,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
- <span class="menu-text">Utilities</span></a>
+ <span class="menu-text">Notebooks</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -214,19 +214,54 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="https://psesh.github.io/ae8803/useful_codes/discrete.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Useful codes</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="https://psesh.github.io/ae8803/useful_codes/kernels.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Kernels</span></a>
+ <span class="menu-text">Discrete distributions</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="https://psesh.github.io/ae8803/useful_codes/gaussians.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Gaussians</span></a>
+ <span class="menu-text">Marginal and conditional Gaussians</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://psesh.github.io/ae8803/useful_codes/kernels.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Kernel trick and lifting</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://psesh.github.io/ae8803/useful_codes/eigen.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Eigenfunction analysis of kernels</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://psesh.github.io/ae8803/useful_codes/fourier.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Fourier analysis of kernels</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://psesh.github.io/ae8803/useful_codes/gp101.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">GP 101</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">Assignments</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://psesh.github.io/ae8803/coding-1/coding-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Assignment 2</span></a>
   </div>
 </li>
       </ul>
@@ -245,11 +280,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#minimum-norm-solutions" id="toc-minimum-norm-solutions" class="nav-link" data-scroll-target="#minimum-norm-solutions">Minimum norm solutions</a></li>
   <li><a href="#the-kernel-trick-feature-maps-rightarrow-kernels" id="toc-the-kernel-trick-feature-maps-rightarrow-kernels" class="nav-link" data-scroll-target="#the-kernel-trick-feature-maps-rightarrow-kernels">The kernel trick (feature maps <span class="math inline">\(\rightarrow\)</span> kernels)</a></li>
-  <li><a href="#mercers-theorem-kernels-rightarrow-feature-maps" id="toc-mercers-theorem-kernels-rightarrow-feature-maps" class="nav-link" data-scroll-target="#mercers-theorem-kernels-rightarrow-feature-maps">Mercer’s theorem (kernels <span class="math inline">\(\rightarrow\)</span> feature maps)</a></li>
-  <li><a href="#bochners-theorem" id="toc-bochners-theorem" class="nav-link" data-scroll-target="#bochners-theorem">Bochner’s theorem</a></li>
-  <li><a href="#wiener-khintchine-theorem" id="toc-wiener-khintchine-theorem" class="nav-link" data-scroll-target="#wiener-khintchine-theorem">Wiener-Khintchine theorem</a></li>
-  <li><a href="#kernel-harmonic-representation" id="toc-kernel-harmonic-representation" class="nav-link" data-scroll-target="#kernel-harmonic-representation">Kernel harmonic representation</a></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -259,7 +289,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">Notes on kernels</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li></ul></div></div>
+<div class="quarto-title-block"><div><h1 class="title">Kernel trick and lifting</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li></ul></div></div>
 </div>
 
 
@@ -441,50 +471,6 @@ v_{2}^2
 </div>
 </div>
 </section>
-</section>
-<section id="mercers-theorem-kernels-rightarrow-feature-maps" class="level3">
-<h3 class="anchored" data-anchor-id="mercers-theorem-kernels-rightarrow-feature-maps">Mercer’s theorem (kernels <span class="math inline">\(\rightarrow\)</span> feature maps)</h3>
-<p>Now, we shall be interested in mapping from a kernel to a feature map. This leads us to <strong>Mercer’s theorem</strong>, which states that: <em>A symmetric function <span class="math inline">\(k \left( \mathbf{x}, \mathbf{x}' \right)\)</span> can be expressed as the inner product</em></p>
-<p><span class="math display">\[
-k \left( \mathbf{x}, \mathbf{x}' \right) = \phi \left( \mathbf{x} \right) \phi^{T} \left( \mathbf{x}'\right) = \left\langle \phi \left( \mathbf{x} \right), \phi\left( \mathbf{x}' \right) \right\rangle
-\]</span></p>
-<p>for some feature map <span class="math inline">\(\phi\)</span> if and only if <span class="math inline">\(k \left( \mathbf{x}, \mathbf{x}' \right)\)</span> is positive semidefinite, i.e.,</p>
-<p><span class="math display">\[
-\int k \left( \mathbf{x}, \mathbf{x}' \right) g \left(  \mathbf{x} \right)  g \left(  \mathbf{x}' \right) d \mathbf{x} d \mathbf{x}' \geq 0
-\]</span></p>
-<p>for all <span class="math inline">\(g\)</span>. Another way to equivalent express this is the matrix <span class="math inline">\(\mathbf{K}\left( \mathbf{X}, \mathbf{X}' \right)\)</span> is positive semi-definite for any collection of <span class="math inline">\(\mathbf{X}\)</span>. One can therefore write its eigendecomposition</p>
-<p><span class="math display">\[
-\mathbf{K} = \mathbf{V} \boldsymbol{\Lambda} \mathbf{V}^{T}
-\]</span></p>
-<p>where <span class="math inline">\(\mathbf{V}\)</span> is a matrix of formed by the eigenvectors of <span class="math inline">\(\mathbf{K}\)</span> and <span class="math inline">\(\boldsymbol{\Lambda}\)</span> is a diagonal matrix of its eigenvalues, i.e.,</p>
-<p><span class="math display">\[
-\mathbf{V} = \left[\begin{array}{cccc}
-| &amp; | &amp;  &amp; |\\
-\mathbf{v}_{1} &amp; \mathbf{v}_{2} &amp; \ldots &amp; \mathbf{v}_{N}\\
-| &amp; | &amp;  &amp; |
-\end{array}\right], \; \; \; \; \textrm{and} \; \; \; \; \boldsymbol{\Lambda}=\left[\begin{array}{cccc}
-\lambda_{1}\\
-&amp; \lambda_{2}\\
-&amp;  &amp; \ddots\\
-&amp;  &amp;  &amp; \lambda_{N}
-\end{array}\right],
-\]</span></p>
-<p>where <span class="math inline">\(\lambda_1 \geq \lambda_2 \geq \ldots \lambda_{N} \geq 0\)</span>. This expansion permits one to express each element of <span class="math inline">\(\mathbf{K}\)</span> as</p>
-<p><span class="math display">\[
-\mathbf{K}_{ij} = \left( \sqrt{\lambda_{i}} \mathbf{v}_{i} \right)^{T} \left(  \sqrt{\lambda_{j}} \mathbf{v}_{j}\right).
-\]</span></p>
-<p>More generally, if we define eigenfunctions of the form <span class="math inline">\(\gamma \left( \mathbf{x} \right) = \sqrt{\lambda} \mathbf{v}\)</span>, then we have</p>
-<p><span class="math display">\[
-k \left( \mathbf{x}, \mathbf{x}' \right) = \gamma \left( \mathbf{x} \right)^{T} \gamma \left( \mathbf{x} \right).
-\]</span></p>
-<p>To summarize, what Mercer’s theorem tells us is that one can either map from</p>
-<p><span class="math display">\[
-\mathbf{x} \rightarrow \phi \left( \mathbf{x} \right) \rightarrow k \left( \mathbf{x}, \mathbf{x}' \right)\]</span></p>
-<p>explciitly, or implicitly go from</p>
-<p><span class="math display">\[
-\mathbf{x} \rightarrow k \left( \mathbf{x}, \mathbf{x}' \right)
-\]</span></p>
-<p>without knowledge of the feature map <span class="math inline">\(\phi\)</span>.</p>
 <section id="the-case-of-infinitely-many-feature-vectors" class="level4">
 <h4 class="anchored" data-anchor-id="the-case-of-infinitely-many-feature-vectors">The case of infinitely many feature vectors</h4>
 <p>We shall now briefly consider the case of regression with infinitely many functions. Consider a basis function of the form</p>
@@ -518,7 +504,7 @@ k \left( \mathbf{x}, \mathbf{x}' \right) = \gamma \left( \mathbf{x} \right)^{T} 
 <iframe scrolling="no" width="100%" height="545px" src="iframe_figures/figure_72.html" frameborder="0" allowfullscreen=""></iframe>
 </div>
 </div>
-<p>The two-point covariance matrix can be written as a sum of rank-one matrices, i.e.,</p>
+<p>The two-point covariance matrix can be written as the sum of outer products of the feature vectors evaluated at all points <span class="math inline">\(\mathbf{X}\)</span> (which are individually rank-one matrices):</p>
 <p><span class="math display">\[
 \begin{aligned}
 \mathbf{K} &amp; = \boldsymbol{\Phi}\left( \mathbf{x} \right)\boldsymbol{\Phi}^{T} \left( \mathbf{X} \right) \\
@@ -528,7 +514,7 @@ k \left( \mathbf{x}, \mathbf{x}' \right) = \gamma \left( \mathbf{x} \right)^{T} 
 <p>or if one is considering each kernel entry, one can write</p>
 <p><span class="math display">\[
 \begin{aligned}
-\mathbf{K}_{ij}  &amp; = k \left( \mathbf{x}_i, \mathbf{x}_j \right)\\
+\mathbf{K}\left[i, j \right] = \mathbf{K}_{ij}  &amp; = k \left( \mathbf{x}_i, \mathbf{x}_j \right)\\
 &amp; = \boldsymbol{\Phi}\left( \mathbf{x}_i \right)\boldsymbol{\Phi}^{T} \left( \mathbf{x}_j \right) \\
 &amp; = \sum_{p=1}^{\infty} \phi_{p}\left( \mathbf{x}_i \right) \phi_{p}\left( \mathbf{x}_j \right)
 \end{aligned}
@@ -546,144 +532,9 @@ k \left( \mathbf{x}_i, \mathbf{x}_j \right) &amp; = \int_{-\infty}^{\infty} exp 
 \]</span></p>
 <p>The last expression is easily recognizable as an RBF kernel with an amplitude of <span class="math inline">\(\sqrt{\pi}l\)</span> and a slightly amended length scale of <span class="math inline">\(\sqrt{2}l^2\)</span>. It is straightforward to adapt this to multivariate <span class="math inline">\(\mathbf{x}\)</span>.</p>
 <p><mark>Note the utility of this representation—we essentially have infinitely many basis terms, but the size of our covariance matrix is driven by the number of data points</mark></p>
-</section>
-</section>
-<section id="bochners-theorem" class="level3">
-<h3 class="anchored" data-anchor-id="bochners-theorem">Bochner’s theorem</h3>
-<p>A stationary function <span class="math inline">\(k\left( \mathbf{x}, \mathbf{x}' \right)=k \left( \mathbf{x} - \mathbf{x}' \right) = k \left( \boldsymbol{\tau} \right)\)</span> can be represented as the Fourier transform of a positive finite measure. The formal statement is given by</p>
-<p><em>A complex-valued function <span class="math inline">\(k\)</span> on <span class="math inline">\(\mathcal{X}\)</span> is the covariance function of a weakly stationary mean square continuous complex-valued random process on <span class="math inline">\(\mathcal{X}\)</span> if and only if it can be represented as</em></p>
-<p><span class="math display">\[
-k \left( \boldsymbol{\tau} \right) = \int_{\mathcal{X}} exp \left( 2 \pi i \boldsymbol{\omega} \cdot \boldsymbol{\tau} \right) d \mu \left( \boldsymbol{\omega} \right)
-\]</span></p>
-<p>where <span class="math inline">\(\mu\)</span> is a positive finite measure, and <span class="math inline">\(\boldsymbol{\omega}\)</span> are the frequencies. If <span class="math inline">\(\mu\)</span> has a density <span class="math inline">\(S \left( \boldsymbol{\omega} \right)\)</span>, then <span class="math inline">\(S\)</span> is the <strong>spectral density</strong> or <strong>power spectrum</strong> associated with the kernel <span class="math inline">\(k\)</span>.</p>
-</section>
-<section id="wiener-khintchine-theorem" class="level3">
-<h3 class="anchored" data-anchor-id="wiener-khintchine-theorem">Wiener-Khintchine theorem</h3>
-<p>A direct consequence of Bochner’s theoreom is the Wiener-Khintchine theorem. If the spectral density <span class="math inline">\(S \left( \boldsymbol{\omega} \right)\)</span> exists, the spectral density and the covariance function are said to be <em>Fourier duals</em>. This leads to the following statement:</p>
-<p><span class="math display">\[
-k \left( \boldsymbol{\tau} \right) = \int S \left( \boldsymbol{\omega} \right) exp \left( 2 \pi i \boldsymbol{\omega} \cdot \boldsymbol{\tau} \right) d \boldsymbol{\omega}, \; \; \; \; S \left( \boldsymbol{\omega}\right) = \int k \left( \boldsymbol{\tau} \right) exp\left(- 2 \pi i \boldsymbol{\omega} \cdot \boldsymbol{\tau} \right) d \boldsymbol{\tau}
-\]</span></p>
-<p>As noted in RW, <span class="math inline">\(S \left( \boldsymbol{\omega} \right)\)</span> is essentially the amount of power assigned to the eigenfunction <span class="math inline">\(exp \left( 2 \pi i \boldsymbol{\omega} \cdot \mathbf{\tau} \right)\)</span> with frequency <span class="math inline">\(\boldsymbol{\omega}\)</span>. The amplitude as a function of frequency <span class="math inline">\(S\left( \boldsymbol{\omega} \right)\)</span> must decay sufficiently fast so that the terms above are integrable.</p>
-<p>There are some important points to note:</p>
-<ol type="1">
-<li>If we have a stationary kernel, we can resolve what frequencies underscore the model by working out its Fourier transform.</li>
-<li>On the other hand, if we have a certain spectral density of interest, then its inverse Fourier transform is a kernel.</li>
-</ol>
-<p>To analytically work this out, it may be useful to go through an example (courtsey of Markus Heinonen). The derivation below will require three pieces: - We shall assume a symmetric frequency distribution, i.e., <span class="math inline">\(S\left( \boldsymbol{\omega} \right) = S \left( -\boldsymbol{\omega} \right)\)</span>. - From Euler’s formula we have <span class="math inline">\(cos\left(x\right) \pm i sin\left(x \right) = exp \left(\pm ix \right)\)</span> - The negative sine identity, i.e., <span class="math inline">\(sin \left( -x \right) = - sin \left( x \right)\)</span></p>
-<p>Starting with the expression above, we begin wtih</p>
-<p><span class="math display">\[
-\begin{aligned}
-k \left( \boldsymbol{\tau} \right) &amp; = \int_{-\infty}^{\infty} S \left( \boldsymbol{\omega} \right) exp \left( 2 \pi i \boldsymbol{\omega} \cdot \boldsymbol{\tau} \right) d \boldsymbol{\omega} \\
-&amp; =   \int_{-\infty}^{\infty} S \left(\boldsymbol{\omega} \right) cos \left( 2 \pi\boldsymbol{\tau} \cdot \boldsymbol{\omega} \right) d \boldsymbol{\omega} + \int_{-\infty}^{\infty} iS \left(\boldsymbol{\omega} \right) sin \left( 2 \pi \boldsymbol{\tau} \cdot \boldsymbol{\omega} \right) d \boldsymbol{\omega} \\
-&amp; = \mathbb{E}\left[ S \left(\omega \right) \right] cos \left( 2 \pi \boldsymbol{\tau} \cdot \boldsymbol{\omega} \right)  + \int_{-\infty}^{0} iS \left(\boldsymbol{\omega} \right) sin \left( 2 \pi \boldsymbol{\tau} \cdot \boldsymbol{\omega} \right) d \boldsymbol{\omega} + \int_{0}^{\infty} iS \left(\boldsymbol{\omega} \right) sin \left( 2 \pi \boldsymbol{\tau} \cdot \boldsymbol{\omega} \right) d \boldsymbol{\omega} \\
-&amp; = \mathbb{E}\left[ S \left(\omega \right) \right] cos \left( 2 \pi \boldsymbol{\tau} \cdot \boldsymbol{\omega} \right)  + \int_{0}^{\infty} iS \left(-\boldsymbol{\omega} \right) sin \left( -2 \pi \boldsymbol{\tau} \cdot \boldsymbol{\omega} \right) d \boldsymbol{\omega} + \int_{0}^{\infty} iS \left(\boldsymbol{\omega} \right) sin \left( 2 \pi \boldsymbol{\tau} \cdot \boldsymbol{\omega} \right) d \boldsymbol{\omega} \\
-&amp; = \mathbb{E}\left[ S \left(\omega \right) \right] cos \left( 2 \pi \boldsymbol{\tau} \cdot \boldsymbol{\omega} \right)  + \int_{0}^{\infty} -iS \left(\boldsymbol{\omega} \right) sin \left( 2 \pi \boldsymbol{\tau} \cdot \boldsymbol{\omega} \right) d \boldsymbol{\omega} + \int_{0}^{\infty} iS \left(\boldsymbol{\omega} \right) sin \left( 2 \pi \boldsymbol{\tau} \cdot \boldsymbol{\omega} \right) d \boldsymbol{\omega} \\
-\end{aligned}
-\]</span></p>
-<p>This leads to</p>
-<p><span class="math display">\[
-\begin{aligned}
-k \left( \boldsymbol{\tau} \right) &amp; = \mathbb{E}\left[ S \left(\omega \right) \right] cos \left( 2 \pi \boldsymbol{\tau} \cdot \boldsymbol{\omega} \right)   
-\end{aligned}
-\]</span></p>
-<p><mark>This demonstrates that all real-valued stationary kernels are <span class="math inline">\(S\left( \boldsymbol{\omega} \right)\)</span>-weighted combinations of cosine terms. </mark></p>
-</section>
-<section id="kernel-harmonic-representation" class="level3">
-<h3 class="anchored" data-anchor-id="kernel-harmonic-representation">Kernel harmonic representation</h3>
-<p>Our new general stationary kernel definition is thus:</p>
-<p><span class="math display">\[
-k \left( \boldsymbol{\tau} \right)  = \mathbb{E}\left[ S \left(\omega \right) \right] cos \left( 2 \pi \boldsymbol{\tau} \cdot \boldsymbol{\omega} \right)   
-\]</span></p>
-<p>where the frequencies <span class="math inline">\(\boldsymbol{\omega}\)</span> are an inverse of the period <span class="math inline">\(1/\boldsymbol{\omega}\)</span>. Bracewell provides the following expressions for the Wiener-Khintchine result, by integrating out the angular variables (see page 83 of RW):</p>
-<p><span class="math display">\[
-\begin{aligned}
-k \left( \boldsymbol{\tau} \right) &amp; = \frac{2 \pi}{\boldsymbol{\tau}^{-1/2}} \int_{0}^{\infty} S \left( \boldsymbol{\omega} \right) J_{-1/2} \left(2 \pi  \boldsymbol{\tau} \cdot \boldsymbol{\omega} \right) \boldsymbol{\omega}^{1/2} d \boldsymbol{\omega} \\
-S \left(   \boldsymbol{\omega} \right) &amp; = \frac{2 \pi}{\boldsymbol{\omega}^{-1/2}} \int_{0}^{\infty} k \left( \boldsymbol{\tau} \right) J_{-1/2} \left(2 \pi  \boldsymbol{\tau} \cdot \boldsymbol{\omega} \right) \boldsymbol{\tau}^{1/2} d \boldsymbol{\tau}
-\end{aligned}
-\]</span></p>
-<p>Note that in RW, the authors use <span class="math inline">\(D\)</span> to denote the dimensionality, which we have assumed to be 1. The function <span class="math inline">\(J_{-1/2}\)</span> is the Bessel function of order <span class="math inline">\(-1/2\)</span>. While the expressions above may seem unwiedly, we can work out what these are using a bit of <code>Sympy</code>. Consider the case of a squared exponential kernel of the form</p>
-<p><span class="math display">\[
-k \left(\boldsymbol{\tau} \right) = exp \left(- \frac{\boldsymbol{\tau}^2}{2l^2} \right).
-\]</span></p>
-<div class="cell" data-execution_count="126">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sympy <span class="im">import</span> <span class="op">*</span> </span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>omega <span class="op">=</span> Symbol(<span class="st">"omega"</span>)</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>ell <span class="op">=</span> Symbol(<span class="st">"l"</span>)</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>tau <span class="op">=</span> Symbol(<span class="st">"tau"</span>)</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>kernel <span class="op">=</span> exp(<span class="op">-</span> tau<span class="op">**</span><span class="dv">2</span> <span class="op">/</span> (<span class="dv">2</span> <span class="op">*</span> ell<span class="op">**</span><span class="dv">2</span>))</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>integrate(<span class="dv">2</span><span class="op">*</span>pi<span class="op">*</span>omega<span class="op">**</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">2</span>) <span class="op">*</span> kernel <span class="op">*</span> besselj(<span class="op">-</span><span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="dv">2</span><span class="op">*</span>pi<span class="op">*</span>tau<span class="op">*</span>omega)<span class="op">*</span>tau<span class="op">**</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">2</span>), (tau, <span class="dv">0</span>, oo))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display" data-execution_count="126">
-<p><span class="math inline">\(\displaystyle \begin{cases} 1.4142135623731 \pi^{0.5} l^{1.0} e^{- 2 \pi^{2} l^{2} \omega^{2}} &amp; \text{for}\: \left(\left|{\arg{\left(\omega \right)}}\right| = 0 \wedge \left|{\arg{\left(l \right)}}\right| &lt; \frac{\pi}{4}\right) \vee \left|{\arg{\left(l \right)}}\right| &lt; \frac{\pi}{4} \\\int\limits_{0}^{\infty} 2 \pi \omega^{0.5} \tau^{0.5} e^{- \frac{\tau^{2}}{2 l^{2}}} J_{-0.5}\left(2 \pi \omega \tau\right)\, d\tau &amp; \text{otherwise} \end{cases}\)</span></p>
-</div>
-</div>
-<p>The first expression above is the Fourier amplitude of the squared exponential kernel, i.e.,</p>
-<p><span class="math display">\[
-S \left(   \boldsymbol{\omega} \right) = \left( 2 \pi l^2\right)^{1/2} exp \left( - 2 \pi l^2 \boldsymbol{\omega}^2 \right)
-\]</span></p>
-<div class="cell" data-execution_count="143">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>omega <span class="op">=</span> np.linspace(<span class="dv">0</span>, np.pi<span class="op">/</span><span class="dv">4</span>, <span class="dv">50</span>)</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>l <span class="op">=</span> <span class="fl">0.5</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>S_omega <span class="op">=</span> (<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> l<span class="op">**</span><span class="dv">2</span>)<span class="op">**</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">2</span>) <span class="op">*</span> <span class="op">\</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>            np.exp(<span class="op">-</span> <span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> l<span class="op">**</span><span class="dv">2</span> <span class="op">*</span> omega<span class="op">**</span><span class="dv">2</span>)</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>tau <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">200</span>)</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> go.Figure()</span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>fig.add_scatter(x<span class="op">=</span>omega, y<span class="op">=</span>S_omega, mode<span class="op">=</span><span class="st">'lines'</span>)</span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>fig.update_layout(title<span class="op">=</span><span class="st">'Spectral density'</span>, <span class="op">\</span></span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>                  xaxis_title<span class="op">=</span><span class="vs">r'Frequency, $\omega$'</span>,<span class="op">\</span></span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>                  yaxis_title<span class="op">=</span><span class="vs">r'Spectral density, $S\left( \omega \right) $'</span>)</span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>fig.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display">
-<iframe scrolling="no" width="100%" height="545px" src="iframe_figures/figure_143.html" frameborder="0" allowfullscreen=""></iframe>
-</div>
-</div>
-<div class="cell" data-execution_count="152">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>kernel <span class="op">=</span> tau <span class="op">*</span> <span class="fl">0.</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>true_kernel <span class="op">=</span> np.exp(<span class="op">-</span>tau<span class="op">**</span><span class="dv">2</span> <span class="op">/</span> l<span class="op">**</span><span class="dv">2</span>)</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>counter <span class="op">=</span> <span class="fl">0.</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> go.Figure()</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> omega_j <span class="kw">in</span> omega:</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    counter <span class="op">+=</span> <span class="fl">1.</span></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    label<span class="op">=</span><span class="bu">str</span>(np.around(<span class="bu">int</span>(counter), <span class="dv">1</span>))<span class="op">+</span><span class="st">' terms'</span></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    S_omega_j <span class="op">=</span> (<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> l<span class="op">**</span><span class="dv">2</span>)<span class="op">**</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">2</span>) <span class="op">*</span> <span class="op">\</span></span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>            np.exp(<span class="op">-</span> <span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> l<span class="op">**</span><span class="dv">2</span> <span class="op">*</span> omega_j<span class="op">**</span><span class="dv">2</span>)</span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>    cos_term <span class="op">=</span> np.cos(<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> tau <span class="op">*</span> omega_j)</span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>    kernel <span class="op">+=</span> (S_omega_j <span class="op">*</span> cos_term)</span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>    fig.add_scatter(x<span class="op">=</span>tau, y<span class="op">=</span>kernel <span class="op">*</span> <span class="dv">1</span><span class="op">/</span>counter, name<span class="op">=</span>label, mode<span class="op">=</span><span class="st">'lines'</span>)</span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>fig.add_scatter(x<span class="op">=</span>tau, y<span class="op">=</span>true_kernel, name<span class="op">=</span><span class="st">'Kernel'</span>, mode<span class="op">=</span><span class="st">'lines'</span>, <span class="op">\</span></span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>                line<span class="op">=</span><span class="bu">dict</span>(width<span class="op">=</span><span class="dv">4</span>, color<span class="op">=</span><span class="st">'black'</span>))</span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>fig.update_layout(title<span class="op">=</span><span class="st">'Sq. exp kernel Fourier representation'</span>, <span class="op">\</span></span>
-<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>                  xaxis_title<span class="op">=</span><span class="vs">r'Distance, $\tau$'</span>,<span class="op">\</span></span>
-<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>                  yaxis_title<span class="op">=</span><span class="vs">r'$k ( \tau )$'</span>)</span>
-<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>fig.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display">
-<iframe scrolling="no" width="100%" height="545px" src="iframe_figures/figure_152.html" frameborder="0" allowfullscreen=""></iframe>
-</div>
-</div>
-<p>Notice that the more terms we incorporate, the closer we converge to the true kernel.</p>
-</section>
-<section id="references" class="level3">
-<h3 class="anchored" data-anchor-id="references">References</h3>
-<p>These notes use material from the following sources:</p>
-<ol type="1">
-<li><p><a href="https://people.eecs.berkeley.edu/~jordan/courses/281B-spring04/lectures/lec3.pdf">Jordan, M., <em>The Kernel Trick</em></a></p></li>
-<li><p><a href="https://gregorygundersen.com/blog/2019/12/10/kernel-trick/">Gundersen, G., <em>Implicit Lifting and the Kernel Trick</em></a></p></li>
-</ol>
 
 
+</section>
 </section>
 </section>
 
