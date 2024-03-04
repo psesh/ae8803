@@ -23,7 +23,7 @@ This course has four assignments; the grades are given below:
 | Assignment  | Grade percentage (%)    |
 | --------  | ------- |
 | Assignment 1: <a href="https://gtvault-my.sharepoint.com/:u:/g/personal/pseshadri34_gatech_edu/EUX0hSg8eIdNjlFIUsR4Qq0BRewWmfMuoVeoDfisYT_MCQ?e=tPl4Ql">Take-home mid-term (covering fundamentals) </a>    | 20 |
-| Assignment 2: Build your own GP from scratch for a given dataset | 20 |
+| Assignment 2: <a href="https://psesh.github.io/ae8803/coding-1/coding-1.html>Build your own GP from scratch for a given dataset </a> | 20 |
 | Assignment 3: Proposal (data and literature review)   | 20    |
 | Assignment 4: Final project (presentation and notebook)  | 40    |
 
@@ -161,20 +161,22 @@ Below you will find a list of the lectures that form the backbone of this course
     
     1. MAP
     2. Marginal likelihood
-    3. Demonstration using ``gpytorch``
+    3. Introduction to ``gpytorch`` and ``pymc``
+</details>
+
+03.04: **L13. Markov chain Monte Carlo** <a href="https://psesh.github.io/ae8803/useful_codes/mcmc.html"  style="text-decoration: none">Notebook</a> 
+<details>
+  <summary>Contents</summary>
+
+  1. MAP vs MCMC
+  2. Metropolis
+  3. Metropolis-Hastings
+  4. HMC and NUTS 
 </details>
 
 *Please ignore the contents below, this needs to be edited*
 
-02.26: **L13. Gaussian process classification** 
-<details>
-  <summary>Contents</summary>
-
-  1. Bernoulli prior
-  2. Softmax for multi-class classification
-</details>
-
-02.28: **L13. Scaling up Gausssian processes I** 
+02.28: **L14. Scaling up Gausssian processes I** 
 <details>
   <summary>Contents</summary>
 
