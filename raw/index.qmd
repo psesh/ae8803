@@ -174,18 +174,17 @@ Below you will find a list of the lectures that form the backbone of this course
   4. HMC and NUTS 
 </details>
 
-*Please ignore the contents below, this needs to be edited*
 
-02.28: **L14. Scaling up Gausssian processes I** 
+03.06: **L14. Approximate inference** | <a href="https://gtvault-my.sharepoint.com/:b:/g/personal/pseshadri34_gatech_edu/EfFEnhJyRWpDu3IEMCq8I8YBD9AzoyALXSxUBeabYgVXoQ?e=0WWEvj" target="_blank" style="text-decoration: none">Slides</a>
 <details>
   <summary>Contents</summary>
 
-  1. Review of matrix inverse via Cholesky.
-  2. Subset of data approaches
-  3. Nystrom approximation
-  4. Inducing points
-  5. Kronecker product kernels.
+  1. Review of approximate inference methods.
+  2. KL divergence
+  3. Variational inference
 </details>
+
+*Please ignore the contents below, this needs to be edited*
 
 03.04: **L14. Scaling up Gausssian processes II** 
 <details>
