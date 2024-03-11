@@ -175,7 +175,7 @@ Below you will find a list of the lectures that form the backbone of this course
 </details>
 
 
-03.06: **L14. Approximate inference** | <a href="https://gtvault-my.sharepoint.com/:b:/g/personal/pseshadri34_gatech_edu/EfFEnhJyRWpDu3IEMCq8I8YBD9AzoyALXSxUBeabYgVXoQ?e=0WWEvj" target="_blank" style="text-decoration: none">Slides</a>
+03.06: **L14. Approximate inference** | <a href="https://gtvault-my.sharepoint.com/:b:/g/personal/pseshadri34_gatech_edu/EfFEnhJyRWpDu3IEMCq8I8YBD9AzoyALXSxUBeabYgVXoQ?e=0WWEvj" target="_blank" style="text-decoration: none">Slides</a> | <a href="https://psesh.github.io/ae8803/useful_codes/vi.html"  style="text-decoration: none">Notebook</a> 
 <details>
   <summary>Contents</summary>
 
@@ -184,9 +184,8 @@ Below you will find a list of the lectures that form the backbone of this course
   3. Variational inference
 </details>
 
-*Please ignore the contents below, this needs to be edited*
 
-03.04: **L14. Scaling up Gausssian processes II** 
+03.04: **L15. Scaling up Gausssian processes II** 
 <details>
   <summary>Contents</summary>
 

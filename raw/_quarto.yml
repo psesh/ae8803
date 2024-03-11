@@ -21,6 +21,7 @@ project:
     - useful_codes/fourier.ipynb
     - useful_codes/gp101.ipynb
     - useful_codes/mcmc.ipynb
+    - useful_codes/vi.ipynb
     - coding-1/coding-1.ipynb
 format:
   html:
@@ -86,6 +87,8 @@ website:
             href: https://psesh.github.io/ae8803/useful_codes/gp101.html
           - text: "Inference with MAP & MCMC"
             href: https://psesh.github.io/ae8803/useful_codes/mcmc.html
+          - text: "Variational inference"
+            href: https://psesh.github.io/ae8803/useful_codes/vi.html
       - section: "Assignments"
         contents:
               - text: "Assignment 2"

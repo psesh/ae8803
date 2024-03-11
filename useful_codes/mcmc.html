@@ -256,6 +256,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Inference with MAP &amp; MCMC</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://psesh.github.io/ae8803/useful_codes/vi.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Variational inference</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -450,7 +456,7 @@ p \left( \boldsymbol{\theta}_{t}, \boldsymbol{\theta}_{t-1} \right) = p \left( \
 </div>
 <p>In a Metropolis sampler, the proposal distribution is symmetric. Thus, in the acceptance ratio, <span class="math inline">\(r\)</span>, the proposal density does not make an appearence as it cancels out from both the numerator and denominator. In Metropolis-Hastings, the proposal distribution is not symmetric as its center changes with each iteration. Therefore, we need to explicitly calculate the probability of moving from the current state to the proposed state and the reverse probability.</p>
 <p><span class="math display">\[
-r = \frac{p \left( \boldsymbol{\theta}_{\ast} | \mathbf{t} \right) / J_{t} \left( \boldsymbol{\theta}_{\ast}  | \boldsymbol{\theta}_{t-1} \right) }{p \left( \boldsymbol{\theta}_{t-1} | \mathbf{t} \right) J_{t} \left(   \boldsymbol{\theta}_{t-1} | \boldsymbol{\theta}_{\ast}  \right)  }
+r = \frac{p \left( \boldsymbol{\theta}_{\ast} | \mathbf{t} \right) / J_{t} \left( \boldsymbol{\theta}_{\ast}  | \boldsymbol{\theta}_{t-1} \right) }{p \left( \boldsymbol{\theta}_{t-1} | \mathbf{t} \right) / J_{t} \left(   \boldsymbol{\theta}_{t-1} | \boldsymbol{\theta}_{\ast}  \right)  }
 \]</span></p>
 <p>Therefore, the terms <code>proposal_density(x_current, y_current, x_new, y_new)</code> and <code>proposal_density(x_new, y_new, x_current, y_current)</code> are incorporated into the acceptance ratio as shown below.</p>
 <p>Allowing asymmetric jumping rules can be helpful in increasing the speed of the sampler. We shall now demonstrate the utility of Metropolis Hastings on determining the posterior distribution of hyperparameters in a Gaussian process model. For this demonstration, we will be making use of <code>pymc</code>; the model shown below has been adapted from <a href="https://www.pymc.io/projects/examples/en/latest/gaussian_processes/GP-Marginal.html">this pymc tutorial</a>.</p>
