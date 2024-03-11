@@ -291,8 +291,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#variational-inference" id="toc-variational-inference" class="nav-link active" data-scroll-target="#variational-inference">Variational Inference</a></li>
-  <li><a href="#gp-sample-continued" id="toc-gp-sample-continued" class="nav-link" data-scroll-target="#gp-sample-continued">GP sample continued</a></li>
+  <li><a href="#bayes-rule" id="toc-bayes-rule" class="nav-link active" data-scroll-target="#bayes-rule">Bayes’ rule</a></li>
+  <li><a href="#the-elbo" id="toc-the-elbo" class="nav-link" data-scroll-target="#the-elbo">The ELBO</a></li>
+  <li><a href="#gp-demonstration" id="toc-gp-demonstration" class="nav-link" data-scroll-target="#gp-demonstration">GP demonstration</a></li>
   </ul>
 </nav>
     </div>
@@ -316,8 +317,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<section id="variational-inference" class="level3">
-<h3 class="anchored" data-anchor-id="variational-inference">Variational Inference</h3>
+<section id="bayes-rule" class="level3">
+<h3 class="anchored" data-anchor-id="bayes-rule">Bayes’ rule</h3>
 <p>Let us begin with Bayes’ rule</p>
 <p><span class="math display">\[
 p \left( \mathbf{f} | \mathbf{X}, \mathbf{t} \right) = \frac{p \left(\mathbf{t} | \mathbf{f} \right)p \left( \mathbf{f} | \mathbf{X} \right) }{p \left( \mathbf{t} | \mathbf{X} \right) }
@@ -344,6 +345,9 @@ p \left( \mathbf{f} | \mathbf{X}, \mathbf{t} \right) = \frac{p \left(\mathbf{t} 
 \boldsymbol{\Sigma} = \mathbf{K}\left( \mathbf{X} , \mathbf{X}' \right) - \mathbf{K}\left( \mathbf{X}_{\ast}, \mathbf{X} \right) \left[ \mathbf{K}\left( \mathbf{X} , \mathbf{X}' \right)  + \sigma^2 \mathbf{I} \right]^{-1} \mathbf{K}^{T}\left( \mathbf{X} , \mathbf{X}' \right)
 \]</span></p>
 <p>For non-Gaussian likelihoods, one cannot express the posterior in terms of the mean and covariance terms above. Thus, we require a strategy to do so without having to resort to Markov Chain Monte Carlo. For Gaussian likelihoods, as we have already established, the closed-form posterior above requires inverting a matrix of size <span class="math inline">\(N \times N\)</span> where <span class="math inline">\(N\)</span> corresponds to the number of training data points.</p>
+</section>
+<section id="the-elbo" class="level3">
+<h3 class="anchored" data-anchor-id="the-elbo">The ELBO</h3>
 <p>The objective of variational inference is to approximate the exact posterior by introducing a variational distribution, <span class="math inline">\(q \left( \mathbf{f} | \mathbf{X}, \mathbf{t} \right)\)</span>. One seeks to minimize the Kullback-Leibler divergence between the exact and variational distribution. This is given by</p>
 <p><span class="math display">\[
 KL \left[ \underbrace{q_{\phi} \left( \mathbf{f} | \mathbf{X}, \mathbf{t} \right)}_{\textrm{approximate posterior}} || \underbrace{p \left( \mathbf{f} | \mathbf{X}, \mathbf{t} \right)}_{\textrm{true posterior}} \right]
@@ -398,13 +402,13 @@ ELBO \left( \phi \right) &amp; \leq log \; p \left( \mathbf{t} | \mathbf{X} \rig
 \]</span></p>
 <p>If we maximize the ELBO, for a fixed marginal likelihood, we are minimizing the KL divergence between the true posterior and its approximation. In other words, we need to compute:</p>
 <ol type="1">
-<li>The KL divergence between the prior and the approximate posterior</li>
-<li>The integral of the likelihood with the approximate prior (expectation term above)</li>
+<li>The KL divergence between the prior and the approximate posterior, <span class="math display">\[KL \left[  q_{\phi} \left( \mathbf{f} | \mathbf{X}, \mathbf{t} \right) ||  p \left( \mathbf{f} | \mathbf{X} \right) \right];\]</span></li>
+<li>The integral of the likelihood with the approximate posterior, <span class="math display">\[\mathbb{E}_{q_{\phi} \left( \mathbf{f} | \mathbf{X}, \mathbf{t} \right)} \left[ log \; p \left(\mathbf{t} | \mathbf{f} \right) \right].\]</span></li>
 </ol>
 <p>For the latter, this approach requires factorizing the likelihood to avoid a <span class="math inline">\(N\)</span>-dimensional integral.</p>
 </section>
-<section id="gp-sample-continued" class="level2">
-<h2 class="anchored" data-anchor-id="gp-sample-continued">GP sample continued</h2>
+<section id="gp-demonstration" class="level3">
+<h3 class="anchored" data-anchor-id="gp-demonstration">GP demonstration</h3>
 <div class="cell" data-execution_count="3">
 <details>
 <summary>Code</summary>
