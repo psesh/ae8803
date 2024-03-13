@@ -22,7 +22,7 @@ This course has four assignments; the grades are given below:
 
 | Assignment  | Grade percentage (%)    |
 | --------  | ------- |
-| Assignment 1: <a href="https://gtvault-my.sharepoint.com/:u:/g/personal/pseshadri34_gatech_edu/EUX0hSg8eIdNjlFIUsR4Qq0BRewWmfMuoVeoDfisYT_MCQ?e=tPl4Ql">Take-home mid-term (covering fundamentals) </a>    | 20 |
+| Assignment 1: <a href="https://psesh.github.io/ae8803/midterm/midterm_2024_solution.html">Take-home mid-term (covering fundamentals) </a>    | 20 |
 | Assignment 2: <a href="https://psesh.github.io/ae8803/coding-1/coding-1.html">Build your own GP from scratch for a given dataset </a> | 20 |
 | Assignment 3: Proposal (data and literature review)   | 20    |
 | Assignment 4: Final project (presentation and notebook)  | 40    |

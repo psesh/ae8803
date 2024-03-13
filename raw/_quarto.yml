@@ -23,6 +23,7 @@ project:
     - useful_codes/mcmc.ipynb
     - useful_codes/vi.ipynb
     - coding-1/coding-1.ipynb
+    - midterm/midterm_2024_solutions.ipynb
 format:
   html:
     page-layout: full
