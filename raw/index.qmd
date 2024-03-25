@@ -184,61 +184,20 @@ Below you will find a list of the lectures that form the backbone of this course
   3. Variational inference
 </details>
 
+03.08: **L15. A Gaussian Process Case Study** | <a href="https://gtvault-my.sharepoint.com/:b:/g/personal/pseshadri34_gatech_edu/EYa7GOSz_kpMolQW4m8tqP4BzDEZ2qCm-vl92Am2irzMCQ?e=oi3iB0" target="_blank" style="text-decoration: none">Slides</a> 
 
-03.04: **L15. Scaling up Gausssian processes II** 
-<details>
-  <summary>Contents</summary>
-
-  1. Variational inference
-  2. ELBO derivation
-  3. Minimizing the KL-divergence practically using Adam. 
-</details>
-
-03.06: **L15. Sparse (and subspace-based) Gaussian processes** 
-<details>
-  <summary>Contents</summary>
-
-  1. Brief introduction to matrix manifolds.
-  2. Subspace-based projections.
-  3. Active subspaces.
-  4. Sparsity promoting priors.
-</details>
-
-
-03.11: **L16. Reproducing Kernel Hilbert Spaces** 
-<details>
-  <summary>Contents</summary>
-
-  1. Project overview
-  2. Hilbert space
-  2. Understanding a kernel. 
-  3. Reproducing kernel Hilbert spaces. 
-  4. Representer theoreom.
-</details>
-
-03.13: **L17. Multi-output and deep Gaussian processes** 
-<details>
-  <summary>Contents</summary>
-
-  1. Coregional models.
-  2. Transfer learning across covariance blocks.
-  3. Derivative (or gradient) enhancement.
-  4. Depth in Gaussian processes. 
-  5. Posterior inference and stochastic variational inference
-</details>
 
 03.13: *Withdrawal Deadline*
 
 03.18-03.22: *Spring Break*
 
-03.25: *Project proposals due*
-
-03.25: **L19. Convolutional Gaussian processes** 
+03.25: **L16. Scaling Gaussian Processes (Linear Algebra Perspective)** | <a href="https://gtvault-my.sharepoint.com/:b:/g/personal/pseshadri34_gatech_edu/ESJsyJpCJFhJkeF7DI0g3boBlM9TpN4KR8mXe8uUOj0ZIA?e=JFCvPb" target="_blank" style="text-decoration: none">Slides</a>
 <details>
   <summary>Contents</summary>
 
-  1. Convolution as a linear operator.
-  2. Deep convolutional Gaussian processes.
+  1. Nystrom approximation.
+  2. Kronecker product structure.
+  3. Toeplitz structure.
 </details>
 
 

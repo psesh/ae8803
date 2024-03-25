@@ -529,66 +529,18 @@ Contents
 <li>Variational inference</li>
 </ol>
 </details>
-03.04: <strong>L15. Scaling up Gausssian processes II</strong>
-<details>
-<summary>
-Contents
-</summary>
-<ol type="1">
-<li>Variational inference</li>
-<li>ELBO derivation</li>
-<li>Minimizing the KL-divergence practically using Adam.</li>
-</ol>
-</details>
-03.06: <strong>L15. Sparse (and subspace-based) Gaussian processes</strong>
-<details>
-<summary>
-Contents
-</summary>
-<ol type="1">
-<li>Brief introduction to matrix manifolds.</li>
-<li>Subspace-based projections.</li>
-<li>Active subspaces.</li>
-<li>Sparsity promoting priors.</li>
-</ol>
-</details>
-03.11: <strong>L16. Reproducing Kernel Hilbert Spaces</strong>
-<details>
-<summary>
-Contents
-</summary>
-<ol type="1">
-<li>Project overview</li>
-<li>Hilbert space</li>
-<li>Understanding a kernel.</li>
-<li>Reproducing kernel Hilbert spaces.</li>
-<li>Representer theoreom.</li>
-</ol>
-</details>
-03.13: <strong>L17. Multi-output and deep Gaussian processes</strong>
-<details>
-<summary>
-Contents
-</summary>
-<ol type="1">
-<li>Coregional models.</li>
-<li>Transfer learning across covariance blocks.</li>
-<li>Derivative (or gradient) enhancement.</li>
-<li>Depth in Gaussian processes.</li>
-<li>Posterior inference and stochastic variational inference</li>
-</ol>
-</details>
+<p>03.08: <strong>L15. A Gaussian Process Case Study</strong> | <a href="https://gtvault-my.sharepoint.com/:b:/g/personal/pseshadri34_gatech_edu/EYa7GOSz_kpMolQW4m8tqP4BzDEZ2qCm-vl92Am2irzMCQ?e=oi3iB0" target="_blank" style="text-decoration: none">Slides</a></p>
 <p>03.13: <em>Withdrawal Deadline</em></p>
 <p>03.18-03.22: <em>Spring Break</em></p>
-<p>03.25: <em>Project proposals due</em></p>
-03.25: <strong>L19. Convolutional Gaussian processes</strong>
+03.25: <strong>L16. Scaling Gaussian Processes (Linear Algebra Perspective)</strong> | <a href="https://gtvault-my.sharepoint.com/:b:/g/personal/pseshadri34_gatech_edu/ESJsyJpCJFhJkeF7DI0g3boBlM9TpN4KR8mXe8uUOj0ZIA?e=JFCvPb" target="_blank" style="text-decoration: none">Slides</a>
 <details>
 <summary>
 Contents
 </summary>
 <ol type="1">
-<li>Convolution as a linear operator.</li>
-<li>Deep convolutional Gaussian processes.</li>
+<li>Nystrom approximation.</li>
+<li>Kronecker product structure.</li>
+<li>Toeplitz structure.</li>
 </ol>
 </details>
 03.27: <strong>L20. Latent models and unsupervised learning</strong>
@@ -1151,134 +1103,93 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-184"><a href="#cb1-184" aria-hidden="true" tabindex="-1"></a><span class="ss">  3. </span>Variational inference</span>
 <span id="cb1-185"><a href="#cb1-185" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/details&gt;</span></span>
 <span id="cb1-186"><a href="#cb1-186" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-187"><a href="#cb1-187" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-188"><a href="#cb1-188" aria-hidden="true" tabindex="-1"></a>03.04: **L15. Scaling up Gausssian processes II** </span>
-<span id="cb1-189"><a href="#cb1-189" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;details&gt;</span></span>
-<span id="cb1-190"><a href="#cb1-190" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;summary&gt;</span>Contents<span class="kw">&lt;/summary&gt;</span></span>
+<span id="cb1-187"><a href="#cb1-187" aria-hidden="true" tabindex="-1"></a>03.08: **L15. A Gaussian Process Case Study** | <span class="kw">&lt;a</span> <span class="er">href</span><span class="ot">=</span><span class="st">"https://gtvault-my.sharepoint.com/:b:/g/personal/pseshadri34_gatech_edu/EYa7GOSz_kpMolQW4m8tqP4BzDEZ2qCm-vl92Am2irzMCQ?e=oi3iB0"</span> <span class="er">target</span><span class="ot">=</span><span class="st">"_blank"</span> <span class="er">style</span><span class="ot">=</span><span class="st">"text-decoration: none"</span><span class="kw">&gt;</span>Slides<span class="kw">&lt;/a&gt;</span> </span>
+<span id="cb1-188"><a href="#cb1-188" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-189"><a href="#cb1-189" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-190"><a href="#cb1-190" aria-hidden="true" tabindex="-1"></a>03.13: *Withdrawal Deadline*</span>
 <span id="cb1-191"><a href="#cb1-191" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-192"><a href="#cb1-192" aria-hidden="true" tabindex="-1"></a><span class="ss">  1. </span>Variational inference</span>
-<span id="cb1-193"><a href="#cb1-193" aria-hidden="true" tabindex="-1"></a><span class="ss">  2. </span>ELBO derivation</span>
-<span id="cb1-194"><a href="#cb1-194" aria-hidden="true" tabindex="-1"></a><span class="ss">  3. </span>Minimizing the KL-divergence practically using Adam. </span>
-<span id="cb1-195"><a href="#cb1-195" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/details&gt;</span></span>
-<span id="cb1-196"><a href="#cb1-196" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-197"><a href="#cb1-197" aria-hidden="true" tabindex="-1"></a>03.06: **L15. Sparse (and subspace-based) Gaussian processes** </span>
-<span id="cb1-198"><a href="#cb1-198" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;details&gt;</span></span>
-<span id="cb1-199"><a href="#cb1-199" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;summary&gt;</span>Contents<span class="kw">&lt;/summary&gt;</span></span>
-<span id="cb1-200"><a href="#cb1-200" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-201"><a href="#cb1-201" aria-hidden="true" tabindex="-1"></a><span class="ss">  1. </span>Brief introduction to matrix manifolds.</span>
-<span id="cb1-202"><a href="#cb1-202" aria-hidden="true" tabindex="-1"></a><span class="ss">  2. </span>Subspace-based projections.</span>
-<span id="cb1-203"><a href="#cb1-203" aria-hidden="true" tabindex="-1"></a><span class="ss">  3. </span>Active subspaces.</span>
-<span id="cb1-204"><a href="#cb1-204" aria-hidden="true" tabindex="-1"></a><span class="ss">  4. </span>Sparsity promoting priors.</span>
-<span id="cb1-205"><a href="#cb1-205" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/details&gt;</span></span>
-<span id="cb1-206"><a href="#cb1-206" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-192"><a href="#cb1-192" aria-hidden="true" tabindex="-1"></a>03.18-03.22: *Spring Break*</span>
+<span id="cb1-193"><a href="#cb1-193" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-194"><a href="#cb1-194" aria-hidden="true" tabindex="-1"></a>03.25: **L16. Scaling Gaussian Processes (Linear Algebra Perspective)** | <span class="kw">&lt;a</span> <span class="er">href</span><span class="ot">=</span><span class="st">"https://gtvault-my.sharepoint.com/:b:/g/personal/pseshadri34_gatech_edu/ESJsyJpCJFhJkeF7DI0g3boBlM9TpN4KR8mXe8uUOj0ZIA?e=JFCvPb"</span> <span class="er">target</span><span class="ot">=</span><span class="st">"_blank"</span> <span class="er">style</span><span class="ot">=</span><span class="st">"text-decoration: none"</span><span class="kw">&gt;</span>Slides<span class="kw">&lt;/a&gt;</span></span>
+<span id="cb1-195"><a href="#cb1-195" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;details&gt;</span></span>
+<span id="cb1-196"><a href="#cb1-196" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;summary&gt;</span>Contents<span class="kw">&lt;/summary&gt;</span></span>
+<span id="cb1-197"><a href="#cb1-197" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-198"><a href="#cb1-198" aria-hidden="true" tabindex="-1"></a><span class="ss">  1. </span>Nystrom approximation.</span>
+<span id="cb1-199"><a href="#cb1-199" aria-hidden="true" tabindex="-1"></a><span class="ss">  2. </span>Kronecker product structure.</span>
+<span id="cb1-200"><a href="#cb1-200" aria-hidden="true" tabindex="-1"></a><span class="ss">  3. </span>Toeplitz structure.</span>
+<span id="cb1-201"><a href="#cb1-201" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/details&gt;</span></span>
+<span id="cb1-202"><a href="#cb1-202" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-203"><a href="#cb1-203" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-204"><a href="#cb1-204" aria-hidden="true" tabindex="-1"></a>03.27: **L20. Latent models and unsupervised learning** </span>
+<span id="cb1-205"><a href="#cb1-205" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;details&gt;</span></span>
+<span id="cb1-206"><a href="#cb1-206" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;summary&gt;</span>Contents<span class="kw">&lt;/summary&gt;</span></span>
 <span id="cb1-207"><a href="#cb1-207" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-208"><a href="#cb1-208" aria-hidden="true" tabindex="-1"></a>03.11: **L16. Reproducing Kernel Hilbert Spaces** </span>
-<span id="cb1-209"><a href="#cb1-209" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;details&gt;</span></span>
-<span id="cb1-210"><a href="#cb1-210" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;summary&gt;</span>Contents<span class="kw">&lt;/summary&gt;</span></span>
-<span id="cb1-211"><a href="#cb1-211" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-212"><a href="#cb1-212" aria-hidden="true" tabindex="-1"></a><span class="ss">  1. </span>Project overview</span>
-<span id="cb1-213"><a href="#cb1-213" aria-hidden="true" tabindex="-1"></a><span class="ss">  2. </span>Hilbert space</span>
-<span id="cb1-214"><a href="#cb1-214" aria-hidden="true" tabindex="-1"></a><span class="ss">  2. </span>Understanding a kernel. </span>
-<span id="cb1-215"><a href="#cb1-215" aria-hidden="true" tabindex="-1"></a><span class="ss">  3. </span>Reproducing kernel Hilbert spaces. </span>
-<span id="cb1-216"><a href="#cb1-216" aria-hidden="true" tabindex="-1"></a><span class="ss">  4. </span>Representer theoreom.</span>
-<span id="cb1-217"><a href="#cb1-217" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/details&gt;</span></span>
-<span id="cb1-218"><a href="#cb1-218" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-219"><a href="#cb1-219" aria-hidden="true" tabindex="-1"></a>03.13: **L17. Multi-output and deep Gaussian processes** </span>
-<span id="cb1-220"><a href="#cb1-220" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;details&gt;</span></span>
-<span id="cb1-221"><a href="#cb1-221" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;summary&gt;</span>Contents<span class="kw">&lt;/summary&gt;</span></span>
-<span id="cb1-222"><a href="#cb1-222" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-223"><a href="#cb1-223" aria-hidden="true" tabindex="-1"></a><span class="ss">  1. </span>Coregional models.</span>
-<span id="cb1-224"><a href="#cb1-224" aria-hidden="true" tabindex="-1"></a><span class="ss">  2. </span>Transfer learning across covariance blocks.</span>
-<span id="cb1-225"><a href="#cb1-225" aria-hidden="true" tabindex="-1"></a><span class="ss">  3. </span>Derivative (or gradient) enhancement.</span>
-<span id="cb1-226"><a href="#cb1-226" aria-hidden="true" tabindex="-1"></a><span class="ss">  4. </span>Depth in Gaussian processes. </span>
-<span id="cb1-227"><a href="#cb1-227" aria-hidden="true" tabindex="-1"></a><span class="ss">  5. </span>Posterior inference and stochastic variational inference</span>
-<span id="cb1-228"><a href="#cb1-228" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/details&gt;</span></span>
-<span id="cb1-229"><a href="#cb1-229" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-230"><a href="#cb1-230" aria-hidden="true" tabindex="-1"></a>03.13: *Withdrawal Deadline*</span>
-<span id="cb1-231"><a href="#cb1-231" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-232"><a href="#cb1-232" aria-hidden="true" tabindex="-1"></a>03.18-03.22: *Spring Break*</span>
+<span id="cb1-208"><a href="#cb1-208" aria-hidden="true" tabindex="-1"></a><span class="ss">  1. </span>Contrast standard regression with latent variable model.</span>
+<span id="cb1-209"><a href="#cb1-209" aria-hidden="true" tabindex="-1"></a><span class="ss">  2. </span>Gaussian process latent variable model.</span>
+<span id="cb1-210"><a href="#cb1-210" aria-hidden="true" tabindex="-1"></a><span class="ss">  3. </span>Coding demo. </span>
+<span id="cb1-211"><a href="#cb1-211" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/details&gt;</span></span>
+<span id="cb1-212"><a href="#cb1-212" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-213"><a href="#cb1-213" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-214"><a href="#cb1-214" aria-hidden="true" tabindex="-1"></a>04.01: **L21. State-space Gaussian processes** </span>
+<span id="cb1-215"><a href="#cb1-215" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;details&gt;</span></span>
+<span id="cb1-216"><a href="#cb1-216" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;summary&gt;</span>Contents<span class="kw">&lt;/summary&gt;</span></span>
+<span id="cb1-217"><a href="#cb1-217" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-218"><a href="#cb1-218" aria-hidden="true" tabindex="-1"></a><span class="ss">  1. </span>Application: time series models.</span>
+<span id="cb1-219"><a href="#cb1-219" aria-hidden="true" tabindex="-1"></a><span class="ss">  2. </span>Gaussian state space model.</span>
+<span id="cb1-220"><a href="#cb1-220" aria-hidden="true" tabindex="-1"></a><span class="ss">  3. </span>Parallels with Kalman filtering and smoothing.</span>
+<span id="cb1-221"><a href="#cb1-221" aria-hidden="true" tabindex="-1"></a><span class="ss">  4. </span>Creating custom state-space kernels. </span>
+<span id="cb1-222"><a href="#cb1-222" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/details&gt;</span></span>
+<span id="cb1-223"><a href="#cb1-223" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-224"><a href="#cb1-224" aria-hidden="true" tabindex="-1"></a>04.03: **L22. Bayesian optimization** </span>
+<span id="cb1-225"><a href="#cb1-225" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;details&gt;</span></span>
+<span id="cb1-226"><a href="#cb1-226" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;summary&gt;</span>Contents<span class="kw">&lt;/summary&gt;</span></span>
+<span id="cb1-227"><a href="#cb1-227" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-228"><a href="#cb1-228" aria-hidden="true" tabindex="-1"></a><span class="ss">  1. </span>Gaussian process surrogate.</span>
+<span id="cb1-229"><a href="#cb1-229" aria-hidden="true" tabindex="-1"></a><span class="ss">  2. </span>Acquisition function.</span>
+<span id="cb1-230"><a href="#cb1-230" aria-hidden="true" tabindex="-1"></a><span class="ss">  3. </span>Thompson's sampling. </span>
+<span id="cb1-231"><a href="#cb1-231" aria-hidden="true" tabindex="-1"></a><span class="ss">  4. </span>Gaussian process dynamic model. </span>
+<span id="cb1-232"><a href="#cb1-232" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/details&gt;</span></span>
 <span id="cb1-233"><a href="#cb1-233" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-234"><a href="#cb1-234" aria-hidden="true" tabindex="-1"></a>03.25: *Project proposals due*</span>
+<span id="cb1-234"><a href="#cb1-234" aria-hidden="true" tabindex="-1"></a>04.08: **L23. Guest Lecture** </span>
 <span id="cb1-235"><a href="#cb1-235" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-236"><a href="#cb1-236" aria-hidden="true" tabindex="-1"></a>03.25: **L19. Convolutional Gaussian processes** </span>
-<span id="cb1-237"><a href="#cb1-237" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;details&gt;</span></span>
-<span id="cb1-238"><a href="#cb1-238" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;summary&gt;</span>Contents<span class="kw">&lt;/summary&gt;</span></span>
+<span id="cb1-236"><a href="#cb1-236" aria-hidden="true" tabindex="-1"></a>04.22: **L24. Project presentations** </span>
+<span id="cb1-237"><a href="#cb1-237" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-238"><a href="#cb1-238" aria-hidden="true" tabindex="-1"></a><span class="fu">## Office hours</span></span>
 <span id="cb1-239"><a href="#cb1-239" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-240"><a href="#cb1-240" aria-hidden="true" tabindex="-1"></a><span class="ss">  1. </span>Convolution as a linear operator.</span>
-<span id="cb1-241"><a href="#cb1-241" aria-hidden="true" tabindex="-1"></a><span class="ss">  2. </span>Deep convolutional Gaussian processes.</span>
-<span id="cb1-242"><a href="#cb1-242" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/details&gt;</span></span>
-<span id="cb1-243"><a href="#cb1-243" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-244"><a href="#cb1-244" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-245"><a href="#cb1-245" aria-hidden="true" tabindex="-1"></a>03.27: **L20. Latent models and unsupervised learning** </span>
-<span id="cb1-246"><a href="#cb1-246" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;details&gt;</span></span>
-<span id="cb1-247"><a href="#cb1-247" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;summary&gt;</span>Contents<span class="kw">&lt;/summary&gt;</span></span>
-<span id="cb1-248"><a href="#cb1-248" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-249"><a href="#cb1-249" aria-hidden="true" tabindex="-1"></a><span class="ss">  1. </span>Contrast standard regression with latent variable model.</span>
-<span id="cb1-250"><a href="#cb1-250" aria-hidden="true" tabindex="-1"></a><span class="ss">  2. </span>Gaussian process latent variable model.</span>
-<span id="cb1-251"><a href="#cb1-251" aria-hidden="true" tabindex="-1"></a><span class="ss">  3. </span>Coding demo. </span>
-<span id="cb1-252"><a href="#cb1-252" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/details&gt;</span></span>
-<span id="cb1-253"><a href="#cb1-253" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-240"><a href="#cb1-240" aria-hidden="true" tabindex="-1"></a>Professor Seshadri's office hours:</span>
+<span id="cb1-241"><a href="#cb1-241" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-242"><a href="#cb1-242" aria-hidden="true" tabindex="-1"></a>| Location  | Time    |</span>
+<span id="cb1-243"><a href="#cb1-243" aria-hidden="true" tabindex="-1"></a>| --------  | ------- |</span>
+<span id="cb1-244"><a href="#cb1-244" aria-hidden="true" tabindex="-1"></a>| MK 421    | Fridays 14:30 to 15:30 |</span>
+<span id="cb1-245"><a href="#cb1-245" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-246"><a href="#cb1-246" aria-hidden="true" tabindex="-1"></a><span class="fu">## Textbooks</span></span>
+<span id="cb1-247"><a href="#cb1-247" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-248"><a href="#cb1-248" aria-hidden="true" tabindex="-1"></a>This course will make heavy use of the following texts:</span>
+<span id="cb1-249"><a href="#cb1-249" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-250"><a href="#cb1-250" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Rasmussen, C. E., Williams, C. K. *Gaussian Processes for Machine Learning*, The MIT Press, 2006.</span>
+<span id="cb1-251"><a href="#cb1-251" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Murphy, K. P., *Probabilistic Machine Learning: Advanced Topics*, The MIT Press, 2023.</span>
+<span id="cb1-252"><a href="#cb1-252" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-253"><a href="#cb1-253" aria-hidden="true" tabindex="-1"></a>Both these texts have been made freely available by the authors.</span>
 <span id="cb1-254"><a href="#cb1-254" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-255"><a href="#cb1-255" aria-hidden="true" tabindex="-1"></a>04.01: **L21. State-space Gaussian processes** </span>
-<span id="cb1-256"><a href="#cb1-256" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;details&gt;</span></span>
-<span id="cb1-257"><a href="#cb1-257" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;summary&gt;</span>Contents<span class="kw">&lt;/summary&gt;</span></span>
+<span id="cb1-255"><a href="#cb1-255" aria-hidden="true" tabindex="-1"></a><span class="fu">## Important papers</span></span>
+<span id="cb1-256"><a href="#cb1-256" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-257"><a href="#cb1-257" aria-hidden="true" tabindex="-1"></a>Students are encouraged to read through the following papers:</span>
 <span id="cb1-258"><a href="#cb1-258" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-259"><a href="#cb1-259" aria-hidden="true" tabindex="-1"></a><span class="ss">  1. </span>Application: time series models.</span>
-<span id="cb1-260"><a href="#cb1-260" aria-hidden="true" tabindex="-1"></a><span class="ss">  2. </span>Gaussian state space model.</span>
-<span id="cb1-261"><a href="#cb1-261" aria-hidden="true" tabindex="-1"></a><span class="ss">  3. </span>Parallels with Kalman filtering and smoothing.</span>
-<span id="cb1-262"><a href="#cb1-262" aria-hidden="true" tabindex="-1"></a><span class="ss">  4. </span>Creating custom state-space kernels. </span>
-<span id="cb1-263"><a href="#cb1-263" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/details&gt;</span></span>
+<span id="cb1-259"><a href="#cb1-259" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Roberts, S., Osborne, M., Ebden, M., Reece, S., Gibson, N., Aigrain, S., (2013) *Gaussian processes for time-series modelling*, Philosophical Transactions of the Royal Society A: Mathematical, Physical and Engineering Sciences.</span><span class="co">](https://doi.org/10.1098/rsta.2011.0550)</span></span>
+<span id="cb1-260"><a href="#cb1-260" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-261"><a href="#cb1-261" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Dunlop, M., Girolami, M., Stuart, A., Teckentrup, A., (2018) *How Deep Are Deep Gaussian Processes?*, Journal of Machine Learning Research 19, 1-46</span><span class="co">](https://www.jmlr.org/papers/volume19/18-015/18-015.pdf)</span></span>
+<span id="cb1-262"><a href="#cb1-262" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-263"><a href="#cb1-263" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Alvarez, M., Lawrence, N., (2011) *Computationally Efficient Convolved Multiple Output Gaussian Processes*, Journal of Machine Learning Research 12, 1459-1500</span><span class="co">](https://www.jmlr.org/papers/volume12/alvarez11a/alvarez11a.pdf)</span></span>
 <span id="cb1-264"><a href="#cb1-264" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-265"><a href="#cb1-265" aria-hidden="true" tabindex="-1"></a>04.03: **L22. Bayesian optimization** </span>
-<span id="cb1-266"><a href="#cb1-266" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;details&gt;</span></span>
-<span id="cb1-267"><a href="#cb1-267" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;summary&gt;</span>Contents<span class="kw">&lt;/summary&gt;</span></span>
+<span id="cb1-265"><a href="#cb1-265" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Van der Wilk, M., Rasmussen, C., Hensman, J., (2017) *Convolutional Gaussian Processes*, 31st Conference on Neural Information Processing Systems</span><span class="co">](https://dl.acm.org/doi/pdf/10.5555/3294996.3295044)</span></span>
+<span id="cb1-266"><a href="#cb1-266" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-267"><a href="#cb1-267" aria-hidden="true" tabindex="-1"></a><span class="fu">## References</span></span>
 <span id="cb1-268"><a href="#cb1-268" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-269"><a href="#cb1-269" aria-hidden="true" tabindex="-1"></a><span class="ss">  1. </span>Gaussian process surrogate.</span>
-<span id="cb1-270"><a href="#cb1-270" aria-hidden="true" tabindex="-1"></a><span class="ss">  2. </span>Acquisition function.</span>
-<span id="cb1-271"><a href="#cb1-271" aria-hidden="true" tabindex="-1"></a><span class="ss">  3. </span>Thompson's sampling. </span>
-<span id="cb1-272"><a href="#cb1-272" aria-hidden="true" tabindex="-1"></a><span class="ss">  4. </span>Gaussian process dynamic model. </span>
-<span id="cb1-273"><a href="#cb1-273" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/details&gt;</span></span>
-<span id="cb1-274"><a href="#cb1-274" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-275"><a href="#cb1-275" aria-hidden="true" tabindex="-1"></a>04.08: **L23. Guest Lecture** </span>
-<span id="cb1-276"><a href="#cb1-276" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-277"><a href="#cb1-277" aria-hidden="true" tabindex="-1"></a>04.22: **L24. Project presentations** </span>
-<span id="cb1-278"><a href="#cb1-278" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-279"><a href="#cb1-279" aria-hidden="true" tabindex="-1"></a><span class="fu">## Office hours</span></span>
-<span id="cb1-280"><a href="#cb1-280" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-281"><a href="#cb1-281" aria-hidden="true" tabindex="-1"></a>Professor Seshadri's office hours:</span>
-<span id="cb1-282"><a href="#cb1-282" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-283"><a href="#cb1-283" aria-hidden="true" tabindex="-1"></a>| Location  | Time    |</span>
-<span id="cb1-284"><a href="#cb1-284" aria-hidden="true" tabindex="-1"></a>| --------  | ------- |</span>
-<span id="cb1-285"><a href="#cb1-285" aria-hidden="true" tabindex="-1"></a>| MK 421    | Fridays 14:30 to 15:30 |</span>
-<span id="cb1-286"><a href="#cb1-286" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-287"><a href="#cb1-287" aria-hidden="true" tabindex="-1"></a><span class="fu">## Textbooks</span></span>
-<span id="cb1-288"><a href="#cb1-288" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-289"><a href="#cb1-289" aria-hidden="true" tabindex="-1"></a>This course will make heavy use of the following texts:</span>
-<span id="cb1-290"><a href="#cb1-290" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-291"><a href="#cb1-291" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Rasmussen, C. E., Williams, C. K. *Gaussian Processes for Machine Learning*, The MIT Press, 2006.</span>
-<span id="cb1-292"><a href="#cb1-292" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Murphy, K. P., *Probabilistic Machine Learning: Advanced Topics*, The MIT Press, 2023.</span>
-<span id="cb1-293"><a href="#cb1-293" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-294"><a href="#cb1-294" aria-hidden="true" tabindex="-1"></a>Both these texts have been made freely available by the authors.</span>
-<span id="cb1-295"><a href="#cb1-295" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-296"><a href="#cb1-296" aria-hidden="true" tabindex="-1"></a><span class="fu">## Important papers</span></span>
-<span id="cb1-297"><a href="#cb1-297" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-298"><a href="#cb1-298" aria-hidden="true" tabindex="-1"></a>Students are encouraged to read through the following papers:</span>
-<span id="cb1-299"><a href="#cb1-299" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-300"><a href="#cb1-300" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Roberts, S., Osborne, M., Ebden, M., Reece, S., Gibson, N., Aigrain, S., (2013) *Gaussian processes for time-series modelling*, Philosophical Transactions of the Royal Society A: Mathematical, Physical and Engineering Sciences.</span><span class="co">](https://doi.org/10.1098/rsta.2011.0550)</span></span>
-<span id="cb1-301"><a href="#cb1-301" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-302"><a href="#cb1-302" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Dunlop, M., Girolami, M., Stuart, A., Teckentrup, A., (2018) *How Deep Are Deep Gaussian Processes?*, Journal of Machine Learning Research 19, 1-46</span><span class="co">](https://www.jmlr.org/papers/volume19/18-015/18-015.pdf)</span></span>
-<span id="cb1-303"><a href="#cb1-303" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-304"><a href="#cb1-304" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Alvarez, M., Lawrence, N., (2011) *Computationally Efficient Convolved Multiple Output Gaussian Processes*, Journal of Machine Learning Research 12, 1459-1500</span><span class="co">](https://www.jmlr.org/papers/volume12/alvarez11a/alvarez11a.pdf)</span></span>
-<span id="cb1-305"><a href="#cb1-305" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-306"><a href="#cb1-306" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Van der Wilk, M., Rasmussen, C., Hensman, J., (2017) *Convolutional Gaussian Processes*, 31st Conference on Neural Information Processing Systems</span><span class="co">](https://dl.acm.org/doi/pdf/10.5555/3294996.3295044)</span></span>
-<span id="cb1-307"><a href="#cb1-307" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-308"><a href="#cb1-308" aria-hidden="true" tabindex="-1"></a><span class="fu">## References</span></span>
-<span id="cb1-309"><a href="#cb1-309" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-310"><a href="#cb1-310" aria-hidden="true" tabindex="-1"></a>Material used in this course has been adapted from </span>
-<span id="cb1-311"><a href="#cb1-311" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-312"><a href="#cb1-312" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>CUED Part IB probability course notes</span>
-<span id="cb1-313"><a href="#cb1-313" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Alto University's module on Gaussian Processes</span>
-<span id="cb1-314"><a href="#cb1-314" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Slides from the Gaussian Process Summer Schools</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-269"><a href="#cb1-269" aria-hidden="true" tabindex="-1"></a>Material used in this course has been adapted from </span>
+<span id="cb1-270"><a href="#cb1-270" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-271"><a href="#cb1-271" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>CUED Part IB probability course notes</span>
+<span id="cb1-272"><a href="#cb1-272" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Alto University's module on Gaussian Processes</span>
+<span id="cb1-273"><a href="#cb1-273" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Slides from the Gaussian Process Summer Schools</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 
