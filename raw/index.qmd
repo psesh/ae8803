@@ -201,13 +201,12 @@ Below you will find a list of the lectures that form the backbone of this course
 </details>
 
 
-03.27: **L20. Latent models and unsupervised learning** 
+03.27: **L17. Scaling Gaussian Processes II (Probabilistic Perspective)** | <a href="https://gtvault-my.sharepoint.com/:b:/g/personal/pseshadri34_gatech_edu/Ee2mprSEltRPm60DhcqBb8QB3wm9gOiovn21PS7FcGVx-A?e=0xFhiC" target="_blank" style="text-decoration: none">Slides</a> | <a href="https://psesh.github.io/ae8803/useful_codes/sparse.html"  style="text-decoration: none">Notebook</a> 
 <details>
   <summary>Contents</summary>
 
-  1. Contrast standard regression with latent variable model.
-  2. Gaussian process latent variable model.
-  3. Coding demo. 
+  1. Bayesian inference review.
+  2. Deterministic training conditional.
 </details>
 
 

@@ -22,6 +22,7 @@ project:
     - useful_codes/gp101.ipynb
     - useful_codes/mcmc.ipynb
     - useful_codes/vi.ipynb
+    - useful_codes/sparse.ipynb
     - coding-1/coding-1.ipynb
     - midterm/midterm_2024_solutions.ipynb
 format:
@@ -90,6 +91,8 @@ website:
             href: https://psesh.github.io/ae8803/useful_codes/mcmc.html
           - text: "Variational inference"
             href: https://psesh.github.io/ae8803/useful_codes/vi.html
+          - text: "Sparse Gaussian processes"
+            href: https://psesh.github.io/ae8803/useful_codes/sparse.html
       - section: "Assignments"
         contents:
               - text: "Assignment 2"
