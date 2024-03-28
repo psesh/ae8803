@@ -297,7 +297,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
+  <li><a href="#dtc" id="toc-dtc" class="nav-link active" data-scroll-target="#dtc">DTC</a></li>
+  <li><a href="#fitc" id="toc-fitc" class="nav-link" data-scroll-target="#fitc">FITC</a></li>
+  <li><a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example">Example</a></li>
+  <li><a href="#location-of-the-inducing-points" id="toc-location-of-the-inducing-points" class="nav-link" data-scroll-target="#location-of-the-inducing-points">Location of the inducing points</a></li>
   </ul>
 </nav>
     </div>
@@ -321,50 +324,92 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<section id="overview" class="level3">
-<h3 class="anchored" data-anchor-id="overview">Overview</h3>
-<p>In this rather brief note, I will walk you through how to implement a “DTC”, i.e., deterministic training conditional sparse Gaussian process methodology. The problem that we will study will the same one we encountered before.</p>
+<p>This rather brief note outlines the differences between two important sparse Gaussian process approximation methods. Following the lecture slides, we will focus on the Deterministic Training Conditional (DTC) method and the Fully Independent Training Conditional (FITC) method. These are both examples of inducing point methods. Following our discussion of Candela &amp; Rasmussen in Lecture, it is worth emphasizing that both these methods can be expressed in terms of amendments to the joint (training and predictive) Gaussian process prior.</p>
+<section id="dtc" class="level3">
+<h3 class="anchored" data-anchor-id="dtc">DTC</h3>
+<p>DTC assumes that the posterior distribution of the Gaussian Process, when conditioned on the inducing points, is independent of the training data, i.e., there is conditional independence between them. It uses this to derive a closed-form (only when the likelihood is Gaussian too) expression for the approximate posterior. DTC is relatively simple to implement and is computationally efficient. Consider the pseudo-code below that contrasts the standard Gaussian process formalism with the DTC approach for building the conditional distribution.</p>
+<pre><code># Standard formalism
+
+Kxx = kern(X,X)
+Kxs = kern(X, Xnew)
+Kss = kern(Xnew, Xnew)
+
+Sigma = sigma**2 * eye(N)
+L = cholesky(Kxx + Sigma)
+A = solve_lower(L, Kxs)
+v = solve_lower(L, y)
+mu = A.T @ v
+cov = Kss - A.T @ A    </code></pre>
+<pre><code># DTC approach
+
+Kuu = kern(Xu, Xu)
+Kuf = kern(Xu, X)
+Kss = kern(Xnew, Xnew)
+
+Luu = cholesky(Kuu)
+A = solve_lower(Luu, Kuf)
+Qffd = sum(A**2, 0)
+Lambda = sigma**2 * eye(Qffd.shape[0])
+A_l = A / Lambda
+As = solve_lower(Luu, Kus)
+L_B = cholesky(eye(Xu.shape[0]) + A_l @ A.T)
+mu = As.T @ solve_upper(L_B.T, c)
+cov = Kss - As.T @ As + C.T @ C</code></pre>
+<p><strong><em>One weakness associated with DTC is that its independence assumption can lead to overconfident predictions, particularly when away from the incuding points</em></strong>.</p>
+</section>
+<section id="fitc" class="level3">
+<h3 class="anchored" data-anchor-id="fitc">FITC</h3>
+<p>Like DTC, FITC also assumes conditional independence between the GP values at the inducing points and the remaining training data. However, it doesn’t completely neglect the correlations; it introduces a diagonal correction term to approximate the covariance matrix. In pseudocode, the amendment to DTC is given below</p>
+<pre><code>Kffd = ker(X, X, diag=True) # only the diagonal terms
+Lambda = Kffd - Qffd + sigma**2
+</code></pre>
+<p>It should be clear that even with FITC, there will be accuracy limitations when compared with a standard Gaussian process model.</p>
+</section>
+<section id="example" class="level3">
+<h3 class="anchored" data-anchor-id="example">Example</h3>
+<p>In the code blocks below, we demonstrate using DTC and FITC with pymc. To swamp between the two, simply change this line of code:</p>
+<p><code>gp = pm.gp.MarginalApprox(cov_func=cov, approx='DTC')</code></p>
 <div class="cell" data-execution_count="1">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pymc <span class="im">as</span> pm</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> arviz <span class="im">as</span> az</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> multivariate_normal</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pymc.gp.util <span class="im">import</span> plot_gp_dist</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pymc <span class="im">as</span> pm</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> arviz <span class="im">as</span> az</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> multivariate_normal</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pymc.gp.util <span class="im">import</span> plot_gp_dist</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div class="cell" data-execution_count="2">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Training data</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">2000</span> </span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">10</span>, n)[:, <span class="va">None</span>]  </span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">100</span>)</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the true covariance function and its parameters</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>ell_true <span class="op">=</span> <span class="fl">1.0</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>eta_true <span class="op">=</span> <span class="fl">3.0</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>cov_func <span class="op">=</span> eta_true<span class="op">**</span><span class="dv">2</span> <span class="op">*</span> pm.gp.cov.Matern52(<span class="dv">1</span>, ell_true)</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>mean_func <span class="op">=</span> pm.gp.mean.Zero()</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>f_true <span class="op">=</span> np.random.multivariate_normal(</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    mean_func(X).<span class="bu">eval</span>(), cov_func(X).<span class="bu">eval</span>() <span class="op">+</span> <span class="fl">1e-8</span> <span class="op">*</span> np.eye(n), <span class="dv">1</span></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>).flatten()</span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>sigma_true <span class="op">=</span> <span class="fl">2.0</span></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="co"># True signal is corrupted by random noise</span></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> f_true <span class="op">+</span> sigma_true <span class="op">*</span> np.random.randn(n)</span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="co">## Plot the data and the unobserved latent function</span></span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">5</span>))</span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> fig.gca()</span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>ax.plot(X, f_true, <span class="st">"dodgerblue"</span>, lw<span class="op">=</span><span class="dv">3</span>, label<span class="op">=</span><span class="st">"True f"</span>)</span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>ax.plot(X, y, <span class="st">"ok"</span>, ms<span class="op">=</span><span class="dv">3</span>, alpha<span class="op">=</span><span class="fl">0.5</span>, label<span class="op">=</span><span class="st">"Data"</span>)</span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">"X"</span>)</span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">"The true f(x)"</span>)</span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>plt.legend()<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Training data</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">2000</span> </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">10</span>, n)[:, <span class="va">None</span>]  </span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">100</span>)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the true covariance function and its parameters</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>ell_true <span class="op">=</span> <span class="fl">1.0</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>eta_true <span class="op">=</span> <span class="fl">3.0</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>cov_func <span class="op">=</span> eta_true<span class="op">**</span><span class="dv">2</span> <span class="op">*</span> pm.gp.cov.Matern52(<span class="dv">1</span>, ell_true)</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>mean_func <span class="op">=</span> pm.gp.mean.Zero()</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>f_true <span class="op">=</span> np.random.multivariate_normal(</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    mean_func(X).<span class="bu">eval</span>(), cov_func(X).<span class="bu">eval</span>() <span class="op">+</span> <span class="fl">1e-8</span> <span class="op">*</span> np.eye(n), <span class="dv">1</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>).flatten()</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>sigma_true <span class="op">=</span> <span class="fl">2.0</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="co"># True signal is corrupted by random noise</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> f_true <span class="op">+</span> sigma_true <span class="op">*</span> np.random.randn(n)</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="co">## Plot the data and the unobserved latent function</span></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">5</span>))</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> fig.gca()</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>ax.plot(X, f_true, <span class="st">"dodgerblue"</span>, lw<span class="op">=</span><span class="dv">3</span>, label<span class="op">=</span><span class="st">"True f"</span>)</span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>ax.plot(X, y, <span class="st">"ok"</span>, ms<span class="op">=</span><span class="dv">3</span>, alpha<span class="op">=</span><span class="fl">0.5</span>, label<span class="op">=</span><span class="st">"Data"</span>)</span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">"X"</span>)</span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">"The true f(x)"</span>)</span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>plt.legend()<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <p><img src="sparse_files/figure-html/cell-3-output-1.png" class="img-fluid"></p>
@@ -380,21 +425,21 @@ k(x, x') =  \eta^2 \left(1 + \frac{\sqrt{5(x - x')^2}}{\ell} +
 <div class="cell" data-execution_count="3">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> pm.Model() <span class="im">as</span> model:</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    ell <span class="op">=</span> pm.Gamma(<span class="st">"ell"</span>, alpha<span class="op">=</span><span class="dv">2</span>, beta<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    eta <span class="op">=</span> pm.HalfCauchy(<span class="st">"eta"</span>, beta<span class="op">=</span><span class="dv">5</span>)</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    cov <span class="op">=</span> eta<span class="op">**</span><span class="dv">2</span> <span class="op">*</span> pm.gp.cov.Matern52(<span class="dv">1</span>, ell)</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    gp <span class="op">=</span> pm.gp.MarginalApprox(cov_func<span class="op">=</span>cov, approx<span class="op">=</span><span class="st">'DTC'</span>)</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Fixed inducing points!</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    Xu <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">5</span>).reshape(<span class="dv">5</span>,<span class="dv">1</span>)</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    sigma <span class="op">=</span> pm.HalfCauchy(<span class="st">"sigma"</span>, beta<span class="op">=</span><span class="dv">5</span>)</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    y_ <span class="op">=</span> gp.marginal_likelihood(<span class="st">"y"</span>, X<span class="op">=</span>X, y<span class="op">=</span>y, Xu<span class="op">=</span>Xu , sigma<span class="op">=</span>sigma)</span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> model:</span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>        map_post <span class="op">=</span> pm.find_MAP()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> pm.Model() <span class="im">as</span> model:</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    ell <span class="op">=</span> pm.Gamma(<span class="st">"ell"</span>, alpha<span class="op">=</span><span class="dv">2</span>, beta<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    eta <span class="op">=</span> pm.HalfCauchy(<span class="st">"eta"</span>, beta<span class="op">=</span><span class="dv">5</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    cov <span class="op">=</span> eta<span class="op">**</span><span class="dv">2</span> <span class="op">*</span> pm.gp.cov.Matern52(<span class="dv">1</span>, ell)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    gp <span class="op">=</span> pm.gp.MarginalApprox(cov_func<span class="op">=</span>cov, approx<span class="op">=</span><span class="st">'DTC'</span>)</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Fixed inducing points!</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    Xu <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">5</span>).reshape(<span class="dv">5</span>,<span class="dv">1</span>)</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    sigma <span class="op">=</span> pm.HalfCauchy(<span class="st">"sigma"</span>, beta<span class="op">=</span><span class="dv">5</span>)</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>    y_ <span class="op">=</span> gp.marginal_likelihood(<span class="st">"y"</span>, X<span class="op">=</span>X, y<span class="op">=</span>y, Xu<span class="op">=</span>Xu , sigma<span class="op">=</span>sigma)</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> model:</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>        map_post <span class="op">=</span> pm.find_MAP()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 
@@ -430,61 +475,61 @@ k(x, x') =  \eta^2 \left(1 + \frac{\sqrt{5(x - x')^2}}{\ell} +
 <div class="cell" data-execution_count="4">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Test values</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>X_new <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">20</span>, <span class="dv">600</span>)[:, <span class="va">None</span>]</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> model:</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    mu, covar <span class="op">=</span> gp.predict(X_new, point<span class="op">=</span>map_post, diag<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Test values</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>X_new <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">20</span>, <span class="dv">600</span>)[:, <span class="va">None</span>]</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> model:</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    mu, covar <span class="op">=</span> gp.predict(X_new, point<span class="op">=</span>map_post, diag<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div class="cell" data-execution_count="6">
+<div class="cell" data-execution_count="5">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>post_map_dist <span class="op">=</span> multivariate_normal(mu, covar)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>map_samples <span class="op">=</span> post_map_dist.rvs(<span class="dv">50</span>)</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>Xu_final <span class="op">=</span> Xu</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">5</span>))</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> fig.gca()</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>plt.plot(X, f_true, <span class="st">"dodgerblue"</span>, lw<span class="op">=</span><span class="dv">3</span>, label<span class="op">=</span><span class="st">"True f"</span>)</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>plt.plot(Xu_final, Xu_final<span class="op">*</span><span class="dv">0</span> <span class="op">+</span> <span class="dv">10</span>, <span class="st">'x'</span>, ms<span class="op">=</span><span class="dv">12</span>, color<span class="op">=</span><span class="st">'limegreen'</span>, label<span class="op">=</span><span class="st">'Incuding points'</span>)</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>plt.plot(X, y, <span class="st">"ok"</span>, ms<span class="op">=</span><span class="dv">3</span>, alpha<span class="op">=</span><span class="fl">0.5</span>, label<span class="op">=</span><span class="st">"Observed data"</span>)</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>plot_gp_dist(ax, samples<span class="op">=</span>map_samples, x<span class="op">=</span>X_new )</span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>plt.legend(loc<span class="op">=</span><span class="st">'lower right'</span>)</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"X"</span>)</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>plt.xlim([<span class="op">-</span><span class="dv">1</span>, <span class="dv">20</span>])</span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>plt.ylim([<span class="op">-</span><span class="dv">8</span>, <span class="dv">12</span>])</span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">'fixed.png'</span>, dpi<span class="op">=</span><span class="dv">150</span>, bbox_inches<span class="op">=</span><span class="st">'tight'</span>, transparent<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>post_map_dist <span class="op">=</span> multivariate_normal(mu, covar)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>map_samples <span class="op">=</span> post_map_dist.rvs(<span class="dv">50</span>)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>Xu_final <span class="op">=</span> Xu</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">5</span>))</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> fig.gca()</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>plt.plot(X, f_true, <span class="st">"dodgerblue"</span>, lw<span class="op">=</span><span class="dv">3</span>, label<span class="op">=</span><span class="st">"True f"</span>)</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>plt.plot(Xu_final, Xu_final<span class="op">*</span><span class="dv">0</span> <span class="op">+</span> <span class="dv">10</span>, <span class="st">'x'</span>, ms<span class="op">=</span><span class="dv">12</span>, color<span class="op">=</span><span class="st">'limegreen'</span>, label<span class="op">=</span><span class="st">'Incuding points'</span>)</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>plt.plot(X, y, <span class="st">"ok"</span>, ms<span class="op">=</span><span class="dv">3</span>, alpha<span class="op">=</span><span class="fl">0.5</span>, label<span class="op">=</span><span class="st">"Observed data"</span>)</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>plot_gp_dist(ax, samples<span class="op">=</span>map_samples, x<span class="op">=</span>X_new )</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>plt.legend(loc<span class="op">=</span><span class="st">'lower right'</span>)</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"X"</span>)</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>plt.xlim([<span class="op">-</span><span class="dv">1</span>, <span class="dv">20</span>])</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>plt.ylim([<span class="op">-</span><span class="dv">8</span>, <span class="dv">12</span>])</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">'fixed.png'</span>, dpi<span class="op">=</span><span class="dv">150</span>, bbox_inches<span class="op">=</span><span class="st">'tight'</span>, transparent<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <p><img src="sparse_files/figure-html/cell-6-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 <p>We shall repeat the same exercise, but now assign a <code>flat</code> prior to the inducing point locations and let those be optimized as well.</p>
-<div class="cell" data-execution_count="10">
+<div class="cell" data-execution_count="6">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> pm.Model() <span class="im">as</span> model:</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    ell <span class="op">=</span> pm.Gamma(<span class="st">"ell"</span>, alpha<span class="op">=</span><span class="dv">2</span>, beta<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    eta <span class="op">=</span> pm.HalfCauchy(<span class="st">"eta"</span>, beta<span class="op">=</span><span class="dv">5</span>)</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    cov <span class="op">=</span> eta<span class="op">**</span><span class="dv">2</span> <span class="op">*</span> pm.gp.cov.Matern52(<span class="dv">1</span>, ell)</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    gp <span class="op">=</span> pm.gp.MarginalApprox(cov_func<span class="op">=</span>cov, approx<span class="op">=</span><span class="st">'DTC'</span>)</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Fixed inducing points!</span></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    Xu_init <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">5</span>).reshape(<span class="dv">5</span>,<span class="dv">1</span>)</span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Varying inducing points!</span></span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>    Xu <span class="op">=</span> pm.Flat(<span class="st">"Xu_i"</span>, initval<span class="op">=</span>Xu_init, shape<span class="op">=</span>(<span class="dv">5</span>,<span class="dv">1</span>))</span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>    sigma <span class="op">=</span> pm.HalfCauchy(<span class="st">"sigma"</span>, beta<span class="op">=</span><span class="dv">5</span>)</span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>    y_ <span class="op">=</span> gp.marginal_likelihood(<span class="st">"y"</span>, X<span class="op">=</span>X, y<span class="op">=</span>y, Xu<span class="op">=</span>Xu , sigma<span class="op">=</span>sigma)</span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> model:</span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>        map_post <span class="op">=</span> pm.find_MAP()</span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> model:</span>
-<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>    mu, covar <span class="op">=</span> gp.predict(X_new, point<span class="op">=</span>map_post, diag<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> pm.Model() <span class="im">as</span> model:</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    ell <span class="op">=</span> pm.Gamma(<span class="st">"ell"</span>, alpha<span class="op">=</span><span class="dv">2</span>, beta<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    eta <span class="op">=</span> pm.HalfCauchy(<span class="st">"eta"</span>, beta<span class="op">=</span><span class="dv">5</span>)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    cov <span class="op">=</span> eta<span class="op">**</span><span class="dv">2</span> <span class="op">*</span> pm.gp.cov.Matern52(<span class="dv">1</span>, ell)</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    gp <span class="op">=</span> pm.gp.MarginalApprox(cov_func<span class="op">=</span>cov, approx<span class="op">=</span><span class="st">'DTC'</span>)</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Fixed inducing points!</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    Xu_init <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">5</span>).reshape(<span class="dv">5</span>,<span class="dv">1</span>)</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Varying inducing points!</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>    Xu <span class="op">=</span> pm.Flat(<span class="st">"Xu_i"</span>, initval<span class="op">=</span>Xu_init, shape<span class="op">=</span>(<span class="dv">5</span>,<span class="dv">1</span>))</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>    sigma <span class="op">=</span> pm.HalfCauchy(<span class="st">"sigma"</span>, beta<span class="op">=</span><span class="dv">5</span>)</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>    y_ <span class="op">=</span> gp.marginal_likelihood(<span class="st">"y"</span>, X<span class="op">=</span>X, y<span class="op">=</span>y, Xu<span class="op">=</span>Xu , sigma<span class="op">=</span>sigma)</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> model:</span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>        map_post <span class="op">=</span> pm.find_MAP()</span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> model:</span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>    mu, covar <span class="op">=</span> gp.predict(X_new, point<span class="op">=</span>map_post, diag<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 
@@ -516,30 +561,34 @@ k(x, x') =  \eta^2 \left(1 + \frac{\sqrt{5(x - x')^2}}{\ell} +
 <pre><code></code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="11">
+<div class="cell" data-execution_count="7">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>post_map_dist <span class="op">=</span> multivariate_normal(mu, covar)</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>map_samples <span class="op">=</span> post_map_dist.rvs(<span class="dv">50</span>)</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>Xu_final <span class="op">=</span> map_post[<span class="st">'Xu_i'</span>]</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">5</span>))</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> fig.gca()</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>plt.plot(X, f_true, <span class="st">"dodgerblue"</span>, lw<span class="op">=</span><span class="dv">3</span>, label<span class="op">=</span><span class="st">"True f"</span>)</span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>plt.plot(Xu_final, Xu_final<span class="op">*</span><span class="dv">0</span> <span class="op">+</span> <span class="dv">10</span>, <span class="st">'x'</span>, ms<span class="op">=</span><span class="dv">12</span>, color<span class="op">=</span><span class="st">'limegreen'</span>, label<span class="op">=</span><span class="st">'Incuding points'</span>)</span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>plt.plot(X, y, <span class="st">"ok"</span>, ms<span class="op">=</span><span class="dv">3</span>, alpha<span class="op">=</span><span class="fl">0.5</span>, label<span class="op">=</span><span class="st">"Observed data"</span>)</span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>plot_gp_dist(ax, samples<span class="op">=</span>map_samples, x<span class="op">=</span>X_new )</span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>plt.legend(loc<span class="op">=</span><span class="st">'lower right'</span>)</span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"X"</span>)</span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>plt.xlim([<span class="op">-</span><span class="dv">1</span>, <span class="dv">20</span>])</span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>plt.ylim([<span class="op">-</span><span class="dv">8</span>, <span class="dv">12</span>])</span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">'opt.png'</span>, dpi<span class="op">=</span><span class="dv">150</span>, bbox_inches<span class="op">=</span><span class="st">'tight'</span>, transparent<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>post_map_dist <span class="op">=</span> multivariate_normal(mu, covar)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>map_samples <span class="op">=</span> post_map_dist.rvs(<span class="dv">50</span>)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>Xu_final <span class="op">=</span> map_post[<span class="st">'Xu_i'</span>]</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">5</span>))</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> fig.gca()</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>plt.plot(X, f_true, <span class="st">"dodgerblue"</span>, lw<span class="op">=</span><span class="dv">3</span>, label<span class="op">=</span><span class="st">"True f"</span>)</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>plt.plot(Xu_final, Xu_final<span class="op">*</span><span class="dv">0</span> <span class="op">+</span> <span class="dv">10</span>, <span class="st">'x'</span>, ms<span class="op">=</span><span class="dv">12</span>, color<span class="op">=</span><span class="st">'limegreen'</span>, label<span class="op">=</span><span class="st">'Incuding points'</span>)</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>plt.plot(X, y, <span class="st">"ok"</span>, ms<span class="op">=</span><span class="dv">3</span>, alpha<span class="op">=</span><span class="fl">0.5</span>, label<span class="op">=</span><span class="st">"Observed data"</span>)</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>plot_gp_dist(ax, samples<span class="op">=</span>map_samples, x<span class="op">=</span>X_new )</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>plt.legend(loc<span class="op">=</span><span class="st">'lower right'</span>)</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"X"</span>)</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>plt.xlim([<span class="op">-</span><span class="dv">1</span>, <span class="dv">20</span>])</span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>plt.ylim([<span class="op">-</span><span class="dv">8</span>, <span class="dv">12</span>])</span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">'opt.png'</span>, dpi<span class="op">=</span><span class="dv">150</span>, bbox_inches<span class="op">=</span><span class="st">'tight'</span>, transparent<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <p><img src="sparse_files/figure-html/cell-8-output-1.png" class="img-fluid"></p>
 </div>
 </div>
+</section>
+<section id="location-of-the-inducing-points" class="level3">
+<h3 class="anchored" data-anchor-id="location-of-the-inducing-points">Location of the inducing points</h3>
+<p>In the example above, we note a considerable degree of clustering in the inducing point locations. This is not unnatural. Inducing points are meant to act as a summary of the dataset, and the optimization process aims to place them in regions where either there is less data or where there is significant variation in the function values. Note that in the case above, it happens to be where the function is rapidly changing.</p>
 
 
 </section>
