@@ -22,40 +22,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -99,8 +65,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;display=swap" rel="stylesheet">
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
@@ -147,7 +111,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">GP 101</li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Proposal</li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -300,9 +264,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a>
+  <li><a href="#instructions" id="toc-instructions" class="nav-link active" data-scroll-target="#instructions">Instructions</a>
   <ul class="collapse">
-  <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data">Data</a></li>
+  <li><a href="#proposal" id="toc-proposal" class="nav-link" data-scroll-target="#proposal">Proposal</a></li>
+  <li><a href="#possible-ideas" id="toc-possible-ideas" class="nav-link" data-scroll-target="#possible-ideas">Possible ideas</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -312,7 +277,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">GP 101</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li></ul></div></div>
+<h1 class="title">Proposal</h1>
 </div>
 
 
@@ -327,108 +292,38 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<section id="overview" class="level2">
-<h2 class="anchored" data-anchor-id="overview">Overview</h2>
-<p>This notebook provides a quick start guide to building a Gaussian process model using only <code>numpy</code>, <code>scipy</code>, <code>pandas</code>, and <code>matplotlib</code>.</p>
-<div class="cell" data-execution_count="2">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> multivariate_normal</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.linalg <span class="im">import</span> cholesky, solve_triangular</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<section id="data" class="level3">
-<h3 class="anchored" data-anchor-id="data">Data</h3>
-<p>In this tutorial, we will use the Olympic gold dataset that we have used quite a few times in Lecture. First, we shall use <code>pandas</code> to retrieve the data.</p>
-<div class="cell" data-execution_count="3">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'data/data100m.csv'</span>)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>df.columns<span class="op">=</span>[<span class="st">'Year'</span>, <span class="st">'Time'</span>]</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> df.shape[<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<p>The three code blocks below define the kernel, a utility function for <em>tiling</em>, and the posterior calculation. To clarify, this is the predictive posterior distribution evaluated at some <em>test</em> locations, <span class="math inline">\(\mathbf{X}_{\ast}\)</span>. The expression for both the predictive posterior mean and covariance are given by:</p>
-<p><span class="math display">\[
-\begin{aligned}
-\mathbb{E} \left[ \mathbf{y}_{\ast} | \mathbf{X}_{\ast} \right] &amp; = \mathbf{K}\left( \mathbf{X}_{\ast}, \mathbf{X} \right) \left[\mathbf{K}\left( \mathbf{X}, \mathbf{X} \right) + \sigma_{n}^2 \mathbf{I} \right]^{-1} \mathbf{y} \\
-Covar\left[ \mathbf{y}_{\ast} | \mathbf{X}_{\ast} \right] &amp; = \mathbf{K}\left( \mathbf{X}_{\ast}, \mathbf{X}_{\ast} \right) - \mathbf{K}\left( \mathbf{X}_{\ast}, \mathbf{X} \right) \left[\mathbf{K}\left( \mathbf{X}, \mathbf{X} \right) + \sigma_{n}^2 \mathbf{I} \right]^{-1} \mathbf{K}\left( \mathbf{X}, \mathbf{X}{\ast} \right)
-\end{aligned}
-\]</span></p>
-<div class="cell" data-execution_count="47">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> kernel(xa, xb, amp, ll):</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    Xa, Xb <span class="op">=</span> get_tiled(xa, xb)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> amp<span class="op">**</span><span class="dv">2</span> <span class="op">*</span> np.exp(<span class="op">-</span><span class="fl">0.5</span> <span class="op">*</span> <span class="fl">1.</span><span class="op">/</span>ll<span class="op">**</span><span class="dv">2</span> <span class="op">*</span> (Xa <span class="op">-</span> Xb)<span class="op">**</span><span class="dv">2</span> )</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_tiled(xa, xb):</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    m, n <span class="op">=</span> <span class="bu">len</span>(xa), <span class="bu">len</span>(xb)</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    xa, xb <span class="op">=</span> xa.reshape(m,<span class="dv">1</span>) , xb.reshape(n,<span class="dv">1</span>)</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    Xa <span class="op">=</span> np.tile(xa, (<span class="dv">1</span>, n))</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    Xb <span class="op">=</span> np.tile(xb.T, (m, <span class="dv">1</span>))</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> Xa, Xb</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_posterior(amp, ll, x, x_data, y_data, noise):</span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    u <span class="op">=</span> y_data.shape[<span class="dv">0</span>]</span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    mu_y <span class="op">=</span> np.mean(y_data)</span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span> (y_data <span class="op">-</span> mu_y).reshape(u,<span class="dv">1</span>)</span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    Sigma <span class="op">=</span> noise <span class="op">*</span> np.eye(u)</span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>    Kxx <span class="op">=</span> kernel(x_data, x_data, amp, ll)</span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>    Kxpx <span class="op">=</span> kernel(x, x_data, amp, ll)</span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>    Kxpxp <span class="op">=</span> kernel(x, x, amp, ll)</span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Inverse</span></span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>    jitter <span class="op">=</span> np.eye(u) <span class="op">*</span> <span class="fl">1e-12</span></span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>    L <span class="op">=</span> cholesky(Kxx <span class="op">+</span> Sigma <span class="op">+</span> jitter)</span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>    S1 <span class="op">=</span> solve_triangular(L.T, y, lower<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>    S2 <span class="op">=</span> solve_triangular(L.T, Kxpx.T, lower<span class="op">=</span><span class="va">True</span>).T</span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>    mu <span class="op">=</span> S2 <span class="op">@</span> S1  <span class="op">+</span> mu_y</span>
-<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>    cov <span class="op">=</span> Kxpxp <span class="op">-</span> S2 <span class="op">@</span> S2.T</span>
-<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> mu, cov</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<div class="cell" data-execution_count="48">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>Xt <span class="op">=</span> np.linspace(<span class="dv">1890</span>, <span class="dv">2022</span>, <span class="dv">200</span>) <span class="co"># test data locations (years)</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Hyperparameters (note these are not optimized!)</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>length_scale <span class="op">=</span> <span class="fl">7.0</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>amplitude <span class="op">=</span> <span class="fl">0.8</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>noise_variance <span class="op">=</span> <span class="fl">0.1</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>mu, cov <span class="op">=</span> get_posterior(amplitude, length_scale, Xt, df[<span class="st">'Year'</span>].values, df[<span class="st">'Time'</span>].values, noise_variance)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<div class="cell" data-execution_count="49">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>Xt <span class="op">=</span> Xt.flatten()</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>mu <span class="op">=</span> mu.flatten() </span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>std <span class="op">=</span> np.sqrt(np.diag(cov)).flatten()</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">5</span>))</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>plt.plot(Xt, mu, <span class="st">'-'</span>, label<span class="op">=</span><span class="vs">r'$\mu$'</span>, color<span class="op">=</span><span class="st">'navy'</span>)</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>plt.fill_between(Xt, mu<span class="op">+</span>std, mu<span class="op">-</span>std, color<span class="op">=</span><span class="st">'blue'</span>, alpha<span class="op">=</span><span class="fl">0.2</span>, label<span class="op">=</span><span class="vs">r'$\sigma$'</span>)</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>plt.plot(df[<span class="st">'Year'</span>].values, df[<span class="st">'Time'</span>].values, <span class="st">'go'</span>, label<span class="op">=</span><span class="st">'Data'</span>, ms<span class="op">=</span><span class="dv">8</span>)</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Years'</span>)</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Winning times'</span>)</span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display">
-<p><img src="gp101_files/figure-html/cell-6-output-1.png" class="img-fluid"></p>
-</div>
-</div>
+<section id="instructions" class="level2">
+<h2 class="anchored" data-anchor-id="instructions">Instructions</h2>
+<p>This may be done as a group project or individually. The size of the group must not exceed two. You need to formulate a problem for which a Gaussian process model is a reasonable modelling choice. As such your problem can take the form of regression, classification, design of experiment, or even unsupervised learning. You are permitted to use any open-source python platform for your chosen problem, however, you may also choose to code up your implementation from scratch.</p>
+<p>The data that underscores your problem should be open-source; you are not permitted to work on problems of a proprietary nature. It is completely acceptable to have a problem that is aligned with your research interests, although your work will be judged by what you do during this project and not prior research.</p>
+<p>A standard Gaussian process workflow assumes a prior based on a 1D RBF or Matern or periodic kernel. It also assumes that both prior and likelihood are Gaussian. You must articulate how your problem and the solution you are proposing requires either (i) a richer likelihood function, or (ii) a more complex covariance function.</p>
+<section id="proposal" class="level3">
+<h3 class="anchored" data-anchor-id="proposal">Proposal</h3>
+<p>The first part of this assignment is a proposal. The proposal must address the following questions:</p>
+<ol type="a">
+<li><p>What is input / output sought? [5]</p></li>
+<li><p>What type of kernels will be considered? [5]</p></li>
+<li><p>What are 1-2 relevant papers? [5]</p></li>
+<li><p>What is particularly novel about the implementation (prior, likelihood, kernel, mean function, etc.)? [3]</p></li>
+<li><p>What is the data source being used? [2]</p></li>
+</ol>
+<p>Kindly ensure that your proposal has a list of references. The main body of the proposal (without references) should not exceed one page. Once submitted, you will receive feedback on your proposal which will help with your project.</p>
+<section id="due-monday-8th-april-1530-on-canvas" class="level5">
+<h5 class="anchored" data-anchor-id="due-monday-8th-april-1530-on-canvas">Due: Monday 8th April 15:30 on Canvas</h5>
+</section>
+</section>
+<section id="possible-ideas" class="level3">
+<h3 class="anchored" data-anchor-id="possible-ideas">Possible ideas</h3>
+<p>Below you will find a non-exhaustive list of ideas that would satisfy the points above:</p>
+<ol type="1">
+<li><p>Design a Gaussian process model for a 2D/3D velocity field based on sparse velocity measurements. Describe and code how you would make the covariance functions (a) divergence free and (b) curl free. For training and testing data you may consider analytical equations such as the Taylor Green vortex system.</p></li>
+<li><p>Design a Gaussian process model for sensor data that exhibits some symmetry that is captured in the construction of the covariance function. If you plan to work on the JetBot project, then your proposal should focus on velocity magnitude measurements taken at several locations within a rectangular area. All measurements are at the same height and the objective is to use as few measurements as possible to estimate the velocity magnitude field.</p></li>
+<li><p>Design a Gaussian process model that is constructed across a sphere, or more generally, over a space that is not a hypercube. If using polar or spherical coordinates ensure relevant [0,2] periodicity. One example would be modelling temperature or pressure across the globe using sparse measurements from ECMWF or NOAA.</p></li>
+<li><p>Linear operators acting on a Gaussian process yield another Gaussian process. Build a Gaussian process that leverages this for both derivative and integral operations, i.e., you observe both integral (e.g., location) and derivative (e.g., acceleration) data for a Gaussian process model (e.g., velocity).</p></li>
+<li><p>Any Gaussian process model with multiple output quantities, where one needs to account for correlations between the outputs.</p></li>
+<li><p>A Gaussian process model that forecasts the latitude, longitude and altitude of flights departing a given airport. A project like this may leverage historical flight trajectory data found in websites such as Flightradar24.</p></li>
+<li><p>Gaussian process models where one also wants to reduce the dimensionality associated with the inputs; this can take the form of a dimension reducing subspace or even a deep neural network kernel.</p></li>
+</ol>
 
 
 </section>

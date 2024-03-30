@@ -24,7 +24,7 @@ This course has four assignments; the grades are given below:
 | --------  | ------- |
 | Assignment 1: <a href="https://psesh.github.io/ae8803/midterm/midterm_2024_solution.html">Take-home mid-term (covering fundamentals) </a>    | 20 |
 | Assignment 2: <a href="https://psesh.github.io/ae8803/coding-1/coding-1.html">Build your own GP from scratch for a given dataset </a> | 20 |
-| Assignment 3: Proposal (data and literature review)   | 20    |
+| Assignment 3: <a href="https://psesh.github.io/ae8803/project/proposals_and_projects.html">Proposal</a>   | 20    |
 | Assignment 4: Final project (presentation and notebook)  | 40    |
 
 

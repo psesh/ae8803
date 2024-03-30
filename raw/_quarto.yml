@@ -25,6 +25,7 @@ project:
     - useful_codes/sparse.ipynb
     - coding-1/coding-1.ipynb
     - midterm/midterm_2024_solutions.ipynb
+    - project/proposals_and_projects.ipynb
 format:
   html:
     page-layout: full
@@ -97,5 +98,7 @@ website:
         contents:
               - text: "Assignment 2"
                 href: https://psesh.github.io/ae8803/coding-1/coding-1.html
+              - text: "Assignment 3"
+                href: https://psesh.github.io/ae8803/project/proposals_and_projects.html
 #   
 # freeze: false
