@@ -47,7 +47,7 @@ format:
     pagetitle: AE8803 | Georgia Institute of Technology
 
 website:
-  title: "AE8803: MACHINE LEARNING WITH GAUSSIAN PROCESSES"
+  title: "AE8803: Machine Learning with Gaussian Processes"
   page-navigation: true
   navbar:
     background: secondary
