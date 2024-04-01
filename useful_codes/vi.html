@@ -305,6 +305,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#bayes-rule" id="toc-bayes-rule" class="nav-link active" data-scroll-target="#bayes-rule">Bayes’ rule</a></li>
   <li><a href="#the-elbo" id="toc-the-elbo" class="nav-link" data-scroll-target="#the-elbo">The ELBO</a></li>
+  <li><a href="#an-alternate-derivation" id="toc-an-alternate-derivation" class="nav-link" data-scroll-target="#an-alternate-derivation">An alternate derivation</a></li>
   <li><a href="#gp-demonstration" id="toc-gp-demonstration" class="nav-link" data-scroll-target="#gp-demonstration">GP demonstration</a></li>
   </ul>
 </nav>
@@ -419,6 +420,21 @@ ELBO \left( \phi \right) &amp; \leq log \; p \left( \mathbf{t} | \mathbf{X} \rig
 </ol>
 <p>For the latter, this approach requires factorizing the likelihood to avoid a <span class="math inline">\(N\)</span>-dimensional integral.</p>
 </section>
+<section id="an-alternate-derivation" class="level3">
+<h3 class="anchored" data-anchor-id="an-alternate-derivation">An alternate derivation</h3>
+<p>This alternate derivation is based on a blog from <a href="https://lips.cs.princeton.edu/the-elbo-without-jensen-or-kl/">Ryan Adams</a>. It starts off by modifying Bayes’ rule to arrive at an expression for the marginal likelihood with respect to the posterior</p>
+<p><span class="math display">\[
+p \left( \mathbf{t} | \mathbf{X} \right)  = \frac{p \left(\mathbf{t} | \mathbf{f} \right)p \left( \mathbf{f} | \mathbf{X} \right) }{p \left( \mathbf{f} | \mathbf{X}, \mathbf{t} \right) }.
+\]</span></p>
+<p>Taking the log on both sides then yields</p>
+<p><span class="math display">\[
+log \; p \left( \mathbf{t} | \mathbf{X} \right) = log \; p \left(\mathbf{t} | \mathbf{f} \right) + log \; p \left( \mathbf{f} | \mathbf{X} \right) - log \; p \left( \mathbf{f} | \mathbf{X}, \mathbf{t} \right)
+\]</span></p>
+<p>Now, we can combine the first two terms on the right hand side</p>
+<p><span class="math display">\[
+log \; p \left( \mathbf{t} | \mathbf{X} \right) = log \; p \left(\mathbf{t} , \mathbf{f} | \mathbf{X} \right) - log \; p \left( \mathbf{f} | \mathbf{X}, \mathbf{t} \right)
+\]</span></p>
+</section>
 <section id="gp-demonstration" class="level3">
 <h3 class="anchored" data-anchor-id="gp-demonstration">GP demonstration</h3>
 <div class="cell" data-execution_count="3">
@@ -462,7 +478,7 @@ ELBO \left( \phi \right) &amp; \leq log \; p \left( \mathbf{t} | \mathbf{X} \rig
 <span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>plt.legend()<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
-<p><img src="vi_files/figure-html/cell-3-output-1.png" class="img-fluid"></p>
+<p><img src="vi_files/figure-html/cell-6-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 <div class="cell" data-execution_count="5">
@@ -525,7 +541,7 @@ ELBO \left( \phi \right) &amp; \leq log \; p \left( \mathbf{t} | \mathbf{X} \rig
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>_ <span class="op">=</span> sns.lineplot(y<span class="op">=</span><span class="st">'log-ELBO'</span>, x<span class="op">=</span><span class="st">'n'</span>, data<span class="op">=</span>vi_elbo)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
-<p><img src="vi_files/figure-html/cell-6-output-1.png" class="img-fluid"></p>
+<p><img src="vi_files/figure-html/cell-9-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 <div class="cell" data-execution_count="26">
@@ -599,7 +615,7 @@ ELBO \left( \phi \right) &amp; \leq log \; p \left( \mathbf{t} | \mathbf{X} \rig
 <span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>plt.legend()<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
-<p><img src="vi_files/figure-html/cell-8-output-1.png" class="img-fluid"></p>
+<p><img src="vi_files/figure-html/cell-11-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 
