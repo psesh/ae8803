@@ -219,6 +219,25 @@ Below you will find a list of the lectures that form the backbone of this course
   2. MAP via Newton Raphson.
 </details>
 
+04.03: **L19. Live coding session:** | Code coming up shortly!
+
+<details>
+  <summary>Contents</summary>
+
+  1. Newton Raphson classification example.
+  2. A simple mulit-task model
+</details>
+
+04.08: **L20. Multi-task and Physics-Constrains in Kernels:** | <a href="https://gtvault-my.sharepoint.com/:b:/g/personal/pseshadri34_gatech_edu/EdMUBKI6awJIiCytd8rlDnQBp2NTGq0hS4T0-KiGjHzn3A?e=SaQLBJ" target="_blank" style="text-decoration: none">Slides</a> | <a href="https://psesh.github.io/ae8803/useful_codes/curl.html"  style="text-decoration: none">Notebook 1</a> | <a href="https://psesh.github.io/ae8803/useful_codes/div.html"  style="text-decoration: none">Notebook 2</a> 
+
+<details>
+  <summary>Contents</summary>
+
+  1. Model of coregionalization.
+  2. Divergence free kernel.
+  3. Curl free kernel.
+</details>
+
 04.03: **L22. Bayesian optimization** 
 <details>
   <summary>Contents</summary>

@@ -23,6 +23,8 @@ project:
     - useful_codes/mcmc.ipynb
     - useful_codes/vi.ipynb
     - useful_codes/sparse.ipynb
+    - useful_codes/curl.ipynb
+    - useful_codes/div.ipynb
     - coding-1/coding-1.ipynb
     - midterm/midterm_2024_solutions.ipynb
     - project/proposals_and_projects.ipynb
@@ -94,6 +96,10 @@ website:
             href: https://psesh.github.io/ae8803/useful_codes/vi.html
           - text: "Sparse Gaussian processes"
             href: https://psesh.github.io/ae8803/useful_codes/sparse.html
+          - text: "Divergence-free Gaussian processes"
+            href: https://psesh.github.io/ae8803/useful_codes/div.html
+          - text: "Curl-free Gaussian processes"
+            href: https://psesh.github.io/ae8803/useful_codes/curl.html
       - section: "Assignments"
         contents:
               - text: "Assignment 2"
