@@ -238,14 +238,13 @@ Below you will find a list of the lectures that form the backbone of this course
   3. Curl free kernel.
 </details>
 
-04.03: **L22. Bayesian optimization** 
+04.10: **L21. Time series Gaussian processes** | <a href="https://gtvault-my.sharepoint.com/:b:/g/personal/pseshadri34_gatech_edu/EWQMqn2Umv5MpacgvgiwNjsB0KXBU8U9-dBQnyW3-thO6w?e=eL0bOt" target="_blank" style="text-decoration: none">Slides</a>
 <details>
   <summary>Contents</summary>
 
-  1. Gaussian process surrogate.
-  2. Acquisition function.
-  3. Thompson's sampling. 
-  4. Gaussian process dynamic model. 
+  1. Kalman filtering.
+  2. Spatio-temporal Gaussian processes.
+  3. Equivalence.
 </details>
 
 04.08: **L23. Guest Lecture** 
