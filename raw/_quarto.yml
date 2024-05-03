@@ -20,6 +20,8 @@ project:
     - useful_codes/eigen.ipynb
     - useful_codes/fourier.ipynb
     - useful_codes/gp101.ipynb
+    - useful_codes/gp_classification.ipynb
+    - useful_codes/deep_gp.ipynb
     - useful_codes/mcmc.ipynb
     - useful_codes/vi.ipynb
     - useful_codes/sparse.ipynb
@@ -30,18 +32,12 @@ project:
     - project/proposals_and_projects.ipynb
 format:
   html:
-    page-layout: full
+    page-layout: article
     toc: true
     code-fold: true
-    backgroundcolor: "#FDF1E6"
     theme: 
-      light: [zephyr, main.scss]
-    header-includes: |
-      <link rel="preconnect" href="https://fonts.googleapis.com">
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-      <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
-    mainfont: "Playfair Display"
-    linkcolor: "#8C213E"
+      light: flatly
+      dark: darkly
     code-tools: true
     description-meta: Course website for AE8803 -- a graduate-level course on Gaussian processes.
     favicon: images/logo.ico
@@ -52,7 +48,6 @@ website:
   title: "AE8803: Machine Learning with Gaussian Processes"
   page-navigation: true
   navbar:
-    background: secondary
     left:
       - text: "Home"
         href: https://psesh.github.io/ae8803/
@@ -100,6 +95,10 @@ website:
             href: https://psesh.github.io/ae8803/useful_codes/div.html
           - text: "Curl-free Gaussian processes"
             href: https://psesh.github.io/ae8803/useful_codes/curl.html
+          - text: "Classification"
+            href: https://psesh.github.io/ae8803/useful_codes/gp_classification.html
+          - text: "Deep Gaussian processes"
+            href: https://psesh.github.io/ae8803/useful_codes/deep_gp.html
       - section: "Assignments"
         contents:
               - text: "Assignment 2"
